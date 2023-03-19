@@ -35,14 +35,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             allowNull: false
         },
-        userImageId: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            references: {
-                model: "usersImages",
-                key: "id"
-            }
-        },
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -64,9 +56,9 @@ module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define(alias, cols, config)
 
     User.associate = (models) => {
-        User.belongsTo(models.UserImage, {
+        User.hasOne(models.UserImage, {
             as: "image",
-            foreignKey: "userImageId"
+            foreignKey: "userId"
         })
 
         User.hasMany(models.Address, {
@@ -79,7 +71,7 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: "userId"
         })
 
-        User.belongsTo(models.Cart, {
+        User.hasOne(models.Cart, {
             as: "cart",
             foreignKey: "userId"
         })

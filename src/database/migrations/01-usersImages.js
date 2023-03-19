@@ -10,6 +10,14 @@ module.exports = {
         autoIncrement: true,
         allowNull: false
       },
+      userId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "users",
+          key: "id"
+        }
+      },
       image: {
         type: Sequelize.BLOB,
         allowNull: false

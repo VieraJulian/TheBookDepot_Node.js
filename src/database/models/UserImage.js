@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             allowNull: false
         },
+        userId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         image: {
             type: DataTypes.BLOB,
             allowNull: false
@@ -34,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     UserImage.associate = (models) => {
         UserImage.belongsTo(models.User, {
             as: "user",
-            foreignKey: "userImageId"
+            foreignKey: "userId"
         })
     }
 

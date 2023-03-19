@@ -4,17 +4,6 @@ const { hashSync } = require("bcryptjs")
 module.exports = {
     register: async (req, res) => {
         try {
-            let image;
-
-            if (req.file) {
-                let avatar = await UserImage.create({
-                    image: req.file.buffer
-                })
-
-                image = avatar.id
-            } else {
-                image = null
-            }
 
             let fechaStr = req.body.birthDate;
             let partes = fechaStr.split("/");
@@ -28,13 +17,27 @@ module.exports = {
                 phone: req.body.phone ? req.body.phone : null,
                 email: req.body.email,
                 password: hashSync(req.body.password, 10),
-                admin: String(req.body.email).includes("@thebookdepot.com"),
-                userImageId: image,
+                admin: String(req.body.email).includes("@thebookdepot.com")
             }
 
             const userCreated = await User.create(userCreate)
 
+            if (req.file) {
+                await UserImage.create({
+                    userId: userCreated.id,
+                    image: req.file.buffer
+                })
+            }
+
             return res.status(200).json(userCreated)
+        } catch (error) {
+            return res.status(500).json(error)
+        }
+    },
+    login: async (req, res) => {
+        try {
+
+
         } catch (error) {
             return res.status(500).json(error)
         }

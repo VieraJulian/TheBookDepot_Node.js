@@ -55,14 +55,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             allowNull: false
         },
-        productImageId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: "productsImages",
-                key: "id"
-            }
-        },
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -84,9 +76,9 @@ module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define(alias, cols, config)
 
     Product.associate = (models) => {
-        Product.belongsTo(models.ProductImage, {
+        Product.hasOne(models.ProductImage, {
             as: "productImage",
-            foreignKey: "productImageId"
+            foreignKey: "productId"
         })
 
         Product.hasMany(models.OrderItem, {

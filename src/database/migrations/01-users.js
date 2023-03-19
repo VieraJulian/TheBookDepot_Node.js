@@ -38,14 +38,6 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false
       },
-      userImageId: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: "usersImages",
-          key: "id"
-        }
-      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
