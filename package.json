@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nodemon source/app.js",
     "sq-i": "sequelize init",
-    "sq-mg": "sequelize migration:generate --name cartProducts" ,
+    "sq-mg": "sequelize migration:generate --name" ,
     "sq-db": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
   },
   "keywords": [],
