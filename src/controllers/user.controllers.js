@@ -1,19 +1,31 @@
 const { User, UserImage } = require("../database/models/index")
 const { hashSync } = require("bcryptjs")
+const { validationResult } = require("express-validator")
 
 module.exports = {
     register: async (req, res) => {
         try {
+            let validations = validationResult(req)
+            let { errors } = validations
+            let errorMsg = errors.map(err => Object({
+                param: err.param,
+                value: err.value,
+                msg: err.msg
+            }))
 
-            let fechaStr = req.body.birthDate;
-            let partes = fechaStr.split("/");
-            let fechaJS = new Date(partes[2], partes[1] - 1, partes[0]);
-            let birthDate = fechaJS.toISOString().slice(0, 19).split('T')[0];
+            if (errors && errors.length > 0) {
+                if (req.files) {
+                    req.files.forEach(img => {
+                        unlinkSync(resolve(__dirname, "../../uploads/articles/" + img.filename))
+                    });
+                }
+                return res.status(200).json(errorMsg)
+            }
 
             const userCreate = {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                birthDate: birthDate,
+                birthDate: req.body.birthDate,
                 phone: req.body.phone ? req.body.phone : null,
                 email: req.body.email,
                 password: hashSync(req.body.password, 10),
