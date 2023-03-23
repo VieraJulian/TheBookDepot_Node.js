@@ -14,11 +14,6 @@ module.exports = {
             }))
 
             if (errors && errors.length > 0) {
-                if (req.files) {
-                    req.files.forEach(img => {
-                        unlinkSync(resolve(__dirname, "../../uploads/articles/" + img.filename))
-                    });
-                }
                 return res.status(200).json(errorMsg)
             }
 
@@ -35,9 +30,12 @@ module.exports = {
             const userCreated = await User.create(userCreate)
 
             if (req.file) {
+                const imagenBuffer = req.file.buffer
+                const base64Image = imagenBuffer.toString("base64");
+                
                 await UserImage.create({
                     userId: userCreated.id,
-                    image: req.file.buffer
+                    image: base64Image
                 })
             }
 

@@ -19,7 +19,7 @@ module.exports = {
         }
       },
       image: {
-        type: Sequelize.BLOB,
+        type: Sequelize.BLOB('medium'),
         allowNull: false
       },
       createdAt: {
