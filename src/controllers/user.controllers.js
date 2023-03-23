@@ -29,8 +29,8 @@ module.exports = {
 
             const userCreated = await User.create(userCreate)
 
-            if (req.file) {
-                const imagenBuffer = req.file.buffer
+            if (req.files) {
+                const imagenBuffer = req.files[0].buffer
                 const base64Image = imagenBuffer.toString("base64");
                 
                 await UserImage.create({

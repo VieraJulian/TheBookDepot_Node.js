@@ -11,7 +11,7 @@ const register = [
     body("lastName")
         .notEmpty().withMessage("El campo apellido no puede estar vacío").bail().isLength({ min: 2 }).withMessage("El campo apellido debe tener al menos 2 caracteres").bail()
         .isLength({ max: 50 }).withMessage("El campo apellido no puede tener más de 50 caracteres").bail().matches(/^[\p{L}\p{M}*]+$/u)
-        .withMessage("El campo apellido solo puede contener letras y letras con acentos").bail(),
+        .withMessage("El campo apellido solo puede contener letras").bail(),
     body("birthDate")
         .notEmpty().withMessage("El campo fecha de nacimiento no puede estar vacío").bail()
         .custom((value) => {
@@ -46,24 +46,28 @@ const register = [
         .matches(/[\W]/).withMessage('El campo password debe contener al menos un símbolo').bail()
         .matches(/[a-z]/).withMessage('El campo password debe contener al menos una letra minúscula').bail(),
     body("image").custom((value, { req }) => {
-        let imagen = req.file
+        let imagen = req.files
 
         if (!imagen || imagen.length == 0) {
             throw new Error("La imagen no puede quedar vacía")
         }
 
         let extensiones = [".svg", ".jpg", ".png", ".jpeg"]
-        let extension = extname(imagen.originalname)
+        let extension = extname(imagen[0].originalname)
         if (!extensiones.includes(extension)) {
             throw new Error("La extension debería ser '.svg', '.jpg', '.png', '.jpeg'")
         }
 
-        if (imagen.size > 2097152) {
+        if (imagen[0].size > 2097152) {
             throw new Error("La imagen supera el peso de 2MB");
         }
 
+        if (req.files && req.files.length > 1) {
+            throw new Error("Solo puedes subir una imagen");
+        }
+
         return true
-    }),
+    })
 ]
 
 module.exports = register
