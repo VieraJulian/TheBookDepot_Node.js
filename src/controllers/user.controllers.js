@@ -35,7 +35,7 @@ module.exports = {
                 admin: String(req.body.email).includes("@thebookdepot.com")
             }
 
-            const userCreated = await User.create(userCreate)
+            const userCreated = await User.create("User registered")
 
             if (req.files) {
                 const imagenBuffer = req.files[0].buffer
@@ -61,9 +61,13 @@ module.exports = {
                 return res.status(200).json(errors);
             }
 
-            let users = await User.findAll()
+            const users = await User.findAll()
 
             let userDB = users.find(user => user.email === req.body.email)
+
+            userDB = {
+                id: userDB.id,
+            }
 
             return res.status(200).json(userDB)
         } catch (error) {

@@ -46,14 +46,14 @@ const register = [
         .matches(/[\W]/).withMessage("El campo password debe contener al menos un símbolo").bail()
         .matches(/[a-z]/).withMessage("El campo password debe contener al menos una letra minúscula").bail(),
     body("image").custom((value, { req }) => {
-        let imagen = req.files
+        const imagen = req.files
 
         if (!imagen || imagen.length == 0) {
             throw new Error("La imagen no puede quedar vacía")
         }
 
-        let extensiones = [".svg", ".jpg", ".png", ".jpeg"]
-        let extension = extname(imagen[0].originalname)
+        const extensiones = [".svg", ".jpg", ".png", ".jpeg"]
+        const extension = extname(imagen[0].originalname)
         if (!extensiones.includes(extension)) {
             throw new Error("La extension debería ser '.svg', '.jpg', '.png', '.jpeg'")
         }

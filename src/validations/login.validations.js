@@ -13,9 +13,9 @@ const login = [
         return true
     }),
     body("password").notEmpty().withMessage("El campo contraseña no puede quedar vacío").bail().custom(async (value, { req }) => {
-        let { email } = req.body
-        let users = await User.findAll()
-        let user = await users.find(user => user.email === email)
+        const { email } = req.body
+        const users = await User.findAll()
+        const user = await users.find(user => user.email === email)
 
         if (!user) {
             throw new Error("Usuario no encontrado")
