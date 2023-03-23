@@ -2,19 +2,27 @@ const { User, UserImage } = require("../database/models/index")
 const { hashSync } = require("bcryptjs")
 const { validationResult } = require("express-validator")
 
+const handleValidationErrors = (validations) => {
+    const errors = validations.array();
+    if (errors && errors.length > 0) {
+        const formattedErrors = errors.map((err) => ({
+            param: err.param,
+            value: err.value,
+            msg: err.msg,
+        }));
+        return formattedErrors;
+    }
+    return null;
+};
+
 module.exports = {
     register: async (req, res) => {
         try {
-            let validations = validationResult(req)
-            let { errors } = validations
-            let errorMsg = errors.map(err => Object({
-                param: err.param,
-                value: err.value,
-                msg: err.msg
-            }))
+            const validations = validationResult(req);
+            const errors = handleValidationErrors(validations);
 
-            if (errors && errors.length > 0) {
-                return res.status(200).json(errorMsg)
+            if (errors) {
+                return res.status(200).json(errors);
             }
 
             const userCreate = {
@@ -32,7 +40,7 @@ module.exports = {
             if (req.files) {
                 const imagenBuffer = req.files[0].buffer
                 const base64Image = imagenBuffer.toString("base64");
-                
+
                 await UserImage.create({
                     userId: userCreated.id,
                     image: base64Image
@@ -46,8 +54,18 @@ module.exports = {
     },
     login: async (req, res) => {
         try {
+            const validations = validationResult(req);
+            const errors = handleValidationErrors(validations);
 
+            if (errors) {
+                return res.status(200).json(errors);
+            }
 
+            let users = await User.findAll()
+
+            let userDB = users.find(user => user.email === req.body.email)
+
+            return res.status(200).json(userDB)
         } catch (error) {
             return res.status(500).json(error)
         }

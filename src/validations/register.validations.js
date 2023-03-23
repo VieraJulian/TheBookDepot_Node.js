@@ -36,15 +36,15 @@ const register = [
             let users = await User.findAll()
             users = users.map(u => u.email)
             if (users.includes(value)) {
-                throw new Error('El email ya está registrado')
+                throw new Error("El email ya está registrado")
             }
             return true
         }),
     body("password").notEmpty().withMessage("El campo contraseña no puede quedar vacío").bail()
-        .isLength({ min: 8 }).withMessage('El campo password debe tener al menos 8 caracteres').bail()
-        .matches(/[A-Z]/).withMessage('El campo password debe contener al menos una letra mayúscula').bail()
-        .matches(/[\W]/).withMessage('El campo password debe contener al menos un símbolo').bail()
-        .matches(/[a-z]/).withMessage('El campo password debe contener al menos una letra minúscula').bail(),
+        .isLength({ min: 8 }).withMessage("El campo password debe tener al menos 8 caracteres").bail()
+        .matches(/[A-Z]/).withMessage("El campo password debe contener al menos una letra mayúscula").bail()
+        .matches(/[\W]/).withMessage("El campo password debe contener al menos un símbolo").bail()
+        .matches(/[a-z]/).withMessage("El campo password debe contener al menos una letra minúscula").bail(),
     body("image").custom((value, { req }) => {
         let imagen = req.files
 
