@@ -51,5 +51,49 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error)
         }
+    },
+    editProduct: async (req, res) => {
+        try {
+            const validations = validationResult(req);
+            const errors = handleValidationErrors(validations);
+
+            if (errors) {
+                return res.status(200).json(errors);
+            }
+
+            let productDB = await Product.findByPk(req.body.id, {
+                include: [
+                    { association: "productImage" }
+                ]
+            });
+
+            await productDB.update({
+                title: req.body.title ? req.body.title : productDB.title,
+                author: req.body.author ? req.body.author : productDB.author,
+                editorial: req.body.editorial ? req.body.editorial : productDB.editorial,
+                price: req.body.price ? req.body.price : productDB.price,
+                collection: req.body.collection ? req.body.collection : productDB.collection,
+                numberPages: req.body.numberPages ? req.body.numberPages : productDB.numberPages,
+                language: req.body.language ? req.body.language : productDB.language,
+                format: req.body.format ? req.body.format : productDB.format,
+                isbn: req.body.isbn ? req.body.isbn : productDB.isbn,
+                weight: req.body.weight ? req.body.weight : productDB.weight,
+                edition: req.body.edition ? req.body.edition : productDB.editProduct
+            })
+
+            if (req.files && req.files.length > 0) {
+                const imagenBuffer = req.files[0].buffer
+                const base64Image = imagenBuffer.toString("base64");
+
+                await productDB.productImage.update({
+                    productId: productDB.id,
+                    image: base64Image
+                })
+            }
+
+            return res.status(200).json("Product edited")
+        } catch (error) {
+            return res.status(500).json(error)
+        }
     }
 }
