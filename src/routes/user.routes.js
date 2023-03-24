@@ -9,5 +9,6 @@ const editProfileMiddleware = require("../middlewares/editProfile.middleware")
 router.post("/register", registerMiddleware, userControllers.register)
 router.post("/login", loginMiddleware, userControllers.login)
 router.post("/editProfile", editProfileMiddleware, userControllers.editProfile)
+router.post("/createAdress", userControllers.createAdress)
 
 module.exports = router

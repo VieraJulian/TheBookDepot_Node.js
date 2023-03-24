@@ -1,4 +1,4 @@
-const { User, UserImage } = require("../database/models/index")
+const { User, UserImage, Address } = require("../database/models/index")
 const { hashSync } = require("bcryptjs")
 const { validationResult } = require("express-validator")
 
@@ -84,18 +84,12 @@ module.exports = {
                     { association: "image" }
                 ]
             });
-
-            let phone;
-
-            if (req.body.phone && req.body.phone != null) {
-                phone = req.body.phone;
-            }
-
+            
             await userDB.update({
                 firstName: req.body.firstName ? req.body.firstName : userDB.firstName,
                 lastName: req.body.lastName ? req.body.lastName : userDB.lastName,
                 birthDate: req.body.birthDate ? req.body.birthDate : userDB.birthDate,
-                phone: phone ? phone : null
+                phone: req.body.phone && req.body.phone != null ? req.body.phone : null
             })
 
             let base64Image;
@@ -117,6 +111,30 @@ module.exports = {
             }
 
             return res.status(200).json("Edited profile")
+        } catch (error) {
+            return res.status(500).json(error)
+        }
+    },
+    createAdress: async (req, res) => {
+        try {
+
+            let userDB = await User.findByPk(req.body.id, {
+                include: [
+                    { association: "addresses" }
+                ]
+            });
+
+            if (userDB.addresses.length < 2) {
+                await Address.create({
+                    userId: req.body.id,
+                    phone: req.body.phone && req.body.phone != null ? req.body.phone : null,
+                    province: req.body.province,
+                    city: req.body.city,
+                    address: req.body.address,
+                })
+            }
+
+            return res.status(200).json("Address created")
         } catch (error) {
             return res.status(500).json(error)
         }
