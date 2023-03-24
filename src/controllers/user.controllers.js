@@ -73,5 +73,33 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error)
         }
+    },
+    editProfile: async (req, res) => {
+        try {
+            let userDB = await User.findByPk(req.body.id, {
+                include: [
+                    { association: "image" }
+                ]
+            });
+
+            await userDB.update({
+                firstName: req.body.firstName ? req.body.firstName : userDB.firstName,
+                lastName: req.body.lastName ? req.body.lastName : userDB.lastName,
+                birthDate: req.body.birthDate ? req.body.birthDate : userDB.birthDate,
+                phone: req.body.phone ? req.body.phone : userDB.phone
+            })
+
+            if (req.files && req.files.length > 0) {
+                const imagenBuffer = req.files[0].buffer
+                const base64Image = imagenBuffer.toString("base64");
+                await userDB.image.update({
+                    image: base64Image
+                })
+            }
+
+            return res.status(200).json()
+        } catch (error) {
+            return res.status(500).json(error)
+        }
     }
 };
