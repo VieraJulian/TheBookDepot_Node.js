@@ -145,5 +145,29 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error)
         }
+    },
+    editAddress: async (req, res) => {
+        try {
+            const validations = validationResult(req);
+            const errors = handleValidationErrors(validations);
+
+            if (errors) {
+                return res.status(200).json(errors);
+            }
+
+            const addressDB = await Address.findByPk(req.body.idAddress)
+
+            await addressDB.update({
+                addresse: req.body.addresse ? req.body.addresse : addressDB.addresse,
+                phone: req.body.phone && req.body.phone != null ? req.body.phone : null,
+                province: req.body.province ? req.body.province : addressDB.province,
+                city: req.body.city ? req.body.city : addressDB.city,
+                address: req.body.address ? req.body.address : addressDB.address,
+            })
+
+            return res.status(200).json("Edited Address")
+        } catch (error) {
+            return res.status(500).json(error)
+        }
     }
 };
