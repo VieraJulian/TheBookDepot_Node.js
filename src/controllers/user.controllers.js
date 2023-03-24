@@ -35,9 +35,9 @@ module.exports = {
                 admin: String(req.body.email).includes("@thebookdepot.com")
             }
 
-            const userCreated = await User.create("User registered")
+            const userCreated = await User.create(userCreate)
 
-            if (req.files) {
+            if (req.files && req.files.length > 0) {
                 const imagenBuffer = req.files[0].buffer
                 const base64Image = imagenBuffer.toString("base64");
 
@@ -47,7 +47,7 @@ module.exports = {
                 })
             }
 
-            return res.status(200).json(userCreated)
+            return res.status(200).json("User registered")
         } catch (error) {
             return res.status(500).json(error)
         }
@@ -63,41 +63,60 @@ module.exports = {
 
             const users = await User.findAll()
 
-            let userDB = users.find(user => user.email === req.body.email)
+            const userDB = users.find(user => user.email === req.body.email)
 
-            userDB = {
-                id: userDB.id,
-            }
-
-            return res.status(200).json(userDB)
+            return res.status(200).json({ id: userDB.id })
         } catch (error) {
             return res.status(500).json(error)
         }
     },
     editProfile: async (req, res) => {
         try {
+            const validations = validationResult(req);
+            const errors = handleValidationErrors(validations);
+
+            if (errors) {
+                return res.status(200).json(errors);
+            }
+
             let userDB = await User.findByPk(req.body.id, {
                 include: [
                     { association: "image" }
                 ]
             });
 
+            let phone;
+
+            if (req.body.phone && req.body.phone != null) {
+                phone = req.body.phone;
+            }
+
             await userDB.update({
                 firstName: req.body.firstName ? req.body.firstName : userDB.firstName,
                 lastName: req.body.lastName ? req.body.lastName : userDB.lastName,
                 birthDate: req.body.birthDate ? req.body.birthDate : userDB.birthDate,
-                phone: req.body.phone ? req.body.phone : userDB.phone
+                phone: phone ? phone : null
             })
+
+            let base64Image;
 
             if (req.files && req.files.length > 0) {
                 const imagenBuffer = req.files[0].buffer
-                const base64Image = imagenBuffer.toString("base64");
+                base64Image = imagenBuffer.toString("base64");
+            }
+
+            if (req.files && req.files.length > 0 && userDB.image != null) {
                 await userDB.image.update({
+                    image: base64Image
+                })
+            } else if (req.files && req.files.length > 0 && userDB.images == null) {
+                await UserImage.create({
+                    userId: userDB.id,
                     image: base64Image
                 })
             }
 
-            return res.status(200).json()
+            return res.status(200).json("Edited profile")
         } catch (error) {
             return res.status(500).json(error)
         }
