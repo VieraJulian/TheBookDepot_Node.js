@@ -15,3 +15,4 @@ app.use(express.json())
 app.use(cors());
 
 app.use("/user", require("./src/routes/user.routes"))
+app.use("/product", require("./src/routes/product.routes"))

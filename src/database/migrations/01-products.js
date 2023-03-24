@@ -42,7 +42,7 @@ module.exports = {
         type: Sequelize.STRING(50),
         allowNull: false
       },
-      isbm: {
+      isbn: {
         type: Sequelize.BIGINT,
         allowNull: false
       },
