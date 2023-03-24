@@ -18,6 +18,10 @@ module.exports = {
           key: "id"
         }
       },
+      addresse: {
+        type: Sequelize.STRING(100),
+        allowNull: false
+      },
       phone: {
         type: Sequelize.STRING(30),
         allowNull: true

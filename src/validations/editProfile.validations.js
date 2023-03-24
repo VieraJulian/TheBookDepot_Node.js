@@ -5,11 +5,13 @@ const { extname } = require("path")
 const editProfile = [
     body("firstName")
         .isLength({ min: 2 }).withMessage("El campo nombre debe tener al menos 2 caracteres").bail()
-        .isLength({ max: 50 }).withMessage("El campo nombre no puede tener más de 50 caracteres").bail().matches(/^[\p{L}\p{M}*]+$/u)
+        .isLength({ max: 50 }).withMessage("El campo nombre no puede tener más de 50 caracteres").bail()
+        .matches(/^[\p{L}\p{M}*]+$/u)
         .withMessage("El campo nombre solo puede contener letras").bail(),
     body("lastName")
         .isLength({ min: 2 }).withMessage("El campo apellido debe tener al menos 2 caracteres").bail()
-        .isLength({ max: 50 }).withMessage("El campo apellido no puede tener más de 50 caracteres").bail().matches(/^[\p{L}\p{M}*]+$/u)
+        .isLength({ max: 50 }).withMessage("El campo apellido no puede tener más de 50 caracteres").bail()
+        .matches(/^[\p{L}\p{M}*]+$/u)
         .withMessage("El campo apellido solo puede contener letras").bail(),
     body("birthDate")
         .custom((value) => {

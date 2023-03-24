@@ -5,12 +5,16 @@ const { extname } = require("path")
 
 const register = [
     body("firstName")
-        .notEmpty().withMessage("El campo nombre no puede estar vacío").bail().isLength({ min: 2 }).withMessage("El campo nombre debe tener al menos 2 caracteres").bail()
-        .isLength({ max: 50 }).withMessage("El campo nombre no puede tener más de 50 caracteres").bail().matches(/^[\p{L}\p{M}*]+$/u)
+        .notEmpty().withMessage("El campo nombre no puede estar vacío").bail()
+        .isLength({ min: 2 }).withMessage("El campo nombre debe tener al menos 2 caracteres").bail()
+        .isLength({ max: 50 }).withMessage("El campo nombre no puede tener más de 50 caracteres").bail()
+        .matches(/^[\p{L}\p{M}*]+$/u)
         .withMessage("El campo nombre solo puede contener letras").bail(),
     body("lastName")
-        .notEmpty().withMessage("El campo apellido no puede estar vacío").bail().isLength({ min: 2 }).withMessage("El campo apellido debe tener al menos 2 caracteres").bail()
-        .isLength({ max: 50 }).withMessage("El campo apellido no puede tener más de 50 caracteres").bail().matches(/^[\p{L}\p{M}*]+$/u)
+        .notEmpty().withMessage("El campo apellido no puede estar vacío").bail()
+        .isLength({ min: 2 }).withMessage("El campo apellido debe tener al menos 2 caracteres").bail()
+        .isLength({ max: 50 }).withMessage("El campo apellido no puede tener más de 50 caracteres").bail()
+        .matches(/^[\p{L}\p{M}*]+$/u)
         .withMessage("El campo apellido solo puede contener letras").bail(),
     body("birthDate")
         .notEmpty().withMessage("El campo fecha de nacimiento no puede estar vacío").bail()
@@ -40,7 +44,8 @@ const register = [
             }
             return true
         }),
-    body("password").notEmpty().withMessage("El campo contraseña no puede quedar vacío").bail()
+    body("password")
+        .notEmpty().withMessage("El campo contraseña no puede quedar vacío").bail()
         .isLength({ min: 8 }).withMessage("El campo password debe tener al menos 8 caracteres").bail()
         .matches(/[A-Z]/).withMessage("El campo password debe contener al menos una letra mayúscula").bail()
         .matches(/[\W]/).withMessage("El campo password debe contener al menos un símbolo").bail()

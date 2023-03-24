@@ -84,7 +84,7 @@ module.exports = {
                     { association: "image" }
                 ]
             });
-            
+
             await userDB.update({
                 firstName: req.body.firstName ? req.body.firstName : userDB.firstName,
                 lastName: req.body.lastName ? req.body.lastName : userDB.lastName,
@@ -117,6 +117,12 @@ module.exports = {
     },
     createAdress: async (req, res) => {
         try {
+            const validations = validationResult(req);
+            const errors = handleValidationErrors(validations);
+
+            if (errors) {
+                return res.status(200).json(errors);
+            }
 
             let userDB = await User.findByPk(req.body.id, {
                 include: [
@@ -127,6 +133,7 @@ module.exports = {
             if (userDB.addresses.length < 2) {
                 await Address.create({
                     userId: req.body.id,
+                    addresse: req.body.addresse,
                     phone: req.body.phone && req.body.phone != null ? req.body.phone : null,
                     province: req.body.province,
                     city: req.body.city,
