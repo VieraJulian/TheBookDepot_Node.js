@@ -1,4 +1,4 @@
-const { Product, ProductImage, User, FavoriteProduct } = require("../database/models/index")
+const { Product, ProductImage, User, FavoriteProduct, SavedProduct } = require("../database/models/index")
 const { validationResult } = require("express-validator");
 
 const handleValidationErrors = (validations) => {
@@ -121,6 +121,35 @@ module.exports = {
             }
             
             return res.status(200).json("Product added to favorites")
+        } catch (error) {
+            return res.status(500).json(error)
+        }
+    },
+    toSaved: async (req, res) => {
+        try {
+            const userDB = await User.findByPk(req.body.id, {
+                include: [
+                    { association: "productsSalved" }
+                ]
+            })
+
+            let productFound = false
+
+            for (let product of userDB.productsSalved) {
+                if (product.id === parseInt(req.body.productId)) {
+                    productFound = true;
+                    break;
+                }
+            }
+
+            if (!productFound) {
+                await SavedProduct.create({
+                    userId: req.body.id,
+                    productId: req.body.productId
+                })
+            }
+            
+            return res.status(200).json("Product saved")
         } catch (error) {
             return res.status(500).json(error)
         }
