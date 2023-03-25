@@ -16,3 +16,4 @@ app.use(cors());
 
 app.use("/user", require("./src/routes/user.routes"))
 app.use("/product", require("./src/routes/product.routes"))
+app.use("/cart", require("./src/routes/cart.routes"))
