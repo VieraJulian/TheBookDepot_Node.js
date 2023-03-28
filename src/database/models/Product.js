@@ -6,67 +6,71 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
-        },
-        title: {
+          },
+          title: {
             type: DataTypes.STRING(100),
             allowNull: false
-        },
-        author: {
+          },
+          author: {
             type: DataTypes.STRING(100),
             allowNull: false
-        },
-        editorial: {
+          },
+          editorial: {
             type: DataTypes.STRING(100),
             allowNull: false
-        },
-        price: {
+          },
+          price: {
             type: DataTypes.DECIMAL(7, 2),
             allowNull: false
-        },
-        collection: {
+          },
+          collection: {
             type: DataTypes.STRING(100),
             allowNull: false
-        },
-        numberPages: {
+          },
+          numberPages: {
             type: DataTypes.SMALLINT,
             allowNull: false
-        },
-        language: {
+          },
+          language: {
             type: DataTypes.STRING(50),
             allowNull: false
-        },
-        format: {
+          },
+          format: {
             type: DataTypes.STRING(50),
             allowNull: false
-        },
-        isbn: {
+          },
+          isbn: {
             type: DataTypes.BIGINT,
             allowNull: false
-        },
-        weight: {
+          },
+          weight: {
             type: DataTypes.SMALLINT,
             allowNull: false
-        },
-        edition: {
+          },
+          edition: {
             type: DataTypes.SMALLINT,
             allowNull: false
-        },
-        bestSellers: {
+          },
+          bestSellers: {
             type: DataTypes.BOOLEAN,
             allowNull: false
-        },
-        createdAt: {
+          },
+          stock: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+          },
+          createdAt: {
             type: DataTypes.DATE,
             allowNull: false,
-        },
-        updatedAt: {
+          },
+          updatedAt: {
             type: DataTypes.DATE,
             allowNull: false,
-        },
-        deletedAt: {
+          },
+          deletedAt: {
             type: DataTypes.DATE,
             allowNull: true,
-        }
+          }
     };
 
     let config = {

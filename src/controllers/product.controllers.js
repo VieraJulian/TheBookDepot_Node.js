@@ -36,7 +36,8 @@ module.exports = {
                 isbn: req.body.isbn,
                 weight: req.body.weight,
                 edition: req.body.edition,
-                bestSellers: false
+                bestSellers: false,
+                stock: req.body.stock
             })
 
             const imagenBuffer = req.files[0].buffer
@@ -78,7 +79,8 @@ module.exports = {
                 format: req.body.format ? req.body.format : productDB.format,
                 isbn: req.body.isbn ? req.body.isbn : productDB.isbn,
                 weight: req.body.weight ? req.body.weight : productDB.weight,
-                edition: req.body.edition ? req.body.edition : productDB.editProduct
+                edition: req.body.edition ? req.body.edition : productDB.editProduct,
+                stock: req.body.stock ? req.body.stock : productDB.stock
             })
 
             if (req.files && req.files.length > 0) {

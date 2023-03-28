@@ -58,6 +58,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false
       },
+      stock: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
