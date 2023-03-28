@@ -1,4 +1,4 @@
-const { User, Cart, CartProduct, Product } = require("../database/models/index")
+const { User, Cart, CartProduct, Product, Order, OrderItem } = require("../database/models/index")
 
 module.exports = {
     addProduct: async (req, res) => {
@@ -48,6 +48,43 @@ module.exports = {
             await cart.update({ total: parseInt(cart.total) + total });
 
             return res.status(200).json("Product added")
+        } catch (error) {
+            return res.status(500).json(error)
+        }
+    },
+    buy: async (req, res) => {
+        try {
+            let userDB = await User.findByPk(req.body.id, {
+                include: [
+                    { association: "cart" }
+                ]
+            })
+
+            let cartId = userDB.cart.id;
+
+            let cart = await Cart.findByPk(cartId, {
+                include: [
+                    { association: "cartProducts" }
+                ]
+            })
+
+            let newOrder = await Order.create({
+                userId: req.body.id,
+                total: cart.total,
+                paymentMethod: req.body.paymentMethod,
+                shippingMethod: req.body.shippingMethod,
+                delivered: false
+            })
+
+            cart.cartProducts.forEach( async (p) => {
+                await OrderItem.create({
+                    orderId: newOrder.id,
+                    productId: p.productId,
+                    quantity: p.quantity,
+                })
+            });
+            
+            return res.status(200).json("successful purchase");
         } catch (error) {
             return res.status(500).json(error)
         }
