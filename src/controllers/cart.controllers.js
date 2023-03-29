@@ -26,17 +26,17 @@ module.exports = {
 
             const cart = await Cart.findByPk(cartId, {
                 include: [
-                    { association: "cartProduct" }
+                    { association: "cartProducts" }
                 ]
             })
 
             let productFound = false;
             let total = parseInt(productDB.price)
 
-            for (let cartProduct of cart.cartProduct) {
-                if (cartProduct.productId === parseInt(req.body.productId)) {
+            for (let cartProducts of cart.cartProducts) {
+                if (cartProducts.productId === parseInt(req.body.productId)) {
                     productFound = true;
-                    await cartProduct.update({ quantity: cartProduct.quantity + 1 });
+                    await cartProducts.update({ quantity: cartProducts.quantity + 1 });
                     break;
                 }
             }
@@ -68,22 +68,33 @@ module.exports = {
                 ]
             })
 
-            let newOrder = await Order.create({
-                userId: req.body.id,
-                total: cart.total,
-                paymentMethod: req.body.paymentMethod,
-                shippingMethod: req.body.shippingMethod,
-                delivered: false
-            })
+            if (parseInt(cart.total) > 0) {
 
-            cart.cartProducts.forEach( async (p) => {
-                await OrderItem.create({
-                    orderId: newOrder.id,
-                    productId: p.productId,
-                    quantity: p.quantity,
+                let newOrder = await Order.create({
+                    userId: req.body.id,
+                    total: cart.total,
+                    paymentMethod: req.body.paymentMethod,
+                    shippingMethod: req.body.shippingMethod,
+                    delivered: false
                 })
-            });
-            
+
+                cart.cartProducts.forEach(async (p) => {
+                    await OrderItem.create({
+                        orderId: newOrder.id,
+                        productId: p.productId,
+                        quantity: p.quantity,
+                    })
+                });
+
+                cart.cartProducts.forEach(async (p) => {
+                    await CartProduct.destroy({ where: { id: p.id } })
+                });
+                
+                await cart.update({
+                    total: 0
+                })
+            }
+
             return res.status(200).json("successful purchase");
         } catch (error) {
             return res.status(500).json(error)
