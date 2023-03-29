@@ -89,9 +89,15 @@ module.exports = {
                 cart.cartProducts.forEach(async (p) => {
                     await CartProduct.destroy({ where: { id: p.id } })
                 });
-                
+
                 await cart.update({
                     total: 0
+                })
+
+                cart.cartProducts.forEach(async (p) => {
+                    const product = await Product.findByPk(p.productId, { attributes: ['stock'] });
+                    const newStock = product.stock - parseInt(p.quantity);
+                    await Product.update({ stock: newStock }, { where: { id: p.productId } })
                 })
             }
 
