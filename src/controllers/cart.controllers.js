@@ -36,8 +36,14 @@ module.exports = {
             for (let cartProducts of cart.cartProducts) {
                 if (cartProducts.productId === parseInt(req.body.productId)) {
                     productFound = true;
-                    await cartProducts.update({ quantity: cartProducts.quantity + 1 });
-                    break;
+
+                    const product = await Product.findByPk(req.body.productId, { attributes: ['stock'] });
+                    const stock = product.stock;
+
+                    if (stock > cartProducts.quantity) {
+                        await cartProducts.update({ quantity: cartProducts.quantity + 1 });
+                        break;
+                    }
                 }
             }
 
