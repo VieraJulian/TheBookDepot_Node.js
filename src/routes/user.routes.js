@@ -14,5 +14,6 @@ router.post("/editProfile", editProfileMiddleware, userControllers.editProfile)
 router.post("/createAddress", createAdressMiddleware, userControllers.createAdress)
 router.post("/editAddress", editAddressMiddleware, userControllers.editAddress)
 router.get("/profile/:id", userControllers.profile)
+router.get("/addresses/:id", userControllers.addresses)
 
 module.exports = router

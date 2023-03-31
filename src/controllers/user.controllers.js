@@ -191,5 +191,30 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error)
         }
+    },
+    addresses: async (req, res) => {
+        try {
+            let addressesDB = await Address.findAll({
+                where: {
+                    userId: req.params.id
+                }
+            }, {
+                include: [
+                    { association: "user" }
+                ]
+            })
+
+            let data = addressesDB.map(address => Object({
+                addresse: address.addresse,
+                phone: address.phone,
+                province: address.province,
+                city: address.city,
+                address: address.address
+            }))
+
+            return res.status(200).json(data)
+        } catch (error) {
+            return res.status(500).json(error)
+        }
     }
 };
