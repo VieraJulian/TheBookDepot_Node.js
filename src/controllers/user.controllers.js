@@ -1,4 +1,4 @@
-const { User, UserImage, Address } = require("../database/models/index")
+const { User, UserImage, Address, Order, OrderItem } = require("../database/models/index")
 const { hashSync } = require("bcryptjs")
 const { validationResult } = require("express-validator")
 
@@ -213,6 +213,27 @@ module.exports = {
             }))
 
             return res.status(200).json(data)
+        } catch (error) {
+            return res.status(500).json(error)
+        }
+    },
+    orders: async (req, res) => {
+        try {
+            const ordersDB = await Order.findAll({
+                where: {
+                    userId: req.params.id
+                },
+                include: [
+                    {
+                        association: "orderItems",
+                        include: [
+                            { association: "product" }
+                        ]
+                    }
+                ]
+            });
+
+            return res.status(200).json(ordersDB);
         } catch (error) {
             return res.status(500).json(error)
         }
