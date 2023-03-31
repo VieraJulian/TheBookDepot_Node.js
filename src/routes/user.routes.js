@@ -13,6 +13,6 @@ router.post("/login", loginMiddleware, userControllers.login)
 router.post("/editProfile", editProfileMiddleware, userControllers.editProfile)
 router.post("/createAddress", createAdressMiddleware, userControllers.createAdress)
 router.post("/editAddress", editAddressMiddleware, userControllers.editAddress)
-router.post("/")
+router.get("/profile/:id", userControllers.profile)
 
 module.exports = router

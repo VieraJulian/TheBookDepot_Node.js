@@ -169,5 +169,27 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error)
         }
+    },
+    profile: async (req, res) => {
+        try {
+            let userDB = await User.findByPk(req.params.id, {
+                include: [
+                    { association: "image" }
+                ]
+            });
+
+            let data = {
+                firstName: userDB.firstName,
+                lastName: userDB.lastName,
+                birthDate: userDB.birthDate,
+                phone: userDB.phone,
+                email: userDB.email,
+                image: userDB.image.image
+            }
+
+            return res.status(200).json(data)
+        } catch (error) {
+            return res.status(500).json(error)
+        }
     }
 };
