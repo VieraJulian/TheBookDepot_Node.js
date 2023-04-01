@@ -116,11 +116,30 @@ module.exports = {
                     total: 0
                 })
 
-                cart.cartProducts.forEach(async (p) => {
-                    const product = await Product.findByPk(p.productId, { attributes: ['stock'] });
-                    const newStock = product.stock - parseInt(p.quantity);
-                    await Product.update({ stock: newStock }, { where: { id: p.productId } })
-                })
+                for (const p of cart.cartProducts) {
+                    try {
+                        const product = await Product.findByPk(p.productId);
+                        const newStock = product.stock - parseInt(p.quantity);
+                        await Product.update({ stock: newStock }, { where: { id: p.productId } })
+                
+                        if (newStock < 1) {
+                            const cartPs = await CartProduct.findAll({ where: { productId: p.productId } })
+                
+                            for (const cp of cartPs) {
+                                const carts = await Cart.findAll({ where: { id: cp.cartId } })
+                
+                                for (const cart of carts) {
+                                    await Cart.update({ total: cart.total - product.price }, { where: { id: cart.id } })
+                                }
+                                
+                                await CartProduct.destroy({ where: { id: cp.id } })
+                            }
+                        }
+                    } catch (error) {
+                        console.error(error);
+                    }
+                }
+                
             }
 
             return res.status(200).json("successful purchase");
