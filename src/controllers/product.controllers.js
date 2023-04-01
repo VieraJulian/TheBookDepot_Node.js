@@ -176,22 +176,22 @@ module.exports = {
         }
     },
     saved: async (req, res) => {
-        // try {
-        //     const favorites = await FavoriteProduct.findAll({ where: { userId: req.params.id } })
+        try {
+            const saved = await SavedProduct.findAll({ where: { userId: req.params.id } })
 
-        //     const data = await Promise.all(favorites.map(async (f) => {
-        //         const product = await Product.findByPk(f.productId, { include: [{ association: "productImage" }] })
+            const data = await Promise.all(saved.map(async (f) => {
+                const product = await Product.findByPk(f.productId, { include: [{ association: "productImage" }] })
 
-        //         return {
-        //             title: product.title,
-        //             price: product.price,
-        //             image: product.productImage.image
-        //         }
-        //     }))
+                return {
+                    title: product.title,
+                    price: product.price,
+                    image: product.productImage.image
+                }
+            }))
 
-        //     return res.status(200).json(data)
-        // } catch (error) {
-        //     return res.status(500).json(error)
-        // }
+            return res.status(200).json(data)
+        } catch (error) {
+            return res.status(500).json(error)
+        }
     }
 }
