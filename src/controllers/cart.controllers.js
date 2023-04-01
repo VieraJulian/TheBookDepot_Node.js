@@ -78,12 +78,18 @@ module.exports = {
                 const now = new Date();
                 const orderNumber = Math.floor(now.getTime() / 1000) + Math.floor(Math.random() * 10000);
 
+                const currentDate = new Date();
+                const year = currentDate.getFullYear();
+                const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+                const day = String(currentDate.getDate()).padStart(2, "0");
+                const currentDateFormatted = `${year}/${month}/${day}`;
 
                 let newOrder = await Order.create({
                     userId: req.body.id,
                     total: cart.total,
                     paymentMethod: req.body.paymentMethod,
                     shippingMethod: req.body.shippingMethod,
+                    date: currentDateFormatted,
                     orderNumber: orderNumber,
                     delivered: false
                 })
