@@ -158,22 +158,40 @@ module.exports = {
     },
     favorites: async (req, res) => {
         try {
-          const favorites = await FavoriteProduct.findAll({ where: { userId: req.params.id }})
-      
-          const data = await Promise.all(favorites.map(async (f) => {
-            const product = await Product.findByPk(f.productId, { include: [{ association: "productImage" }] })
-      
-            return {
-              title: product.title,
-              price: product.price,
-              image: product.productImage.image
-            }
-          }))
+            const favorites = await FavoriteProduct.findAll({ where: { userId: req.params.id } })
 
-          return res.status(200).json(data)
+            const data = await Promise.all(favorites.map(async (f) => {
+                const product = await Product.findByPk(f.productId, { include: [{ association: "productImage" }] })
+
+                return {
+                    title: product.title,
+                    price: product.price,
+                    image: product.productImage.image
+                }
+            }))
+
+            return res.status(200).json(data)
         } catch (error) {
-          return res.status(500).json(error)
+            return res.status(500).json(error)
         }
-      }
-      
+    },
+    saved: async (req, res) => {
+        // try {
+        //     const favorites = await FavoriteProduct.findAll({ where: { userId: req.params.id } })
+
+        //     const data = await Promise.all(favorites.map(async (f) => {
+        //         const product = await Product.findByPk(f.productId, { include: [{ association: "productImage" }] })
+
+        //         return {
+        //             title: product.title,
+        //             price: product.price,
+        //             image: product.productImage.image
+        //         }
+        //     }))
+
+        //     return res.status(200).json(data)
+        // } catch (error) {
+        //     return res.status(500).json(error)
+        // }
+    }
 }
