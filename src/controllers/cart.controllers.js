@@ -44,6 +44,8 @@ module.exports = {
                         await cartProducts.update({ quantity: cartProducts.quantity + 1 });
                         break;
                     }
+
+                    total = 0
                 }
             }
 
