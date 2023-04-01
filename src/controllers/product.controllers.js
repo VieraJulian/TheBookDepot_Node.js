@@ -121,7 +121,7 @@ module.exports = {
                     productId: req.body.productId
                 })
             }
-            
+
             return res.status(200).json("Product added to favorites")
         } catch (error) {
             return res.status(500).json(error)
@@ -150,10 +150,30 @@ module.exports = {
                     productId: req.body.productId
                 })
             }
-            
+
             return res.status(200).json("Product saved")
         } catch (error) {
             return res.status(500).json(error)
         }
-    }
+    },
+    favorites: async (req, res) => {
+        try {
+          const favorites = await FavoriteProduct.findAll({ where: { userId: req.params.id }})
+      
+          const data = await Promise.all(favorites.map(async (f) => {
+            const product = await Product.findByPk(f.productId, { include: [{ association: "productImage" }] })
+      
+            return {
+              title: product.title,
+              price: product.price,
+              image: product.productImage.image
+            }
+          }))
+
+          return res.status(200).json(data)
+        } catch (error) {
+          return res.status(500).json(error)
+        }
+      }
+      
 }

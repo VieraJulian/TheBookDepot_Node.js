@@ -9,5 +9,6 @@ router.post("/create", createProductMiddleware, productControllers.createProduct
 router.post("/edit", editProductMiddleware, productControllers.editProduct)
 router.post("/addFavorites", productControllers.addFavorites)
 router.post("/toSave", productControllers.toSaved)
+router.get("/favorites/:id", productControllers.favorites)
 
 module.exports = router
