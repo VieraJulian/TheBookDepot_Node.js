@@ -44,13 +44,16 @@ module.exports = {
                         await cartProducts.update({ quantity: cartProducts.quantity + 1 });
                         break;
                     }
-
                     total = 0
                 }
             }
 
             if (!productFound) {
-                await CartProduct.create({ cartId: cart.id, productId: req.body.productId, quantity: 1 });
+                if (productDB.stock > 0) {
+                    await CartProduct.create({ cartId: cart.id, productId: req.body.productId, quantity: 1 });
+                } else {
+                    total = 0;
+                }
             }
 
             await cart.update({ total: parseInt(cart.total) + total });
