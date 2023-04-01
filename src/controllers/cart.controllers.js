@@ -146,5 +146,48 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error)
         }
+    },
+    detail: async (req, res) => {
+        try {
+            let cartDB = await Cart.findAll({
+                where: { userId: req.params.id },
+                include: [{
+                    association: "cartProducts",
+                    include: [{
+                        association: "product",
+                        include: [{
+                            association: "productImage",
+                        }]
+                    }]
+                }]
+            });
+
+            let productsQuantity = 0
+
+            const cartP = cartDB[0].cartProducts.map((cp) => {
+                productsQuantity = productsQuantity + parseInt(cp.quantity)
+
+                return {
+                    title: cp.product.title,
+                    price: cp.product.price,
+                    quantity: cp.quantity,
+                    total: parseInt(cp.quantity) * parseInt(cp.product.price),
+                    imagen: cp.product.productImage.image
+                }
+
+            })
+
+            let data = {
+                total: cartDB[0].total,
+                quantity: productsQuantity,
+                cartProducts: cartP
+            }
+
+            return res.status(200).json(data);
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     }
+
+
 }
