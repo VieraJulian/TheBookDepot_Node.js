@@ -30,6 +30,10 @@ module.exports = {
         type: Sequelize.STRING(50),
         allowNull: false
       },
+      orderNumber: {
+        type: Sequelize.BIGINT,
+        allowNull: false
+      },
       delivered: {
         type: Sequelize.BOOLEAN,
         allowNull: false

@@ -75,12 +75,16 @@ module.exports = {
             })
 
             if (parseInt(cart.total) > 0) {
+                const now = new Date();
+                const orderNumber = Math.floor(now.getTime() / 1000) + Math.floor(Math.random() * 10000);
+
 
                 let newOrder = await Order.create({
                     userId: req.body.id,
                     total: cart.total,
                     paymentMethod: req.body.paymentMethod,
                     shippingMethod: req.body.shippingMethod,
+                    orderNumber: orderNumber,
                     delivered: false
                 })
 

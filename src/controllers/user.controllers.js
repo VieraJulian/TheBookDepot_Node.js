@@ -225,13 +225,31 @@ module.exports = {
                 },
                 include: [
                     {
+                        association: "user",
+                        include: [
+                            { association: "addresses" }
+                        ]
+                    },
+                    {
                         association: "orderItems",
                         include: [
-                            { association: "product" }
+                            {
+                                association: "product",
+                                include: [
+                                    { association: "productImage" }
+                                ]
+                            }
                         ]
                     }
                 ]
             });
+
+            const data = ordersDB.map(order => Object({
+                orderNumber: order.orderNumber,
+                total: order.total,
+
+
+            }))
 
             return res.status(200).json(ordersDB);
         } catch (error) {
