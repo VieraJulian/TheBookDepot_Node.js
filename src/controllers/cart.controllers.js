@@ -88,6 +88,7 @@ module.exports = {
 
                 let newOrder = await Order.create({
                     userId: req.body.id,
+                    addressId: req.body.addressId,
                     total: cart.total,
                     paymentMethod: req.body.paymentMethod,
                     shippingMethod: req.body.shippingMethod,

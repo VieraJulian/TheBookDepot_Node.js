@@ -18,15 +18,19 @@ module.exports = {
           key: "id"
         }
       },
+      addressId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "addresses",
+          key: "id"
+        }
+      },
       total: {
         type: Sequelize.DECIMAL(8, 2),
         allowNull: false
       },
       paymentMethod: {
-        type: Sequelize.STRING(50),
-        allowNull: false
-      },
-      shippingMethod: {
         type: Sequelize.STRING(50),
         allowNull: false
       },

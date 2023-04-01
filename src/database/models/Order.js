@@ -15,15 +15,19 @@ module.exports = (sequelize, DataTypes) => {
                 key: "id"
             }
         },
+        addressId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: "addresses",
+                key: "id"
+            }
+        },
         total: {
             type: DataTypes.DECIMAL(8, 2),
             allowNull: false
         },
         paymentMethod: {
-            type: DataTypes.STRING(50),
-            allowNull: false
-        },
-        shippingMethod: {
             type: DataTypes.STRING(50),
             allowNull: false
         },
