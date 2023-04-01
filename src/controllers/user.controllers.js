@@ -224,12 +224,7 @@ module.exports = {
                     userId: req.params.id
                 },
                 include: [
-                    {
-                        association: "user",
-                        include: [
-                            { association: "addresses" }
-                        ]
-                    },
+                    { association: "user" },
                     {
                         association: "orderItems",
                         include: [
@@ -244,14 +239,35 @@ module.exports = {
                 ]
             });
 
-            const data = ordersDB.map(order => Object({
-                orderNumber: order.orderNumber,
-                total: order.total,
+            const data = await Promise.all(ordersDB.map(async order => {
+                const address = await Address.findByPk(order.addressId);
+                const orderItems = order.orderItems.map(oi => {
+                    return {
+                        image: oi.product.productImage.image,
+                        title: oi.product.title,
+                        quantity: oi.quantity,
+                        price: oi.product.price,
+                    }
+                })
 
+                return {
+                    orderNumber: order.orderNumber,
+                    date: order.date,
+                    total: order.total,
+                    delivered: order.delivered,
+                    paymentMethod: order.paymentMethod,
+                    address: {
+                        addresse: address.addresse,
+                        phone: address.phone,
+                        province: address.province,
+                        city: address.city,
+                        address: address.address
+                    },
+                    orderItems
+                };
+            }));
 
-            }))
-
-            return res.status(200).json(ordersDB);
+            return res.status(200).json(data);
         } catch (error) {
             return res.status(500).json(error)
         }
