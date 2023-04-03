@@ -31,7 +31,7 @@ module.exports = {
             })
 
             let productFound = false;
-            let total = parseInt(productDB.price)
+            let total = parseFloat(productDB.price)
 
             for (let cartProducts of cart.cartProducts) {
                 if (cartProducts.productId === parseInt(req.body.productId)) {
@@ -56,7 +56,7 @@ module.exports = {
                 }
             }
 
-            await cart.update({ total: parseInt(cart.total) + total });
+            await cart.update({ total: parseFloat(cart.total) + total });
 
             return res.status(200).json("Product added")
         } catch (error) {
@@ -79,7 +79,7 @@ module.exports = {
                 ]
             })
 
-            if (parseInt(cart.total) > 0) {
+            if (parseFloat(cart.total) > 0) {
                 const now = new Date();
                 const orderNumber = Math.floor(now.getTime() / 1000) + Math.floor(Math.random() * 10000);
 
@@ -129,7 +129,7 @@ module.exports = {
                                 const carts = await Cart.findAll({ where: { id: cp.cartId } })
 
                                 for (const cart of carts) {
-                                    await Cart.update({ total: cart.total - product.price }, { where: { id: cart.id } })
+                                    await Cart.update({ total: parseFloat(cart.total) - parseFloat(product.price) }, { where: { id: cart.id } })
                                 }
 
                                 await CartProduct.destroy({ where: { id: cp.id } })
@@ -139,7 +139,6 @@ module.exports = {
                         console.error(error);
                     }
                 }
-
             }
 
             return res.status(200).json("successful purchase");
@@ -171,14 +170,14 @@ module.exports = {
                     title: cp.product.title,
                     price: cp.product.price,
                     quantity: cp.quantity,
-                    total: parseInt(cp.quantity) * parseInt(cp.product.price),
+                    total: parseInt(cp.quantity) * parseFloat(cp.product.price),
                     imagen: cp.product.productImage.image
                 }
 
             })
 
             let data = {
-                total: cartDB[0].total,
+                total: parseFloat(cartDB[0].total),
                 quantity: productsQuantity,
                 cartProducts: cartP
             }
@@ -198,7 +197,7 @@ module.exports = {
                 ]
             })
 
-            let total = parseInt(productDB.price)
+            let total = parseFloat(productDB.price)
 
             for (let cartProducts of cart.cartProducts) {
                 if (cartProducts.productId === parseInt(req.body.productId)) {
@@ -216,7 +215,7 @@ module.exports = {
                 }
             }
 
-            await cart.update({ total: parseInt(cart.total) + total });
+            await cart.update({ total: parseFloat(cart.total) + total });
 
             return res.status(200).json("Added quantity");
         } catch (error) {
@@ -229,7 +228,7 @@ module.exports = {
           const productDB = await Product.findByPk(req.body.productId);
           const cart = await Cart.findByPk(userDB.cart.id, { include: [{ association: "cartProducts" }] });
       
-          let total = parseInt(productDB.price);
+          let total = parseFloat(productDB.price);
           let found = false;
       
           for (let cartProducts of cart.cartProducts) {
@@ -247,7 +246,7 @@ module.exports = {
           }
       
           if (found) {
-            await cart.update({ total: parseInt(cart.total) - total });
+            await cart.update({ total: parseFloat(cart.total) - total });
           }
       
           return res.status(200).json("subtracted quantity");
