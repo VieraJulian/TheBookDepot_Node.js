@@ -1,4 +1,4 @@
-const { Product, ProductImage, User, FavoriteProduct, SavedProduct } = require("../database/models/index")
+const { Product, ProductImage, User, FavoriteProduct, SavedProduct, CartProduct, Cart } = require("../database/models/index")
 const { validationResult } = require("express-validator");
 
 const handleValidationErrors = (validations) => {
@@ -217,6 +217,27 @@ module.exports = {
             }
 
             return res.status(200).json(data)
+        } catch (error) {
+            return res.status(500).json(error)
+        }
+    },
+    delete: async (req, res) => {
+        try {
+            const productDB = await Product.findByPk(req.params.id, { include: [{ association: "productImage" }] })
+
+            const favorites = await FavoriteProduct.findAll({ where: { productId: productDB.id } })
+
+            const saved = await SavedProduct.findAll({ where: { productId: productDB.id } })
+
+            const cartProducts = await CartProduct.findAll({ where: { productId: productDB.id } })
+            cartProducts.forEach(async (cp) => {
+                const cart = await Cart.findOne({ where: { id: cp.cartId } });
+                const total = cart.total - productDB.price * cp.quantity;
+                await Cart.update({ total: total }, { where: { id: cp.cartId } });
+              });
+              
+
+            return res.status(200).json("Product deleted")
         } catch (error) {
             return res.status(500).json(error)
         }

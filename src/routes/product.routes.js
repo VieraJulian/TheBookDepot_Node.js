@@ -12,5 +12,6 @@ router.post("/toSave", productControllers.toSaved)
 router.get("/favorites/:id", productControllers.favorites)
 router.get("/saved/:id", productControllers.saved)
 router.get("/detail/:id", productControllers.detail)
+router.post("/delete/:id", productControllers.delete)
 
 module.exports = router
