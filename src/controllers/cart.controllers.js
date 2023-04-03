@@ -218,9 +218,42 @@ module.exports = {
 
             await cart.update({ total: parseInt(cart.total) + total });
 
-            return res.status(200).json(cart);
+            return res.status(200).json("Added quantity");
         } catch (error) {
             return res.status(500).json(error);
         }
-    }
+    },
+    remove: async (req, res) => {
+        try {
+          const userDB = await User.findByPk(req.body.id, { include: [{ association: "cart" }] });
+          const productDB = await Product.findByPk(req.body.productId);
+          const cart = await Cart.findByPk(userDB.cart.id, { include: [{ association: "cartProducts" }] });
+      
+          let total = parseInt(productDB.price);
+          let found = false;
+      
+          for (let cartProducts of cart.cartProducts) {
+            if (cartProducts.productId === parseInt(req.body.productId)) {
+              found = true;
+      
+              if (cartProducts.quantity > 1) {
+                await cartProducts.update({ quantity: cartProducts.quantity - 1 });
+                break;
+              } else if (cartProducts.quantity === 1) {
+                await cartProducts.destroy();
+                break;
+              }
+            }
+          }
+      
+          if (found) {
+            await cart.update({ total: parseInt(cart.total) - total });
+          }
+      
+          return res.status(200).json("subtracted quantity");
+        } catch (error) {
+          return res.status(500).json(error);
+        }
+      }
+      
 }
