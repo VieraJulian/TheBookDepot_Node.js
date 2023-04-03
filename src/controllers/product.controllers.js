@@ -193,5 +193,32 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error)
         }
+    },
+    detail: async (req, res) => {
+        try {
+            const productDB = await Product.findByPk(req.params.id, { include: [{ association: "productImage" }] })
+
+            const data = {
+                id: productDB.id,
+                title: productDB.title,
+                author: productDB.author,
+                editorial: productDB.editorial,
+                price: productDB.price,
+                collection: productDB.collection,
+                numberPages: productDB.numberPages,
+                language: productDB.language,
+                format: productDB.format,
+                isbn: productDB.isbn,
+                weight: productDB.weight,
+                edition: productDB.edition,
+                bestSellers: productDB.bestSellers,
+                stock: productDB.stock,
+                image: productDB.productImage.image
+            }
+
+            return res.status(200).json(data)
+        } catch (error) {
+            return res.status(500).json(error)
+        }
     }
 }
