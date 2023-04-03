@@ -187,7 +187,40 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error);
         }
+    },
+    add: async (req, res) => {
+        try {
+            const userDB = await User.findByPk(req.body.id, { include: [{ association: "cart" }] })
+            const productDB = await Product.findByPk(req.body.productId)
+            const cart = await Cart.findByPk(userDB.cart.id, {
+                include: [
+                    { association: "cartProducts" }
+                ]
+            })
+
+            let total = parseInt(productDB.price)
+
+            for (let cartProducts of cart.cartProducts) {
+                if (cartProducts.productId === parseInt(req.body.productId)) {
+
+                    const product = await Product.findByPk(req.body.productId, { attributes: ['stock'] });
+                    const stock = product.stock;
+
+                    if (stock > cartProducts.quantity) {
+                        await cartProducts.update({ quantity: cartProducts.quantity + 1 });
+                        break;
+                    }
+                    total = 0
+                } else {
+                    total = 0
+                }
+            }
+
+            await cart.update({ total: parseInt(cart.total) + total });
+
+            return res.status(200).json(cart);
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     }
-
-
 }
