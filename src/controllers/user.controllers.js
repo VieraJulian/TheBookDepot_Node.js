@@ -271,5 +271,19 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error)
         }
+    },
+    deleteAddress: async (req, res) => {
+        try {
+            const addressDB = await Address.findByPk(req.body.addressId)
+            const ordersDB = await Order.findAll({ where: { addressId: req.body.addressId } })
+
+            if (!ordersDB.length > 0) {
+                await addressDB.destroy();
+            }
+
+            return res.status(200).json("Address deleted");
+        } catch (error) {
+            return res.status(500).json(error)
+        }
     }
 };

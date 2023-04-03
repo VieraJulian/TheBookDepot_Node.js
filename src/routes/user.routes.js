@@ -10,11 +10,12 @@ const editAddressMiddleware = require("../middlewares/editAddress.middleware")
 
 router.post("/register", registerMiddleware, userControllers.register)
 router.post("/login", loginMiddleware, userControllers.login)
-router.post("/editProfile", editProfileMiddleware, userControllers.editProfile)
-router.post("/createAddress", createAdressMiddleware, userControllers.createAdress)
-router.post("/editAddress", editAddressMiddleware, userControllers.editAddress)
-router.get("/profile/:id", userControllers.profile)
-router.get("/addresses/:id", userControllers.addresses)
-router.get("/orders/:id", userControllers.orders)
+router.post("/profile/edit", editProfileMiddleware, userControllers.editProfile)
+router.post("/addresses/create", createAdressMiddleware, userControllers.createAdress)
+router.post("/addresses/edit", editAddressMiddleware, userControllers.editAddress)
+router.post("/addresses/delete", userControllers.deleteAddress)
+router.get("/:id/profile", userControllers.profile)
+router.get("/:id/addresses", userControllers.addresses)
+router.get("/:id/orders", userControllers.orders)
 
 module.exports = router
