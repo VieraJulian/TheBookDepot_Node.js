@@ -323,4 +323,45 @@ module.exports = {
             return res.status(500).json(error);
         }
     },
+    bestSellers: async (req, res) => {
+        try {
+            const { page, size } = req.query;
+
+            const limit = parseInt(size);
+            const offset = (page - 1) * size;
+
+            const productsDB = await Product.findAll({
+                limit,
+                offset,
+                include: [{ association: "productImage" }],
+                order: [
+                    ['sold', 'DESC']
+                ]
+            });
+
+            const productsAll = productsDB.map(p => {
+                return {
+                    id: p.id,
+                    title: p.title,
+                    author: p.author,
+                    editorial: p.editorial,
+                    price: p.price,
+                    collection: p.collection,
+                    numberPages: p.numberPages,
+                    language: p.language,
+                    format: p.format,
+                    isbn: p.isbn,
+                    weight: p.weight,
+                    edition: p.edition,
+                    sold: p.sold,
+                    stock: p.stock,
+                    // image: p.productImage.image
+                }
+            })
+
+            return res.status(200).json(productsAll);
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+    }
 }
