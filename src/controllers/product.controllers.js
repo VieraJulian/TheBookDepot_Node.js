@@ -307,5 +307,20 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error);
         }
-    }
+    },
+    deleteSaved: async (req, res) => {
+        try {
+            const savedProduct = await SavedProduct.findAll({ where: { userId: req.body.id } })
+
+            savedProduct.forEach(async (saved) => {
+                if (saved.productId === parseInt(req.body.productId)) {
+                    await saved.destroy();
+                }
+            });
+
+            return res.status(200).json("Saved deleted");
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+    },
 }
