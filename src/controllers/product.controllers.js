@@ -292,5 +292,20 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error);
         }
+    },
+    deleteFavorites: async (req, res) => {
+        try {
+            const favorites = await FavoriteProduct.findAll({ where: { userId: req.body.id } })
+
+            favorites.forEach(async (favorite) => {
+                if (favorite.productId === parseInt(req.body.productId)) {
+                    await favorite.destroy();
+                }
+            });
+
+            return res.status(200).json("Favorite deleted");
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     }
 }
