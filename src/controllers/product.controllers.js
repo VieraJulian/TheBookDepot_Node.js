@@ -36,7 +36,7 @@ module.exports = {
                 isbn: req.body.isbn,
                 weight: req.body.weight,
                 edition: req.body.edition,
-                bestSellers: false,
+                sold: 0,
                 stock: req.body.stock
             })
 
@@ -211,7 +211,7 @@ module.exports = {
                 isbn: productDB.isbn,
                 weight: productDB.weight,
                 edition: productDB.edition,
-                bestSellers: productDB.bestSellers,
+                sold: productDB.sold,
                 stock: productDB.stock,
                 image: productDB.productImage.image
             }
@@ -282,7 +282,7 @@ module.exports = {
                     isbn: p.isbn,
                     weight: p.weight,
                     edition: p.edition,
-                    bestSellers: p.bestSellers,
+                    sold: p.sold,
                     stock: p.stock,
                     image: p.productImage.image
                 }

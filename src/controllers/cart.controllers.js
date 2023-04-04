@@ -120,7 +120,7 @@ module.exports = {
                     try {
                         const product = await Product.findByPk(p.productId);
                         const newStock = product.stock - parseInt(p.quantity);
-                        await Product.update({ stock: newStock }, { where: { id: p.productId } })
+                        await Product.update({ stock: newStock, sold: product.sold + parseInt(p.quantity) }, { where: { id: p.productId } })
 
                         if (newStock < 1) {
                             const cartPs = await CartProduct.findAll({ where: { productId: p.productId } })

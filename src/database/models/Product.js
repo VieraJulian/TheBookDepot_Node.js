@@ -51,8 +51,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.SMALLINT,
       allowNull: false
     },
-    bestSellers: {
-      type: DataTypes.BOOLEAN,
+    sold: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     stock: {

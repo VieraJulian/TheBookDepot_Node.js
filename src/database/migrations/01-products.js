@@ -54,8 +54,8 @@ module.exports = {
         type: Sequelize.SMALLINT,
         allowNull: false
       },
-      bestSellers: {
-        type: Sequelize.BOOLEAN,
+      sold: {
+        type: Sequelize.INTEGER,
         allowNull: false
       },
       stock: {
