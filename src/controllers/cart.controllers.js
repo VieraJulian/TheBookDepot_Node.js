@@ -224,35 +224,53 @@ module.exports = {
     },
     remove: async (req, res) => {
         try {
-          const userDB = await User.findByPk(req.body.id, { include: [{ association: "cart" }] });
-          const productDB = await Product.findByPk(req.body.productId);
-          const cart = await Cart.findByPk(userDB.cart.id, { include: [{ association: "cartProducts" }] });
-      
-          let total = parseFloat(productDB.price);
-          let found = false;
-      
-          for (let cartProducts of cart.cartProducts) {
-            if (cartProducts.productId === parseInt(req.body.productId)) {
-              found = true;
-      
-              if (cartProducts.quantity > 1) {
-                await cartProducts.update({ quantity: cartProducts.quantity - 1 });
-                break;
-              } else if (cartProducts.quantity === 1) {
-                await cartProducts.destroy();
-                break;
-              }
+            const userDB = await User.findByPk(req.body.id, { include: [{ association: "cart" }] });
+            const productDB = await Product.findByPk(req.body.productId);
+            const cart = await Cart.findByPk(userDB.cart.id, { include: [{ association: "cartProducts" }] });
+
+            let total = parseFloat(productDB.price);
+            let found = false;
+
+            for (let cartProducts of cart.cartProducts) {
+                if (cartProducts.productId === parseInt(req.body.productId)) {
+                    found = true;
+
+                    if (cartProducts.quantity > 1) {
+                        await cartProducts.update({ quantity: cartProducts.quantity - 1 });
+                        break;
+                    } else if (cartProducts.quantity === 1) {
+                        await cartProducts.destroy();
+                        break;
+                    }
+                }
             }
-          }
-      
-          if (found) {
-            await cart.update({ total: parseFloat(cart.total) - total });
-          }
-      
-          return res.status(200).json("subtracted quantity");
+
+            if (found) {
+                await cart.update({ total: parseFloat(cart.total) - total });
+            }
+
+            return res.status(200).json("subtracted quantity");
         } catch (error) {
-          return res.status(500).json(error);
+            return res.status(500).json(error);
         }
-      }
-      
+    },
+    deleteProduct: async (req, res) => {
+        try {
+            const userDB = await User.findByPk(req.body.id, { include: [{ association: "cart" }] })
+            const productDB = await Product.findByPk(req.body.productId);
+            const cart = await Cart.findByPk(userDB.cart.id, { include: [{ association: "cartProducts" }] });
+
+            cart.cartProducts.forEach(async (cp) => {
+                if (cp.productId === parseInt(req.body.productId)) {
+                    await cart.update({ total: parseFloat(cart.total) - parseFloat(productDB.price) * cp.quantity })
+                    await cp.destroy();
+                }
+            })
+
+            return res.status(200).json("Product deleted");
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+    }
+
 }
