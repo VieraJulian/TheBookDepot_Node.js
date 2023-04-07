@@ -1,8 +1,12 @@
+import { Routes, Route } from 'react-router-dom'
+
+import Navbar from "./pages/Navbar"
+
 function App() {
 
   return (
     <>
-      <h2>Hola</h2>
+      <Navbar />
     </>
   )
 }
