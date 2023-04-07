@@ -55,7 +55,7 @@
     width: 90%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding-bottom: 1rem;
     border-bottom: 1px dotted;
 }
@@ -130,6 +130,10 @@
 @media screen and (min-width: 26.5em) {
     .navbar-search input {
         width: 16em;
+    }
+
+    .navbar-search input{
+        width: 14rem;
     }
 }
 
