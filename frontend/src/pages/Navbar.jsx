@@ -59,10 +59,10 @@ function Navbar() {
                             <p>Libros</p>
                         </Link>
                         <Link to="#">
-                            <p>Más Vendidos</p>
+                            <p>Mangas</p>
                         </Link>
                         <Link to="#">
-                            <p>Español</p>
+                            <p>Más Vendidos</p>
                         </Link>
                         <Link to="#">
                             <p>Inglés</p>
