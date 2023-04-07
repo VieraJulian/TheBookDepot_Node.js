@@ -1,3 +1,7 @@
+.navbar {
+    width: 100%;
+}
+
 .navbar-container {
     width: 100%;
     padding-bottom: 1rem;
@@ -7,11 +11,11 @@
 }
 
 .navbar-top {
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: end;
     align-items: center;
-    padding: .8rem .8rem;
+    padding: .8rem 0rem;
 }
 
 .navbar-top a {
@@ -68,12 +72,14 @@
     border: none;
     padding: .6rem;
     cursor: pointer;
+    font-weight: 500;
 }
 
 .navbar-search input {
     padding: .5rem;
     border: 1px solid #999;
     width: 8rem;
+    height: 2.2rem;
     outline: none;
 }
 
@@ -117,6 +123,10 @@
     background-color: #3d3d3b;
 }
 
+.cart-detail {
+    display: none;
+}
+
 @media screen and (min-width: 26.5em) {
     .navbar-search input {
         width: 16em;
@@ -149,6 +159,10 @@
 
     .navbar-search input{
         width: 80%;
+    }
+
+    .navbar-search button{
+        padding: .6rem 1.3rem;
     }
 
     .navbar-bottom {
