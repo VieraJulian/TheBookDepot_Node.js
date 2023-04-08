@@ -37,11 +37,11 @@ function Navbar() {
                         <div className='cart-detail'>
                             <div className='cart-product'>
                                 <p className='cart-quantity'>0</p>
-                                <p>producto</p>
+                                <p className='cart-producto'>producto</p>
                             </div>
                             <p className='p-bar'>|</p>
                             <div className='cart-price'>
-                                <p>AR$</p>
+                                <p className='ars-p'>AR$</p>
                                 <p className='cart-total'>0.00</p>
                             </div>
                         </div>

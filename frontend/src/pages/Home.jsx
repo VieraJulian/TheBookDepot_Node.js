@@ -9,22 +9,28 @@ function Home() {
             <div className='home'>
                 <div className='home-container'>
                     <div className='carousel-container'>
-                        <div id="carouselExampleIndicators" className="carousel slide">
+                        <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
                             <div className="carousel-indicators">
                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                             </div>
                             <div className="carousel-inner">
-                                <div className="carousel-item active">
-                                    <img src="../../public/img/carousel/slider1.jpg" className="d-block w-100" alt="" />
-                                </div>
-                                <div className="carousel-item">
-                                    <img src="../../public/img/carousel/slider2.jpg" className="d-block w-100" alt="" />
-                                </div>
-                                <div className="carousel-item">
-                                    <img src="../../public/img/carousel/slider3.jpg" className="d-block w-100" alt="" />
-                                </div>
+                                <Link to="#">
+                                    <div className="carousel-item active">
+                                        <img src="../../public/img/carousel/slider1.jpg" className="d-block w-100" alt="" />
+                                    </div>
+                                </Link>
+                                <Link to="#">
+                                    <div className="carousel-item">
+                                        <img src="../../public/img/carousel/slider2.jpg" className="d-block w-100" alt="" />
+                                    </div>
+                                </Link>
+                                <Link to="#">
+                                    <div className="carousel-item">
+                                        <img src="../../public/img/carousel/slider3.jpg" className="d-block w-100" alt="" />
+                                    </div>
+                                </Link>
                             </div>
                             <button className="carousel-control-prev a" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -44,7 +50,7 @@ function Home() {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }
