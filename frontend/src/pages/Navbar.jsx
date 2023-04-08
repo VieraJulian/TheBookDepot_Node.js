@@ -24,7 +24,7 @@ function Navbar() {
                     <div className='navbar-center'>
                         <Link to="#" className='link-bars'>
                             <div className='bars'>
-                                <i class="fa-solid fa-bars-staggered"></i>
+                                <i className="fa-solid fa-bars-staggered"></i>
                             </div>
                         </Link>
                         <div className='navbar-search'>
@@ -47,7 +47,7 @@ function Navbar() {
                         </div>
                         <div className='cart'>
                             <Link to="#">
-                                <i class="fa-solid fa-cart-shopping"></i>
+                                <i className="fa-solid fa-cart-shopping"></i>
                             </Link>
                             <div className='cart-number'>
                                 0

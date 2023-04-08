@@ -1,0 +1,14 @@
+.carousel-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#carouselExampleIndicators {
+    width: 90%;
+}
+
+.w-100 {
+    object-fit: cover;
+    object-position: center;
+}
