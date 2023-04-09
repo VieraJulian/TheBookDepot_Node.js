@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 
 import "../../public/css/carousel-mobile.css"
 import "../../public/css/carouser-desktop.css"
+import "../../public/css/home-mobile.css"
 
 function Home() {
     return (
@@ -18,17 +19,17 @@ function Home() {
                             <div className="carousel-inner">
                                 <Link to="#">
                                     <div className="carousel-item active">
-                                        <img src="../../public/img/carousel/slider1.jpg" className="d-block w-100" alt="" />
+                                        <img src="../../public/img/carousel/slider1.jpg" className="d-block w-100" alt="slider1" />
                                     </div>
                                 </Link>
                                 <Link to="#">
                                     <div className="carousel-item">
-                                        <img src="../../public/img/carousel/slider2.jpg" className="d-block w-100" alt="" />
+                                        <img src="../../public/img/carousel/slider2.jpg" className="d-block w-100" alt="slider2" />
                                     </div>
                                 </Link>
                                 <Link to="#">
                                     <div className="carousel-item">
-                                        <img src="../../public/img/carousel/slider3.jpg" className="d-block w-100" alt="" />
+                                        <img src="../../public/img/carousel/slider3.jpg" className="d-block w-100" alt="slider3" />
                                     </div>
                                 </Link>
                             </div>
@@ -42,12 +43,65 @@ function Home() {
                             </button>
                         </div>
                     </div>
-                    <div>
-                        <Link to="#">
-                            <picture>
-                                <img src="../../public/img/portadaEj.png" alt="" />
-                            </picture>
-                        </Link>
+                    <div className='home-articles-container'>
+                        <div className='articles-container'>
+                            <div className='article'>
+                                <Link to="#">
+                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
+                                </Link>
+                            </div>
+                            <div className='article'>
+                                <Link to="#">
+                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
+                                </Link>
+                            </div>
+                            <div className='article'>
+                                <Link to="#">
+                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
+                                </Link>
+                            </div>
+                            <div className='article'>
+                                <Link to="#">
+                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
+                                </Link>
+                            </div>
+                            <div className='article'>
+                                <Link to="#">
+                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
+                                </Link>
+                            </div>
+                            <div className='article'>
+                                <Link to="#">
+                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
+                                </Link>
+                            </div>
+                            <div className='article'>
+                                <Link to="#">
+                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
+                                </Link>
+                            </div>
+                            <div className='article'>
+                                <Link to="#">
+                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
+                                </Link>
+                            </div>
+                            <div className='article'>
+                                <Link to="#">
+                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
+                                </Link>
+                            </div>
+                            <div className='article'>
+                                <Link to="#">
+                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
+                                </Link>
+                            </div>
+                            <div className='article'>
+                                <Link to="#">
+                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
+                                </Link>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div >
