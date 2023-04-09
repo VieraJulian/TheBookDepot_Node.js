@@ -11,7 +11,7 @@ function Footer() {
                         <img src="../../public/img/logo.png" alt="Logo" />
                     </picture>
                     <nav className='footer-links'>
-                        <Link to="#">
+                        <Link to="/">
                             <p>Inicio</p>
                         </Link>
                         <Link to="#">

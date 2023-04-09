@@ -59,13 +59,13 @@ function Navbar() {
                             <p>Libros</p>
                         </Link>
                         <Link to="#">
-                            <p>Mangas</p>
-                        </Link>
-                        <Link to="#">
                             <p>Más Vendidos</p>
                         </Link>
                         <Link to="#">
                             <p>Inglés</p>
+                        </Link>
+                        <Link to="#">
+                            <p>Nosotros</p>
                         </Link>
                     </div>
                 </div>
