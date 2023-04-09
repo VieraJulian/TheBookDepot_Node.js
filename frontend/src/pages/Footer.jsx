@@ -18,13 +18,13 @@ function Footer() {
                             <p>Libros</p>
                         </Link>
                         <Link to="#">
-                            <p>Mangas</p>
-                        </Link>
-                        <Link to="#">
                             <p>Más vendidos</p>
                         </Link>
                         <Link to="#">
                             <p>Inglés</p>
+                        </Link>
+                        <Link to="#">
+                            <p>Nosotros</p>
                         </Link>
                     </nav>
                     <div className='copy-container'>

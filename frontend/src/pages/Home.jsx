@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
 
+import Navbar from './Navbar'
+import Footer from './Footer'
+
 import "../../public/css/carousel-mobile.css"
 import "../../public/css/carouser-desktop.css"
 import "../../public/css/home-mobile.css"
@@ -7,6 +10,7 @@ import "../../public/css/home-mobile.css"
 function Home() {
     return (
         <>
+            <Navbar />
             <div className='home'>
                 <div className='home-container'>
                     <div className='carousel-container'>
@@ -105,6 +109,7 @@ function Home() {
                     </div>
                 </div>
             </div >
+            <Footer />
         </>
     )
 }
