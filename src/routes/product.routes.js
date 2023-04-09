@@ -17,5 +17,6 @@ router.get("/:id/saved", productControllers.saved)
 router.get("/:id/detail", productControllers.detail)
 router.get("/all", productControllers.all)
 router.get("/bestSellers", productControllers.bestSellers)
+router.get("/english", productControllers.english)
 
 module.exports = router
