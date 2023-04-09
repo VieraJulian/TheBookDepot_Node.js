@@ -1,0 +1,9 @@
+@media (min-width: 64em) {
+    .footer-links {
+        flex-direction: row;
+    }
+
+    .footer-links p {
+        margin: 0 1rem 1.5rem;
+    }
+}

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import "../../public/css/footer-mobile.css"
+import "../../public/css/footer-desktop.css"
 
 function Footer() {
     return (
@@ -28,9 +29,10 @@ function Footer() {
                         </Link>
                     </nav>
                     <div className='copy-container'>
-                        <p>© 2023 The Book Depot. Todos los derechos reservados.</p>
+                        <p>© 2023 TheBookDepot. Todos los derechos reservados.</p>
                     </div>
                 </div>
+
             </div>
         </>
     )

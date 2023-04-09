@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 
 import "../../public/css/carousel-mobile.css"
-import "../../public/css/carouser-desktop.css"
+import "../../public/css/carousel-desktop.css"
 import "../../public/css/home-mobile.css"
 
 function Home() {

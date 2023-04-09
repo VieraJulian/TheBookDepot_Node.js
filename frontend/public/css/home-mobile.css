@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
+    box-shadow: -15px 0 10px -10px #48529944, 15px 0 10px -10px #48529944;
 }
 
 .articles-container {

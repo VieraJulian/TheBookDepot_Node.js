@@ -25,6 +25,7 @@
     width: 100%;
     font-weight: 600;
     font-size: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .btns-container {
@@ -44,11 +45,13 @@
 .btn-f {
     background-color: #000;
     color: #fff;
+    font-weight: 600;
 }
 
 .btn-g {
     background-color: #fff;
     color: #000;
+    font-weight: 600;
 }
 
 .int-container {
@@ -99,4 +102,40 @@
 
 .links-container span {
     font-weight: 600;
+    padding-left: .4rem;
+}
+
+@media screen and (min-width: 26.5em) {
+    .btns-container {
+        justify-content: flex-start;
+    }
+
+    .btns-container button {
+        width: 10rem;
+        height: 2.6rem;
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0px 5px 10px rgb(100, 100, 100);
+    }
+
+    .btn-g {
+        margin-left: 1rem;
+    }
+
+    .login-form p {
+        text-align: start
+    }
+}
+
+@media screen and (min-width: 37.5em) {
+    .login-form-container {
+        max-width: 37.5em;
+        display: flex;
+    }
+
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
