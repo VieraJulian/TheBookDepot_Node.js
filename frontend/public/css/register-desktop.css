@@ -31,13 +31,27 @@
     
     .register {
         width: 50%;
-        top: 15%;
+        top: 8%;
         left: 25%;
         background-color: rgba(255, 255, 255, 0.7);
         padding: 1rem;
         margin: 0;
         border-radius: 10px;
         position: absolute;
+    }
+
+    .register-int-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .register-input {
+        width: 48%;
+    }
+
+    .register-file {
+        width: 48%;
     }
 
     .links-container {

@@ -26,9 +26,9 @@ function Login() {
                                         <button className='btn-g'>Google</button>
                                     </fieldset>
                                     <fieldset className='int-container'>
-                                        <input type="text" placeholder='Correo' spellCheck="false"
+                                        <input type="text" name='email' placeholder='Correo' spellCheck="false"
                                             autoComplete="off" />
-                                        <input type="password" placeholder='Contraseña' spellCheck="false"
+                                        <input type="password" name='password' placeholder='Contraseña' spellCheck="false"
                                             autoComplete="off" />
                                     </fieldset>
                                     <button type='submit' className='btn-submit'>Ingresar</button>

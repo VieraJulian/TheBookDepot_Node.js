@@ -54,7 +54,7 @@
     font-weight: 600;
 }
 
-.int-container {
+.register-int-container {
     margin-top: 1.5rem;
     width: 100%;
     display: flex;
@@ -62,7 +62,21 @@
     justify-content: center;
 }
 
-.int-container input{
+.register-file {
+    margin-bottom: 1.5rem;
+    height: 2.6rem;
+    background-color: #6d6d6d;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 1rem;                
+    text-align: center;
+    transition: all .3s ease;
+}
+
+.register-input {
     border: none;
     height: 2.6rem;
     border-radius: 20px;
