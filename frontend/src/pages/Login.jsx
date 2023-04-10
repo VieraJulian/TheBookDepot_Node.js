@@ -10,8 +10,8 @@ import "../../public/css/login-desktop.css"
 function Login() {
     return (
         <>
-            <Navbar />
             <div className='login-div-container'>
+            <Navbar />
                 <div className='loginContainer'>
                     <picture className='login-img'>
                         <img src="../../public/img/imgLogin.jpg" alt="Libros" />
