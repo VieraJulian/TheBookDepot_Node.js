@@ -1,0 +1,52 @@
+@media (min-width: 64em) {
+    .register-img {
+        display: flex;
+        width: 100%;
+        height: 40rem;
+    }
+    
+    .register-img img {
+        width: 100%;
+        object-fit: cover;
+    }
+    
+    .registerContainer {
+        width: 90%;
+        margin-bottom: 2rem;;
+        position: relative;
+    }
+
+    .register-form p {
+        font-size: 1.6rem;;
+    }
+    
+    .register-div-container {
+        min-height: 100vh;
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .register {
+        width: 50%;
+        top: 15%;
+        left: 25%;
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 1rem;
+        margin: 0;
+        border-radius: 10px;
+        position: absolute;
+    }
+
+    .links-container {
+        margin: 0;
+    }
+}
+
+@media (min-width: 72em) {
+    .registerContainer {
+        max-width: 72em;
+    }
+}
