@@ -1,0 +1,105 @@
+.profile-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-menu {
+    width: 90%;
+}
+
+.profile-menu-1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dotted #999;
+    padding: .8rem;
+}
+
+.img-container {
+    border: 1px solid #999;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+}
+
+.p-name {
+    margin: 0;
+    padding: .8rem 0 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-menu-2 {
+    margin: .2rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px dotted #999;
+    padding: 1rem;
+}
+
+.profile-menu-2 p {
+    margin: 0;
+    padding: .4rem;
+}
+
+.profile-menu-3 {
+    border: 1px dotted #999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.profile-menu-3 p {
+    margin: 0;
+    padding: .4rem;
+}
+
+.profile-menu-2 a, .profile-menu-3 a , .profile-menu-4 a{
+    text-decoration: none;
+    color: #000;
+}
+
+.profile-menu-4 {
+    display: flex;
+    justify-content: center;
+    border: 1px dotted #999;
+    padding: .8rem;
+    margin: .2rem 0;
+}
+
+.btn-cerrar {
+    margin-top: .5rem;
+    background-color: rgb(231, 34, 34);
+    height: 2rem;
+    width: 15rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.profile-selected {
+    height: 30rem;
+    width: 90%;
+    margin: 1rem 0 2rem;
+    border: 1px dotted #999;
+}
