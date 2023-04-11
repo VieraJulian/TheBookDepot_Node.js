@@ -18,6 +18,7 @@
     align-items: center;
     border: 1px dotted #999;
     padding: .8rem;
+    height: 100%;
 }
 
 .img-container {
@@ -30,7 +31,7 @@
 .p-name {
     margin: 0;
     padding: .8rem 0 0;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
     text-align: center;
 }

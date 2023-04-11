@@ -1,0 +1,30 @@
+@media screen and (min-width: 48em) {
+    .profile-container {
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 90%;
+    }
+
+    .profile-menu {
+        max-width: 32%;
+    }
+
+    .profile-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-menu-4 a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-cerrar {
+        width: 80%;
+        margin: 0;
+    }
+
+}

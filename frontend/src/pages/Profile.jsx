@@ -4,6 +4,8 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 
 import "../../public/css/profile-mobile.css"
+import "../../public/css/profile-tablet.css"
+import "../../public/css/profile-desktop.css"
 
 function Profile() {
     return (
