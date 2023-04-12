@@ -1,4 +1,6 @@
 import "../../../public/css/profile-css/information-mobile.css"
+import "../../../public/css/profile-css/information-tablet.css"
+import "../../../public/css/profile-css/information-desktop.css"
 
 function Information() {
     return (

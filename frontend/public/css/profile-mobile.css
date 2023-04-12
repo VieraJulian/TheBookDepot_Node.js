@@ -28,6 +28,10 @@
     border-radius: 50%;
 }
 
+.info-form {
+    width: 90%;
+}
+
 .p-name {
     margin: 0;
     padding: .8rem 0 0;

@@ -1,0 +1,26 @@
+@media (min-width: 64em) {
+    .info-container {
+        max-width: none;
+        width: 80%;
+    }
+
+    .info-form {
+        width: 100%;
+    }
+
+    .info-div-img {
+        width: 50%;
+    }
+
+    .info-img-container {
+        align-items: start;
+    }
+
+    .img-profile {
+        width: 50%;
+    }
+
+    .info-saved {
+        width: 100%;
+    }
+}
