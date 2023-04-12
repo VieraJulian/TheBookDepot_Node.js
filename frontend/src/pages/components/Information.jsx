@@ -1,12 +1,11 @@
 import "../../../public/css/components/information/information-mobile.css"
-import "../../../public/css/components/information/information-tablet.css"
 import "../../../public/css/components/information/information-desktop.css"
 
 function Information() {
     return (
         <>
             <div className="info-container">
-                <form className="info-form">
+                <form className="info-form" method="POST">
                     <div className="info-inputs">
                         <label>Nombre:</label>
                         <input type="text" name='firstName' placeholder='Nombre' />
@@ -22,9 +21,11 @@ function Information() {
                         <div className="info-div-img">
                             <img src="../../../public/img/balondeoro.jpg" alt="" />
                         </div>
-                        <input type="file" name='image' className="img-profile"/>
+                        <input type="file" name='image' className="img-profile" />
                     </div>
-                    <button className="info-saved">Guardar cambios</button>
+                    <div className="button-saved-container">
+                        <button className="info-saved">Guardar cambios</button>
+                    </div>
                 </form>
             </div>
         </>

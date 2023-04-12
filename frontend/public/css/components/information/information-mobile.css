@@ -13,7 +13,7 @@
 }
 
 .info-inputs {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,12 +80,19 @@
     margin-top: 2rem;
     background-color: rgb(231, 34, 34);
     height: 2rem;
-    width: 15rem;
+    width: 100%;
     border-radius: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
+    height: 2.6rem;
+}
+
+.button-saved-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (min-width: 26.5em) {
