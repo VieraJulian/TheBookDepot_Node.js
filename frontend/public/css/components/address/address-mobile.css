@@ -37,8 +37,14 @@
 
 .p-direccion {
     font-size: 1.4rem;
+    margin: 1rem 0;
+}
+
+.p-address {
+    width: 90%;
+    font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 2rem;
+    border-bottom: 1px solid #999;
 }
 
 @media screen and (min-width: 26.5em) {

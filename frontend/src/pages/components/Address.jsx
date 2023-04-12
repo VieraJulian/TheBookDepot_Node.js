@@ -5,6 +5,7 @@ function Address() {
     return (
         <>
             <div className="address-container">
+                <p className="p-address">Mis Direcciones</p>
                 <form className="address-form" method="POST">
                     <div className="address-inputs">
                         <p className="p-direccion">Dirección 1</p>

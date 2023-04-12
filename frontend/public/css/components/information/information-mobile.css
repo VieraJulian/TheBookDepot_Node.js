@@ -2,6 +2,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .info-form {
@@ -93,6 +95,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.p-info {
+    width: 90%;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-bottom: 1px solid #999;
 }
 
 @media screen and (min-width: 26.5em) {

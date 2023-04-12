@@ -5,6 +5,7 @@ function Information() {
     return (
         <>
             <div className="info-container">
+                <p className="p-info">Mi Perfil</p>
                 <form className="info-form" method="POST">
                     <div className="info-inputs">
                         <label>Nombre:</label>

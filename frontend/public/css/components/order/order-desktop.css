@@ -1,0 +1,34 @@
+@media (min-width: 64em) {
+    .order-header {
+        padding: .8rem;
+    }
+
+    .order-header-p {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .order-product-container, .order-info {
+        padding: .8rem;
+    }
+}
+
+@media (min-width: 80em) {
+    .order-header-p {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .order-header-p p {
+        margin: 0;
+    }
+
+    .order-header-p span {
+        display: flex;
+        margin: 0 .4rem;
+    }
+}
