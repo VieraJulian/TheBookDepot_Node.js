@@ -99,8 +99,10 @@
 }
 
 .profile-selected {
-    height: 30rem;
     width: 90%;
     margin: 1rem 0 2rem;
     border: 1px dotted #999;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
 }

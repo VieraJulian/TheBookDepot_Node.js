@@ -2,7 +2,7 @@ function Address() {
     return (
         <>
         <div>
-            Dirección
+            Direccións
         </div>
         </>
     )

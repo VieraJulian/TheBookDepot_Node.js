@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Navbar from './Navbar'
 import Footer from './Footer'
-import Information from './profile/information'
+import Information from './profile/Information'
 import Address from './profile/address'
 import Order from './profile/Order'
 import ProductFavorite from './profile/ProductFavorite'

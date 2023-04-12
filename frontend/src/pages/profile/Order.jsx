@@ -2,7 +2,7 @@ function Order() {
     return (
         <>
         <div>
-            Order
+            Orderd
         </div>
         </>
     )
