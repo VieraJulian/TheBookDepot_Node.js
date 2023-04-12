@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-import "../../public/css/register-mobile.css"
-import "../../public/css/register-tablet.css"
-import "../../public/css/register-desktop.css"
+import "../../public/css/register/register-mobile.css"
+import "../../public/css/register/register-tablet.css"
+import "../../public/css/register/register-desktop.css"
 
 function Register() {
     return (

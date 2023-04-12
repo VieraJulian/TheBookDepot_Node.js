@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-import "../../public/css/login-mobile.css"
-import "../../public/css/login-tablet.css"
-import "../../public/css/login-desktop.css"
+import "../../public/css/login/login-mobile.css"
+import "../../public/css/login/login-tablet.css"
+import "../../public/css/login/login-desktop.css"
 
 function Login() {
     return (

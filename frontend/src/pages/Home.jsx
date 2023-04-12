@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-import "../../public/css/carousel-mobile.css"
-import "../../public/css/carousel-desktop.css"
-import "../../public/css/home-mobile.css"
+import "../../public/css/carousel/carousel-mobile.css"
+import "../../public/css/carousel/carousel-desktop.css"
+import "../../public/css/home/home-mobile.css"
 
 function Home() {
     return (

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-import "../../public/css/navbar-mobile.css"
-import "../../public/css/navbar-desktop.css"
+import "../../public/css/navbar/navbar-mobile.css"
+import "../../public/css/navbar/navbar-desktop.css"
 
 function Navbar() {
     return (

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-import "../../public/css/footer-mobile.css"
-import "../../public/css/footer-desktop.css"
+import "../../public/css/footer/footer-mobile.css"
+import "../../public/css/footer/footer-desktop.css"
 
 function Footer() {
     return (

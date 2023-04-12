@@ -3,15 +3,12 @@ import React, { useState, useEffect } from 'react';
 
 import Navbar from './Navbar'
 import Footer from './Footer'
-import Information from './profile/Information'
-import Address from './profile/address'
-import Order from './profile/Order'
-import ProductFavorite from './profile/ProductFavorite'
-import ProductSaved from './profile/ProductSaved'
+import Information from './components/Information'
+import Address from './components/Address'
 
-import "../../public/css/profile-mobile.css"
-import "../../public/css/profile-tablet.css"
-import "../../public/css/profile-desktop.css"
+import "../../public/css/profile/profile-mobile.css"
+import "../../public/css/profile/profile-tablet.css"
+import "../../public/css/profile/profile-desktop.css"
 
 function Profile() {
     const [selectedContent, setSelectedContent] = useState('Information');
