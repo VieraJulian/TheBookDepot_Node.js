@@ -23,7 +23,7 @@ function Order() {
                                 <img src="../../../public/img/portadaEj.png" alt="" />
                             </div>
                             <div className="product-detail">
-                                <p>Manga de ejemplo ejemplo ejemplo</p><span>|</span>
+                                <p>Lorem, ipsum dolor.</p><span>|</span>
                                 <p>Cantidad: 1</p><span>|</span>
                                 <p className="product-price">Precio: $3000.00</p>
                             </div>
@@ -33,7 +33,7 @@ function Order() {
                                 <img src="../../../public/img/portadaEj.png" alt="" />
                             </div>
                             <div className="product-detail">
-                                <p>Manga de ejemplo ejemplo ejemplo</p><span>|</span>
+                                <p>Lorem, ipsum dolor.</p><span>|</span>
                                 <p>Cantidad: 1</p><span>|</span>
                                 <p className="product-price">Precio: $3000.00</p>
                             </div>
@@ -43,7 +43,7 @@ function Order() {
                                 <img src="../../../public/img/portadaEj.png" alt="" />
                             </div>
                             <div className="product-detail">
-                                <p>Manga de ejemplo ejemplo ejemplo</p><span>|</span>
+                                <p>Lorem, ipsum dolor.</p><span>|</span>
                                 <p>Cantidad: 1</p><span>|</span>
                                 <p className="product-price">Precio: $3000.00</p>
                             </div>
@@ -75,7 +75,7 @@ function Order() {
                                 <img src="../../../public/img/portadaEj.png" alt="" />
                             </div>
                             <div className="product-detail">
-                                <p>Manga de ejemplo ejemplo ejemplo</p><span>|</span>
+                                <p>Lorem, ipsum dolor.</p><span>|</span>
                                 <p>Cantidad: 1</p><span>|</span>
                                 <p className="product-price">Precio: $3000.00</p>
                             </div>
@@ -85,7 +85,7 @@ function Order() {
                                 <img src="../../../public/img/portadaEj.png" alt="" />
                             </div>
                             <div className="product-detail">
-                                <p>Manga de ejemplo ejemplo ejemplo</p><span>|</span>
+                                <p>Lorem, ipsum dolor.</p><span>|</span>
                                 <p>Cantidad: 1</p><span>|</span>
                                 <p className="product-price">Precio: $3000.00</p>
                             </div>
@@ -95,7 +95,7 @@ function Order() {
                                 <img src="../../../public/img/portadaEj.png" alt="" />
                             </div>
                             <div className="product-detail">
-                                <p>Manga de ejemplo ejemplo ejemplo</p><span>|</span>
+                                <p>Lorem, ipsum dolor.</p><span>|</span>
                                 <p>Cantidad: 1</p><span>|</span>
                                 <p className="product-price">Precio: $3000.00</p>
                             </div>

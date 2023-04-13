@@ -6,6 +6,7 @@ import Footer from './Footer'
 import Information from './components/Information'
 import Address from './components/Address'
 import Order from './components/Order'
+import ProductFavorite from './components/ProductFavorite';
 
 import "../../public/css/profile/profile-mobile.css"
 import "../../public/css/profile/profile-tablet.css"

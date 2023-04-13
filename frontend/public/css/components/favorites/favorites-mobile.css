@@ -1,0 +1,129 @@
+.favorite-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.favorite-p-container {
+    width: 90%;
+}
+
+.p-favorites {
+    width: 90%;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-bottom: 1px solid #999;
+}
+
+.favorite-product {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+    border: 1px solid #999;
+    margin-bottom: 1rem;
+}
+
+.favorite-img-container {
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.favorite-img-container img {
+    width: 4rem;
+    height: 6rem;
+    object-fit: cover;
+}
+
+.favorite-detail {
+    padding: 0 .2rem 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.favorite-detail p {
+    margin-bottom: .4rem;
+}
+
+.favorite-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: .8rem;
+}
+
+.favorite-btns button {
+    border: none;
+    background-color: #fff;
+    font-size: 1.2em;
+}
+
+.fa-cart-plus {
+    color: #ff0000
+}
+
+.fa-whatsapp {
+    color: rgb(111, 209, 6);
+}
+
+.favorite-price {
+    font-weight: 600;
+}
+
+@media screen and (min-width: 26.5em) {
+    .favorite-p-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        min-height: 30em;
+        gap: .5rem
+    }
+    
+    .favorite-product {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 12em;
+    }
+
+    .favorite-detail {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .favorite-btns {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: .2rem
+    }
+
+    .favorite-img-container {
+        width: 8rem;
+        height: 12rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .favorite-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media screen and (min-width: 31.26em) {
+    .favorite-product {
+        
+    }
+}
