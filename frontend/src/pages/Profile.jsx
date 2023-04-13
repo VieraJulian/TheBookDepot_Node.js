@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -7,6 +7,7 @@ import Information from './components/Information'
 import Address from './components/Address'
 import Order from './components/Order'
 import ProductFavorite from './components/ProductFavorite';
+import ProductSaved from './components/ProductSaved'
 
 import "../../public/css/profile/profile-mobile.css"
 import "../../public/css/profile/profile-tablet.css"

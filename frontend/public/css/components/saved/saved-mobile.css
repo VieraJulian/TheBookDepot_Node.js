@@ -1,4 +1,4 @@
-.favorite-container {
+.saved-container {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -6,23 +6,23 @@
     align-items: center;
 }
 
-.favorite-p-container {
+.saved-p-container {
     width: 90%;
 }
 
-.favorite-p-container a {
+.saved-p-container a {
     color: #000;
     text-decoration: none;
 }
 
-.p-favorites {
+.p-saved {
     width: 90%;
     font-size: 1.4rem;
     font-weight: 600;
     border-bottom: 1px solid #999;
 }
 
-.favorite-product {
+.saved-product {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -31,38 +31,38 @@
     margin-bottom: 1rem;
 }
 
-.favorite-img-container {
+.saved-img-container {
     width: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.favorite-img-container img {
+.saved-img-container img {
     width: 4rem;
     height: 6rem;
     object-fit: cover;
 }
 
-.favorite-detail {
+.saved-detail {
     padding: 0 .2rem 0;
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.favorite-detail p {
+.saved-detail p {
     margin-bottom: .4rem;
 }
 
-.favorite-btns {
+.saved-btns {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding-left: .8rem;
 }
 
-.favorite-btns button {
+.saved-btns button {
     border: none;
     background-color: #fff;
     font-size: 1.2em;
@@ -76,11 +76,11 @@
     color: rgb(111, 209, 6);
 }
 
-.favorite-price {
+.saved-price {
     font-weight: 600;
 }
 
-.nothing-favorite {
+.nothing-saved {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -88,13 +88,13 @@
     align-items: center;
 }
 
-.nothing-favorite p {
+.nothing-saved p {
     text-align: center;
     margin: 0 .4rem 0 0;
 }
 
 @media screen and (min-width: 26.5em) {
-    .favorite-p-container {
+    .saved-p-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -103,8 +103,8 @@
         min-height: 30em;
         gap: .5rem
     }
-    
-    .favorite-product {
+
+    .saved-product {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -112,28 +112,28 @@
         max-width: 12em;
     }
 
-    .favorite-detail {
+    .saved-detail {
         display: flex;
         flex-direction: column;
         padding: 0;
     }
 
-    .favorite-btns {
+    .saved-btns {
         width: 100%;
         display: flex;
         flex-direction: row;
         padding: .2rem
     }
 
-    .favorite-img-container {
+    .saved-img-container {
         width: 8rem;
         height: 12rem;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    
-    .favorite-img-container img {
+
+    .saved-img-container img {
         width: 100%;
         height: 100%;
         object-fit: cover;

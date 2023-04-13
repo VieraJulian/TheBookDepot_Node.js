@@ -47,6 +47,20 @@
     border-bottom: 1px solid #999;
 }
 
+.add-address {
+    border: none;
+    margin-top: 2rem;
+    background-color: rgb(231, 34, 34);
+    height: 2rem;
+    width: 90%;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    height: 2.6rem;
+}
+
 @media screen and (min-width: 26.5em) {
     .address-container {
         max-width: 26.5em;

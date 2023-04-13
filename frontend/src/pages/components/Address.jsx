@@ -1,7 +1,21 @@
+import React, { useState } from 'react';
+
+import AddAddress from './AddAdress';
+
 import "../../../public/css/components/address/address-mobile.css"
 import "../../../public/css/components/address/address-desktop.css"
 
 function Address() {
+    const [selectedContent, setSelectedContent] = useState('');
+
+    function handleMenuClick(content) {
+        if (selectedContent === content) {
+            setSelectedContent('');
+        } else {
+            setSelectedContent(content);
+        }
+    }
+
     return (
         <>
             <div className="address-container">
@@ -38,6 +52,8 @@ function Address() {
                         <button className="info-saved">Guardar cambios</button>
                     </div>
                 </form>
+                <button className="add-address" onClick={() => handleMenuClick('addAddress')}>Nueva dirección</button>
+                {selectedContent === 'addAddress' ? <AddAddress /> : null}
             </div>
         </>
     )
