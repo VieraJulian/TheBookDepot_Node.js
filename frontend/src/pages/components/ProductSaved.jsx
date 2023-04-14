@@ -26,7 +26,7 @@ function ProductSaved() {
                     </Link>
                     <div>
                         <div className='nothing-saved'>
-                            <p>No tienes productos guardados </p>
+                            <p>No tienes productos guardados</p>
                             <i class="fa-regular fa-face-frown"></i>
                         </div>
                     </div>

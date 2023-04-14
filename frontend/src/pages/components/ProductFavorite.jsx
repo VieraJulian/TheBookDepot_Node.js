@@ -26,7 +26,7 @@ function ProductFavorite() {
                     </Link>
                     <div>
                         <div className='nothing-favorite'>
-                            <p>No tienes productos guardados </p>
+                            <p>No tienes productos en favoritos</p>
                             <i class="fa-regular fa-face-frown"></i>
                         </div>
                     </div>

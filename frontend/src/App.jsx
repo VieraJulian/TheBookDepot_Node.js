@@ -4,8 +4,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Profile from "./pages/Profile"
-
-// prueba
+import Detail from './pages/Detail'
 
 function App() {
 
@@ -16,6 +15,7 @@ function App() {
         <Route path="/users/login" element={<Login />}></Route>
         <Route path="/users/register" element={<Register />}></Route>
         <Route path="/users/profile" element={<Profile />}></Route>
+        <Route path="/products/detail/:id" element={<Detail />}></Route>
       </Routes>
     </>
   )

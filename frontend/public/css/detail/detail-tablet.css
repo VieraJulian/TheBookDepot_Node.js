@@ -1,0 +1,14 @@
+@media screen and (min-width: 48em) {
+    .detail-page {
+        max-width: 42em;
+    }
+
+    .detail-img-container img{
+        width: 22rem;
+        height: 35rem;
+    }
+
+    .detail-description p {
+        margin-bottom: 1rem;
+    }
+}

@@ -1,0 +1,40 @@
+@media screen and (min-width: 64em) {
+    .detail-page {
+        max-width: none;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .detail-price {
+        border: 1px solid #999;
+    }
+
+    .detail-img-container img{
+        width: 20rem;
+        height: 30rem;
+    }
+    
+    .detail-img-container {
+        width: 40%;
+        margin: 0;
+    }
+
+    .detail-first {
+        width: 60%;
+        border: none;
+        padding: 0;
+    }
+
+    .detail-details {
+        border: 1px solid #999;
+        background-color: #EBEBEB;
+        padding: 1rem 1.5rem
+    }
+}
+
+@media (min-width: 72em) {
+    .detail-page {
+        max-width: 72em;
+    }
+}
