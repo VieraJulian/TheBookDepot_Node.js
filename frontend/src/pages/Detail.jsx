@@ -32,7 +32,12 @@ function Detail() {
                             </div>
                             <div className='detail-actions'>
                                 <button>
-                                    <i className="fa-solid fa-heart"></i>
+                                    <i class="fa-regular fa-heart"></i>
+                                    {/* <i className="fa-solid fa-heart"></i> */}
+                                </button>
+                                <button>
+                                    <i class="fa-regular fa-bookmark"></i>
+                                    {/* <i class="fa-solid fa-bookmark"></i> */}
                                 </button>
                                 <button>
                                     <i className="fa-brands fa-whatsapp"></i>
