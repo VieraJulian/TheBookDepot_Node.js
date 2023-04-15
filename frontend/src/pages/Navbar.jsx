@@ -46,7 +46,7 @@ function Navbar() {
                             </div>
                         </div>
                         <div className='cart'>
-                            <Link to="#">
+                            <Link to="/users/cart">
                                 <i className="fa-solid fa-cart-shopping"></i>
                             </Link>
                             <div className='cart-number'>

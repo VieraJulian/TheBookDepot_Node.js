@@ -50,57 +50,57 @@ function Home() {
                     <div className='home-articles-container'>
                         <div className='articles-container'>
                             <div className='article'>
-                                <Link to="#">
+                                <Link to="/products/detail/1">
                                     <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
                                 </Link>
                             </div>
                             <div className='article'>
-                                <Link to="#">
+                                <Link to="/products/detail/1">
                                     <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
                                 </Link>
                             </div>
                             <div className='article'>
-                                <Link to="#">
+                                <Link to="/products/detail/1">
                                     <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
                                 </Link>
                             </div>
                             <div className='article'>
-                                <Link to="#">
+                                <Link to="/products/detail/1">
                                     <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
                                 </Link>
                             </div>
                             <div className='article'>
-                                <Link to="#">
+                                <Link to="/products/detail/1">
                                     <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
                                 </Link>
                             </div>
                             <div className='article'>
-                                <Link to="#">
+                                <Link to="/products/detail/1">
                                     <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
                                 </Link>
                             </div>
                             <div className='article'>
-                                <Link to="#">
+                                <Link to="/products/detail/1">
                                     <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
                                 </Link>
                             </div>
                             <div className='article'>
-                                <Link to="#">
+                                <Link to="/products/detail/1">
                                     <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
                                 </Link>
                             </div>
                             <div className='article'>
-                                <Link to="#">
+                                <Link to="/products/detail/1">
                                     <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
                                 </Link>
                             </div>
                             <div className='article'>
-                                <Link to="#">
+                                <Link to="/products/detail/1">
                                     <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
                                 </Link>
                             </div>
                             <div className='article'>
-                                <Link to="#">
+                                <Link to="/products/detail/1">
                                     <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
                                 </Link>
                             </div>

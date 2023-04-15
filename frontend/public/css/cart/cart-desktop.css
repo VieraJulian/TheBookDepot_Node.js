@@ -1,0 +1,24 @@
+@media (min-width: 64em) {
+    .cart-details {
+        max-width: none;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .cart-left {
+        width: 69%;
+    }
+
+    .cart-summary {
+        width: 30%;
+        height: 80%;
+    }
+}
+
+@media (min-width: 72em) {
+    .cart-details {
+        max-width: 72em;
+    }
+}

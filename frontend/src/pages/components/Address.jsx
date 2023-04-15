@@ -33,7 +33,8 @@ function Address() {
                         <input type="text" name='city' placeholder='Ciudad' />
                         <label>Dirección:</label>
                         <input type="text" name='address' placeholder='Dirección' />
-                        <button className="info-saved">Guardar cambios</button>
+                        <button className="address-saved">Guardar cambios</button>
+                        <button className="delete-address">Eliminar direccíon</button>
                     </div>
                 </form>
                 <form className="address-form second" method="POST">
@@ -49,7 +50,8 @@ function Address() {
                         <input type="text" name='city' placeholder='Ciudad' />
                         <label>Dirección:</label>
                         <input type="text" name='address' placeholder='Dirección' />
-                        <button className="info-saved">Guardar cambios</button>
+                        <button className="address-saved">Guardar cambios</button>
+                        <button className="delete-address">Eliminar direccíon</button>
                     </div>
                 </form>
                 <button className="add-address" onClick={() => handleMenuClick('addAddress')}>Nueva dirección</button>

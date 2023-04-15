@@ -14,7 +14,7 @@ function Login() {
             <Navbar />
                 <div className='loginContainer'>
                     <picture className='login-img'>
-                        <img src="../../public/img/imgLogin.avif" alt="Libros" />
+                        <img src="../../public/img/background/imgLogin.avif" alt="Libros" />
                     </picture>
                     <div className='login'>
                         <div className='login-container'>

@@ -29,6 +29,10 @@
     display: none
 }
 
+.cart-item-total {
+    display: none;
+}
+
 .cart-item-content {
     width: 100%;
     display: flex;
@@ -40,13 +44,14 @@
 }
 
 .cart-item-image {
-    display: none;
+    width: 100%
 }
 
 .cart-item-image img {
     width: 4rem;
     height: 6rem;
     object-fit: cover;
+    display: none;
 }
 
 .cart-item-info {
@@ -219,7 +224,7 @@
 }
 
 .mastercard img {
-    width: 100%;
+    width: 50%;
     height: 10rem;
     object-fit: contain;
 }

@@ -14,7 +14,7 @@ function Register() {
                 <Navbar />
                 <div className='registerContainer'>
                     <picture className='register-img'>
-                        <img src="../../public/img/imgRegister.webp" alt="Libros" />
+                        <img src="../../public/img/background/imgRegister.webp" alt="Libros" />
                     </picture>
                     <div className='register'>
                         <div className='register-container'>
