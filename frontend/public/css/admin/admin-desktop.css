@@ -1,0 +1,22 @@
+@media (min-width: 64em) {
+    .info-container-div {
+        width: 20%;
+    }
+
+    .admin-page {
+        display: flex;
+        justify-content: center;
+    }
+
+    .admin-container {
+        max-width: 80em;
+    }
+
+    .color-div-one, .color-div-three {
+        background-color: #f26531;
+    }
+    
+    .color-div-two, .color-div-four {
+        background-color: #7edb0c;
+    }
+}

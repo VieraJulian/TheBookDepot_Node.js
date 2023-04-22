@@ -1,0 +1,125 @@
+.admin-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-section-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.admin-info {
+    width: 100%;
+    border: 1px dotted #999;
+}
+
+.admin-navbar-logo {
+    padding: 1rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-navbar-logo img {
+    width: 18rem;
+}
+
+.admin-navbar-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.admin-navbar-img img {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.admin-name {
+    text-align: center;
+    margin: 0;
+}
+
+.admin-p {
+    text-align: center;
+    font-weight: 600;
+}
+
+.navbar-links {
+    width: 100%;
+    border: 1px dotted #999;
+    margin-top: .2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: #000;
+}
+
+.admin-content {
+    width: 100%;
+    margin: .2rem 0 2rem;
+    border: 1px dotted #999;
+    padding: 1rem
+}
+
+.info-site {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: .5rem
+}
+
+.info-container-div {
+    width: 45%;
+    border: 1px solid #999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.info-container-div p {
+    margin: 0;
+}
+
+.result {
+    font-weight: 600;
+}
+
+.select-container {
+    width: 100%;
+    border: 1px solid #999;
+    margin-top: 1rem;
+}
+
+.color-div-one, .color-div-four {
+    background-color: #f26531;
+}
+
+.color-div-two, .color-div-three {
+    background-color: #7edb0c;
+}

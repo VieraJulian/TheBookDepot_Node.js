@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 
 import Navbar from './Navbar'
 import Footer from './Footer'
-import Information from './components/Information'
-import Address from './components/Address'
-import Order from './components/Order'
-import ProductFavorite from './components/ProductFavorite';
-import ProductSaved from './components/ProductSaved'
+import Information from './components/profile/Information'
+import Address from './components/profile/Address'
+import Order from './components/profile/Order'
+import ProductFavorite from './components/profile/ProductFavorite';
+import ProductSaved from './components/profile/ProductSaved'
 
 import "../../public/css/profile/profile-mobile.css"
 import "../../public/css/profile/profile-tablet.css"

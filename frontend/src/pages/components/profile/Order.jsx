@@ -1,5 +1,5 @@
-import "../../../public/css/components/order/order-mobile.css"
-import "../../../public/css/components/order/order-desktop.css"
+import "../../../../public/css/components/order/order-mobile.css"
+import "../../../../public/css/components/order/order-desktop.css"
 
 function Order() {
     return (

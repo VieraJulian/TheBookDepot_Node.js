@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import "../../../public/css/components/favorites/favorites-mobile.css"
+import "../../../../public/css/components/favorites/favorites-mobile.css"
 
 function ProductFavorite() {
     return (
@@ -18,16 +18,16 @@ function ProductFavorite() {
                                 <p className="favorite-price">$ 5000.00</p>
                             </div>
                             <div className="favorite-btns">
-                                <button><i class="fa-solid fa-cart-plus"></i></button>
-                                <button><i class="fa-solid fa-circle-xmark"></i></button>
-                                <button><i class="fa-brands fa-whatsapp"></i></button>
+                                <button><i className="fa-solid fa-cart-plus"></i></button>
+                                <button><i className="fa-solid fa-circle-xmark"></i></button>
+                                <button><i className="fa-brands fa-whatsapp"></i></button>
                             </div>
                         </div>
                     </Link>
                     <div>
                         <div className='nothing-favorite'>
                             <p>No tienes productos en favoritos</p>
-                            <i class="fa-regular fa-face-frown"></i>
+                            <i className="fa-regular fa-face-frown"></i>
                         </div>
                     </div>
                 </div>
