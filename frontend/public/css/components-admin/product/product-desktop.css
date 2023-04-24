@@ -1,0 +1,147 @@
+@media screen and (min-width: 64em) {
+    .msg-mobile {
+        display: none;
+    }
+
+    .product-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .add-product {
+        width: 90%;
+        border: none;
+        color: #fff;
+        background-color: red;
+        border-radius: 2px;
+        margin-top: 1rem;
+    }
+    
+    .products-order-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pagination-container {
+        width: 90%;
+        padding: 1rem 0;
+        display: flex;
+        justify-content: end;
+    }
+    
+    .pagination-container button{
+        width: 2rem;
+        height: 2rem;
+        margin-left: .2rem;
+        border: 1px solid #999;
+    }
+    
+    .detail-product {
+        margin-top: 1rem;
+        width: 100%;
+    }
+    
+    .product-detail-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 15%;
+    }
+    
+    .product-detail-img img {
+        width: 4rem;
+        height: 4rem;
+        object-fit: cover;
+    }
+    
+    .detail-product-header {
+        display: none;
+    }
+    
+    .info-product-header p {
+        text-align: center;
+    }
+
+    .info-product-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .info-product-container p {
+       margin: 0;
+    }
+
+    .info-product-header {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        background-color: #f4f4f4;
+        padding: 1rem 0;
+    }
+
+    .info-product {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .info-product div {
+        height: 5rem;
+        text-align: center;
+        border: 1px dotted #999;
+    }
+
+    .info-product p {
+        height: 5rem;
+        text-align: center;
+        border: 1px dotted #999;
+    }
+
+    .p-info-nombre {
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .p-info-detail {
+        width: 15%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .view-detail {
+        height: 5rem;
+        width: 15%;
+        text-align: center;
+        border: 1px dotted #999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .view-detail button {
+        border: none;
+        background-color: transparent;
+        font-size: 1.2rem;
+    }
+
+    .p-imagen, .p-precio {
+        width: 15%;
+    }
+
+    .p-nombre {
+        width: 25%;
+    }
+
+    .p-stock, .p-vendido, .p-detalle {
+        width: 15%;
+    }
+}
