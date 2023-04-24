@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import '../../../../public/css/components/saved/saved-mobile.css'
+import '../../../../public/css/components/profile/saved/saved-mobile.css'
 
 function ProductSaved() {
     return (

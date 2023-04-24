@@ -1,0 +1,16 @@
+.order-admin-container {
+    display: none;
+}
+
+.msg-mobile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.msg-mobile p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.2rem;
+}

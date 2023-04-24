@@ -1,0 +1,63 @@
+@media screen and (min-width: 64em) {
+    .msg-mobile {
+        display: none;
+    }    
+
+    .order-admin-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .order-admin-header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #f4f4f4;
+        padding: .5rem;
+        align-items: center;
+    }
+
+    .order-admin-header p {
+        margin: 0;
+        text-align: center;
+    }
+
+    .order-admin-detail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .order-admin-detail p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        border: 1px dotted #999;
+        height: 3rem;
+    }
+
+    .p-order-max {
+        width: 20%;
+    }
+
+    .p-order {
+        width: 15%;
+    }
+
+    .view-detail-order {
+        height: 3rem;
+        width: 15%;
+        text-align: center;
+        border: 1px dotted #999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .view-detail-order button {
+        border: none;
+        background-color: transparent;
+        font-size: 1.2rem;
+    }
+}

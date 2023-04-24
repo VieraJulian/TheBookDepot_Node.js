@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import "../../../../public/css/components/favorites/favorites-mobile.css"
+import "../../../../public/css/components/profile/favorites/favorites-mobile.css"
 
 function ProductFavorite() {
     return (

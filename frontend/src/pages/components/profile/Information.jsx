@@ -1,5 +1,5 @@
-import "../../../../public/css/components/information/information-mobile.css"
-import "../../../../public/css/components/information/information-desktop.css"
+import "../../../../public/css/components/profile/information/information-mobile.css"
+import "../../../../public/css/components/profile/information/information-desktop.css"
 
 function Information() {
     return (

@@ -1,5 +1,5 @@
-import "../../../../public/css/components-admin/product/product-mobile.css"
-import "../../../../public/css/components-admin/product/product-desktop.css"
+import "../../../../public/css/components/admin/product/product-mobile.css"
+import "../../../../public/css/components/admin/product/product-desktop.css"
 
 function Product() {
     return (
@@ -30,7 +30,7 @@ function Product() {
                             </div>
                             <div className="info-product">
                                 <div className="product-detail-img">
-                                    <img src="../../../../public/img/balondeoro.jpg" alt="" />
+                                    <img src="../../../../public/img/portadaEj.png" alt="" />
                                 </div>
                                 <p className="p-info-nombre">Lorem ipsum dolor sit.</p>
                                 <p className="p-info-detail">$5000.00</p>
@@ -42,7 +42,7 @@ function Product() {
                             </div>
                             <div className="info-product">
                                 <div className="product-detail-img">
-                                    <img src="../../../../public/img/balondeoro.jpg" alt="" />
+                                    <img src="../../../../public/img/portadaEj.png" alt="" />
                                 </div>
                                 <p className="p-info-nombre">Lorem ipsum dolor sit.</p>
                                 <p className="p-info-detail">$99000.00</p>
@@ -54,7 +54,7 @@ function Product() {
                             </div>
                             <div className="info-product">
                                 <div className="product-detail-img">
-                                    <img src="../../../../public/img/balondeoro.jpg" alt="" />
+                                    <img src="../../../../public/img/portadaEj.png" alt="" />
                                 </div>
                                 <p className="p-info-nombre">Lorem ipsum dolor sit.</p>
                                 <p className="p-info-detail">$5000.00</p>
@@ -65,7 +65,7 @@ function Product() {
                                 </div>
                             </div><div className="info-product">
                                 <div className="product-detail-img">
-                                    <img src="../../../../public/img/balondeoro.jpg" alt="" />
+                                    <img src="../../../../public/img/portadaEj.png" alt="" />
                                 </div>
                                 <p className="p-info-nombre">Lorem ipsum dolor sit.</p>
                                 <p className="p-info-detail">$5000.00</p>

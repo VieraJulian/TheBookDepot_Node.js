@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import AddAddress from './AddAdress';
 
-import "../../../../public/css/components/address/address-mobile.css"
-import "../../../../public/css/components/address/address-desktop.css"
+import "../../../../public/css/components/profile/address/address-mobile.css"
+import "../../../../public/css/components/profile/address/address-desktop.css"
 
 function Address() {
     const [selectedContent, setSelectedContent] = useState('');
