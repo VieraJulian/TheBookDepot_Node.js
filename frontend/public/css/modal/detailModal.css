@@ -1,0 +1,33 @@
+@media (min-width: 64em) {
+    .detailModal-body {
+        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .detailModal-info {
+        width: 60%;
+    }
+
+    .detailModal-info p {
+        margin-bottom: .5rem;
+    }
+
+    .detailModal-img {
+        width: 40%;
+    }
+
+    .detailModal-img img{
+        width: 100%;
+    }
+
+    .detailModal-button {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+    }
+
+    .detailModal-button button {
+        margin-left: .5rem;
+    }
+}

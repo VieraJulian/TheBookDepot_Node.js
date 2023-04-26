@@ -1,5 +1,6 @@
 import { React } from "react"
 import Modal from "../modal/Modal"
+import DetailModal from "../modal/DetailModal"
 
 import "../../../../public/css/components/admin/product/product-mobile.css"
 import "../../../../public/css/components/admin/product/product-desktop.css"
@@ -41,44 +42,10 @@ function Product() {
                                 <p className="p-info-detail">234</p>
                                 <p className="p-info-detail">190</p>
                                 <div className="view-detail">
-                                    <button><i className="fa-solid fa-eye"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#DetailModal"><i className="fa-solid fa-eye"></i></button>
                                 </div>
                             </div>
-                            <div className="info-product">
-                                <div className="product-detail-img">
-                                    <img src="../../../../public/img/portadaEj.png" alt="" />
-                                </div>
-                                <p className="p-info-nombre">Lorem ipsum dolor sit.</p>
-                                <p className="p-info-detail">$99000.00</p>
-                                <p className="p-info-detail">234</p>
-                                <p className="p-info-detail">190</p>
-                                <div className="view-detail">
-                                    <button><i className="fa-solid fa-eye"></i></button>
-                                </div>
-                            </div>
-                            <div className="info-product">
-                                <div className="product-detail-img">
-                                    <img src="../../../../public/img/portadaEj.png" alt="" />
-                                </div>
-                                <p className="p-info-nombre">Lorem ipsum dolor sit.</p>
-                                <p className="p-info-detail">$5000.00</p>
-                                <p className="p-info-detail">234</p>
-                                <p className="p-info-detail">190</p>
-                                <div className="view-detail">
-                                    <button><i className="fa-solid fa-eye"></i></button>
-                                </div>
-                            </div><div className="info-product">
-                                <div className="product-detail-img">
-                                    <img src="../../../../public/img/portadaEj.png" alt="" />
-                                </div>
-                                <p className="p-info-nombre">Lorem ipsum dolor sit.</p>
-                                <p className="p-info-detail">$5000.00</p>
-                                <p className="p-info-detail">234</p>
-                                <p className="p-info-detail">190</p>
-                                <div className="view-detail">
-                                    <button><i className="fa-solid fa-eye"></i></button>
-                                </div>
-                            </div>
+                            <DetailModal />
                         </div>
                     </div>
                 </div>
