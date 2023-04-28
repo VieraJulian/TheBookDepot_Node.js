@@ -2,7 +2,9 @@ import React from "react";
 
 import "../../../../public/css/modal/modal.css"
 
-function Modal() {
+function Modal({ article, isEditing }) {
+
+    console.log(article)
     return (
         <>
             <div className="modal fade" id="modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -15,7 +17,7 @@ function Modal() {
                         <div className="modal-body">
                             <form method="POST" className="form-modal">
                                 <label>Título</label>
-                                <input type="text" name="title" />
+                                <input type="text" name="title" defaultValue={isEditing ? article.title : ""} />
                                 <label>Autor</label>
                                 <input type="text" name="author" />
                                 <label>Editorial</label>
@@ -39,8 +41,8 @@ function Modal() {
                                 <label>Stock</label>
                                 <input type="number" name="stock" />
                                 <label>Imagen</label>
-                                <input type="file" name="image" className="file-modal"/>
-                                <div class="modal-footer">
+                                <input type="file" name="image" className="file-modal" />
+                                <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                     <button type="button" className="btn btn-primary">Aceptar</button>
                                 </div>

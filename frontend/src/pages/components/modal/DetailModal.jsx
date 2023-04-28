@@ -1,15 +1,16 @@
 import React from "react";
+import Modal from "../modal/Modal"
 
 import "../../../../public/css/modal/detailModal.css"
 
-function Modal() {
+function DetailModal({ article, isEditing }) {
     return (
         <>
             <div className="modal fade" id="DetailModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">Lorem ipsum dolor sit.</h1>
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">{article.title}</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="detailModal-body">
@@ -30,9 +31,10 @@ function Modal() {
                                 <img src="../../../../public/img/portadaEj.png" alt="" />
                             </div>
                             <div className="detailModal-button">
-                                <button type="button" class="btn btn-danger">Eliminar</button>
-                                <button type="button" class="btn btn-warning">Modificar</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" className="btn btn-danger">Eliminar</button>
+                                <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal">Modificar</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <Modal isEditing={isEditing} article={article}/>
                             </div>
                         </div>
                     </div>
@@ -42,4 +44,4 @@ function Modal() {
     )
 }
 
-export default Modal
+export default DetailModal

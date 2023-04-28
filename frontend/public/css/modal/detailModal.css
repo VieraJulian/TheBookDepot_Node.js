@@ -18,10 +18,13 @@
     }
 
     .detailModal-img img{
-        width: 100%;
+        width: 12rem;
+        height: 16rem;
+        object-fit: contain;
     }
 
     .detailModal-button {
+        margin-top: 1rem;
         width: 100%;
         display: flex;
         justify-content: end;
