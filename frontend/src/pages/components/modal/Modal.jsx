@@ -2,9 +2,8 @@ import React from "react";
 
 import "../../../../public/css/modal/modal.css"
 
-function Modal({ article, isEditing }) {
+function Modal() {
 
-    console.log(article)
     return (
         <>
             <div className="modal fade" id="modal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -17,7 +16,7 @@ function Modal({ article, isEditing }) {
                         <div className="modal-body">
                             <form method="POST" className="form-modal">
                                 <label>Título</label>
-                                <input type="text" name="title" defaultValue={isEditing ? article.title : ""} />
+                                <input type="text" name="title" />
                                 <label>Autor</label>
                                 <input type="text" name="author" />
                                 <label>Editorial</label>

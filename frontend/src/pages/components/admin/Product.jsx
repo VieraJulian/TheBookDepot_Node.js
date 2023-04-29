@@ -6,13 +6,6 @@ import "../../../../public/css/components/admin/product/product-mobile.css"
 import "../../../../public/css/components/admin/product/product-desktop.css"
 
 function Product() {
-    const [isEditing, setIsEditing] = useState(false);
-    const [article, setArticle] = useState({});
-
-    const handleClick = () => {
-        setIsEditing(true);
-        setArticle({ title: "titulo de prueba..." });
-    };
 
     return (
         <>
@@ -20,8 +13,8 @@ function Product() {
                 <p>"Esta página puede no funcionar correctamente en dispositivos móviles o tablets."</p>
             </div>
             <div className="product-container">
-                <button className="add-product" data-bs-toggle="modal" data-bs-target="#modal" onClick={() => setIsEditing(false)}>AGREGAR NUEVO PRODUCTO</button>
-                <Modal isEditing={isEditing} />
+                <button className="add-product" data-bs-toggle="modal" data-bs-target="#modal">AGREGAR NUEVO PRODUCTO</button>
+                <Modal />
                 <div className="products-order-container">
                     <div className="pagination-container">
                         <button><i className="fa-solid fa-caret-left"></i></button>
@@ -50,7 +43,7 @@ function Product() {
                                 <p className="p-info-detail">234</p>
                                 <p className="p-info-detail">190</p>
                                 <div className="view-detail">
-                                    <button data-bs-toggle="modal" data-bs-target="#DetailModal" onClick={handleClick}><i className="fa-solid fa-eye"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#DetailModal"><i className="fa-solid fa-eye"></i></button>
                                 </div>
                             </div>
                             <div className="info-product">
@@ -62,7 +55,7 @@ function Product() {
                                 <p className="p-info-detail">234</p>
                                 <p className="p-info-detail">190</p>
                                 <div className="view-detail">
-                                    <button data-bs-toggle="modal" data-bs-target="#DetailModal" onClick={handleClick}><i className="fa-solid fa-eye"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#DetailModal"><i className="fa-solid fa-eye"></i></button>
                                 </div>
                             </div>
                             <div className="info-product">
@@ -74,10 +67,10 @@ function Product() {
                                 <p className="p-info-detail">234</p>
                                 <p className="p-info-detail">190</p>
                                 <div className="view-detail">
-                                    <button data-bs-toggle="modal" data-bs-target="#DetailModal" onClick={handleClick}><i className="fa-solid fa-eye"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#DetailModal"><i className="fa-solid fa-eye"></i></button>
                                 </div>
                             </div>
-                            <DetailModal isEditing={isEditing} article={article} />
+                            <DetailModal/>
                         </div>
                     </div>
                 </div>
