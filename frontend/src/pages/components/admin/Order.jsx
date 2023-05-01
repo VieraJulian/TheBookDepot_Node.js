@@ -1,3 +1,5 @@
+import ModalOrderDetail from "../modal/ModalOrderDetail";
+
 import "../../../../public/css/components/admin/order/order-mobile.css"
 import "../../../../public/css/components/admin/order/order-desktop.css"
 
@@ -23,7 +25,7 @@ function Order() {
                     <p className="p-order">$99000.00</p>
                     <p className="p-order">Pendiente</p>
                     <div className="view-detail-order">
-                        <button><i class="fa-solid fa-eye"></i></button>
+                        <button data-bs-toggle="modal" data-bs-target="#modalOrderDetail"><i class="fa-solid fa-eye"></i></button>
                     </div>
                 </div>
                 <div className="order-admin-detail">
@@ -33,7 +35,7 @@ function Order() {
                     <p className="p-order">$99000.00</p>
                     <p className="p-order">Pendiente</p>
                     <div className="view-detail-order">
-                        <button><i class="fa-solid fa-eye"></i></button>
+                        <button data-bs-toggle="modal" data-bs-target="#modalOrderDetail"><i class="fa-solid fa-eye"></i></button>
                     </div>
                 </div>
                 <div className="order-admin-detail">
@@ -43,9 +45,10 @@ function Order() {
                     <p className="p-order">$99000.00</p>
                     <p className="p-order">Pendiente</p>
                     <div className="view-detail-order">
-                        <button><i class="fa-solid fa-eye"></i></button>
+                        <button data-bs-toggle="modal" data-bs-target="#modalOrderDetail"><i class="fa-solid fa-eye"></i></button>
                     </div>
                 </div>
+                <ModalOrderDetail />
             </div>
         </>
     )

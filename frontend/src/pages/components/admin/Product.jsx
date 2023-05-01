@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Modal from "../modal/Modal"
-import DetailModal from "../modal/DetailModal"
+import ModalCreate from "../modal/ModalCreate"
+import ModalDetail from "../modal/ModalDetail"
 import ModalEdit from "../modal/ModalEdit";
 
 import "../../../../public/css/components/admin/product/product-mobile.css"
@@ -15,7 +15,6 @@ function Product() {
             </div>
             <div className="product-container">
                 <button className="add-product" data-bs-toggle="modal" data-bs-target="#modalCreate">AGREGAR NUEVO PRODUCTO</button>
-                <Modal />
                 <div className="products-order-container">
                     <div className="pagination-container">
                         <button><i className="fa-solid fa-caret-left"></i></button>
@@ -44,7 +43,7 @@ function Product() {
                                 <p className="p-info-detail">234</p>
                                 <p className="p-info-detail">190</p>
                                 <div className="view-detail">
-                                    <button data-bs-toggle="modal" data-bs-target="#DetailModal"><i className="fa-solid fa-eye"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#modalDetail"><i className="fa-solid fa-eye"></i></button>
                                 </div>
                             </div>
                             <div className="info-product">
@@ -56,7 +55,7 @@ function Product() {
                                 <p className="p-info-detail">234</p>
                                 <p className="p-info-detail">190</p>
                                 <div className="view-detail">
-                                    <button data-bs-toggle="modal" data-bs-target="#DetailModal"><i className="fa-solid fa-eye"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#modalDetail"><i className="fa-solid fa-eye"></i></button>
                                 </div>
                             </div>
                             <div className="info-product">
@@ -68,10 +67,11 @@ function Product() {
                                 <p className="p-info-detail">234</p>
                                 <p className="p-info-detail">190</p>
                                 <div className="view-detail">
-                                    <button data-bs-toggle="modal" data-bs-target="#DetailModal"><i className="fa-solid fa-eye"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#modalDetail"><i className="fa-solid fa-eye"></i></button>
                                 </div>
                             </div>
-                            <DetailModal/>
+                            <ModalCreate />
+                            <ModalDetail/>
                             <ModalEdit />
                         </div>
                     </div>

@@ -2,11 +2,11 @@ import React from "react";
 
 import "../../../../public/css/modal/detailModal.css"
 
-function DetailModal() {
+function ModalDetail() {
 
     return (
         <>
-            <div className="modal fade" id="DetailModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="modalDetail" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -43,4 +43,4 @@ function DetailModal() {
     )
 }
 
-export default DetailModal
+export default ModalDetail
