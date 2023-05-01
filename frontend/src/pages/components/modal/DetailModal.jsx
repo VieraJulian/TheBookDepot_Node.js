@@ -1,5 +1,4 @@
 import React from "react";
-import Modal from "../modal/Modal"
 
 import "../../../../public/css/modal/detailModal.css"
 
@@ -33,7 +32,7 @@ function DetailModal() {
                             </div>
                             <div className="detailModal-button">
                                 <button type="button" className="btn btn-danger">Eliminar</button>
-                                <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal">Modificar</button>
+                                <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEdit">Modificar</button>
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             </div>
                         </div>

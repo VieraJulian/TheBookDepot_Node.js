@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../modal/Modal"
 import DetailModal from "../modal/DetailModal"
+import ModalEdit from "../modal/ModalEdit";
 
 import "../../../../public/css/components/admin/product/product-mobile.css"
 import "../../../../public/css/components/admin/product/product-desktop.css"
@@ -13,7 +14,7 @@ function Product() {
                 <p>"Esta página puede no funcionar correctamente en dispositivos móviles o tablets."</p>
             </div>
             <div className="product-container">
-                <button className="add-product" data-bs-toggle="modal" data-bs-target="#modal">AGREGAR NUEVO PRODUCTO</button>
+                <button className="add-product" data-bs-toggle="modal" data-bs-target="#modalCreate">AGREGAR NUEVO PRODUCTO</button>
                 <Modal />
                 <div className="products-order-container">
                     <div className="pagination-container">
@@ -71,6 +72,7 @@ function Product() {
                                 </div>
                             </div>
                             <DetailModal/>
+                            <ModalEdit />
                         </div>
                     </div>
                 </div>

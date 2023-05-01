@@ -2,11 +2,11 @@ import React from "react";
 
 import "../../../../public/css/modal/modal.css"
 
-function ModalCreate() {
+function ModalEdit() {
 
     return (
         <>
-            <div className="modal fade" id="modalCreate" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="modalEdit" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -16,7 +16,7 @@ function ModalCreate() {
                         <div className="modal-body">
                             <form method="POST" className="form-modal">
                                 <label>Título</label>
-                                <input type="text" name="title" />
+                                <input type="text" name="title"/>
                                 <label>Autor</label>
                                 <input type="text" name="author" />
                                 <label>Editorial</label>
@@ -54,4 +54,4 @@ function ModalCreate() {
     )
 }
 
-export default ModalCreate
+export default ModalEdit
