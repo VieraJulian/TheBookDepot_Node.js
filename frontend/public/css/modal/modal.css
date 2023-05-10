@@ -15,4 +15,15 @@
         padding: 0 .2rem;
         margin-bottom: 1rem;
     }
+
+    .button-order {
+        width: 12rem;
+        height: 2.5rem;
+        border-radius: 8px;
+        border: none;
+        padding: .5rem;
+        background-color: red;
+        font-weight: 500;
+        color: #fff
+    }
 }

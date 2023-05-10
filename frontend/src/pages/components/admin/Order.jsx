@@ -6,6 +6,16 @@ import "../../../../public/css/components/admin/order/order-desktop.css"
 function Order() {
     return (
         <>
+            <div className="products-order-container">
+                <div className="pagination-container">
+                    <button><i className="fa-solid fa-caret-left"></i></button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button><i className="fa-solid fa-caret-right"></i></button>
+                </div>
+            </div>
             <div className="msg-mobile">
                 <p>"Esta página puede no funcionar correctamente en dispositivos móviles o tablets."</p>
             </div>

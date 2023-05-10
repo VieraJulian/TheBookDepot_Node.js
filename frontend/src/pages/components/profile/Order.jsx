@@ -53,7 +53,7 @@ function Order() {
                         <p className="paymentMethod">Método de pago: Mercado Pago</p>
                         <p>Destinatario: Julian Eduardo Viera</p>
                         <p>Celular: +543442111111</p>
-                        <p>Province: Entre Ríos</p>
+                        <p>Provincia: Entre Ríos</p>
                         <p>Ciudad: San José</p>
                         <p>Dirección: Junín 2020</p>
                     </div>
@@ -105,7 +105,7 @@ function Order() {
                         <p className="paymentMethod">Método de pago: Mercado Pago</p>
                         <p>Destinatario: Julian Eduardo Viera</p>
                         <p>Celular: +543442111111</p>
-                        <p>Province: Entre Ríos</p>
+                        <p>Provincia: Entre Ríos</p>
                         <p>Ciudad: San José</p>
                         <p>Dirección: Junín 2020</p>
                     </div>
