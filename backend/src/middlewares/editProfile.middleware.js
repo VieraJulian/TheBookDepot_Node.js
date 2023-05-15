@@ -3,4 +3,6 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 const validations = require("../validations/editProfile.validations")
 
-module.exports = [upload.array('image', 1), validations]
+const { verifyToken } = require('./verifyToken.middleware')
+
+module.exports = [verifyToken, upload.array('image', 1), validations]

@@ -1,3 +1,5 @@
 const validations = require("../validations/createAddress.validations")
 
-module.exports = [validations]
+const { verifyToken } = require('./verifyToken.middleware')
+
+module.exports = [verifyToken, validations]

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { userLogin } from '../services/usersLogin';
+import Cookies from 'universal-cookie';
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -33,6 +34,12 @@ function Login() {
         const result = await userLogin(values)
 
         if (result.id) {
+            const cookies = new Cookies();
+            cookies.set('response', { userId: result.id, token: result.token }, {
+                path: '/',
+                expires: new Date(new Date().getTime() + 60 * 60 * 24)
+            })
+
             window.location.href = '/'
         }
     }
@@ -60,16 +67,16 @@ function Login() {
                                             name='email'
                                             placeholder='Correo'
                                             spellCheck="false"
-                                            autoComplete="off" 
+                                            autoComplete="off"
                                             value={values.email}
                                             onChange={handleChange} />
                                         <input type="password"
                                             name='password'
                                             placeholder='Contraseña'
                                             spellCheck="false"
-                                            autoComplete="off" 
+                                            autoComplete="off"
                                             value={values.password}
-                                            onChange={handleChange}/>
+                                            onChange={handleChange} />
                                     </fieldset>
                                     <button type='submit' className='btn-submit'>Ingresar</button>
                                     <fieldset className='links-container'>

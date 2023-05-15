@@ -1,6 +1,7 @@
-const { User, UserImage, Address, Order, OrderItem } = require("../database/models/index")
+const { User, UserImage, Address, Order } = require("../database/models/index")
 const { hashSync } = require("bcryptjs")
 const { validationResult } = require("express-validator")
+const jwt = require('jsonwebtoken')
 
 const handleValidationErrors = (validations) => {
     const errors = validations.array();
@@ -65,7 +66,16 @@ module.exports = {
 
             const userDB = users.find(user => user.email === req.body.email)
 
-            return res.status(200).json({ id: userDB.id })
+            const tokenData = {
+                id: userDB.id,
+                name: userDB.name
+            }
+
+            const token = jwt.sign(tokenData, process.env.SECRET_SHARED, {
+                expiresIn: 60 * 60 * 24
+            })
+
+            return res.status(200).json({ id: userDB.id, token: token })
         } catch (error) {
             return res.status(500).json(error)
         }
