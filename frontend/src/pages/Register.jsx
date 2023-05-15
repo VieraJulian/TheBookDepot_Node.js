@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { userRegister } from '../services/usersRegister'
 
@@ -41,7 +41,7 @@ function Register() {
         event.preventDefault();
 
         const formData = new FormData()
-        
+
         formData.append('firstName', values.firstName)
         formData.append('lastName', values.lastName)
         formData.append('birthDate', values.birthDate)
@@ -50,7 +50,11 @@ function Register() {
         formData.append('password', values.password)
         formData.append('image', image)
 
-        await userRegister(formData)
+        const result = await userRegister(formData)
+
+        if (result ===  "User registered") {
+            window.location.href = '/users/login'
+        }
     }
 
     return (
