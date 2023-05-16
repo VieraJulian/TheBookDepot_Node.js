@@ -9,12 +9,19 @@ function Navbar() {
             <div className='navbar'>
                 <div className='navbar-container'>
                     <div className='navbar-top'>
-                        <Link to="#">
+                        <Link to="/">
                             <p className='navbar-p-bd'>TheBookDepot</p>
                         </Link>
-                        <Link to="#">
-                            <p className='navbar-p-mc'>Mi Cuenta</p>
-                        </Link>
+                        <div className="dropdown">
+                            <button className='navbar-p-mc'>Mi Cuenta</button>
+                            <div className="dropdown-content">
+                                <Link to="/users/login">Login</Link>
+                                <Link to="/users/register">Registrarse</Link>
+                                <Link to="/users/profile">Mis datos</Link>
+                                <Link to="#">Cerrar sesión</Link>
+                                <Link to="/admin">Dashboard</Link>
+                            </div>
+                        </div>
                     </div>
                     <picture className='navbar-logo'>
                         <Link to="/">

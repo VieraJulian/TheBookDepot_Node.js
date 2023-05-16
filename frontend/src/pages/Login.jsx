@@ -37,13 +37,13 @@ function Login() {
             const cookies = new Cookies();
             cookies.set('response', { userId: result.id, token: result.token }, {
                 path: '/',
-                expires: new Date(new Date().getTime() + 60 * 60 * 24)
+                expires: new Date(new Date().getTime() + 1 * 24 * 60 * 60 * 1000)
+
             })
 
             window.location.href = '/'
         }
     }
-
 
     return (
         <>
