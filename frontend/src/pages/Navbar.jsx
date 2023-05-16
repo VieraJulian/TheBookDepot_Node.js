@@ -1,9 +1,20 @@
 import { Link } from 'react-router-dom'
+import Cookies from 'universal-cookie';
 
 import "../../public/css/navbar/navbar-mobile.css"
 import "../../public/css/navbar/navbar-desktop.css"
 
 function Navbar() {
+    const cookies = new Cookies();
+    const cookieGet = cookies.get('response')
+
+    const handleLogout = () => {
+        if (cookieGet && cookieGet.userId) {
+            cookies.remove('response', { path: '/' });
+            window.location.href = '/'
+        }
+    }
+
     return (
         <>
             <div className='navbar'>
@@ -15,10 +26,16 @@ function Navbar() {
                         <div className="dropdown">
                             <button className='navbar-p-mc'>Mi Cuenta</button>
                             <div className="dropdown-content">
-                                <Link to="/users/login">Login</Link>
-                                <Link to="/users/register">Registrarse</Link>
-                                <Link to="/users/profile">Mis datos</Link>
-                                <Link to="#">Cerrar sesión</Link>
+                                {cookieGet ?
+                                    <>
+                                        <Link to="/users/profile">Mis datos</Link>
+                                        <Link to="#" onClick={() => handleLogout()}>Cerrar sesión</Link>
+                                    </> :
+                                    <>
+                                        <Link to="/users/login">Login</Link>
+                                        <Link to="/users/register">Registrarse</Link>
+                                    </>
+                                }
                                 <Link to="/admin">Dashboard</Link>
                             </div>
                         </div>
