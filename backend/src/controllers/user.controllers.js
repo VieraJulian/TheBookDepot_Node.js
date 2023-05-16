@@ -75,7 +75,7 @@ module.exports = {
                 expiresIn: 60 * 60 * 24
             })
 
-            return res.status(200).json({ id: userDB.id, token: token })
+            return res.status(200).json({ id: userDB.id, admin: userDB.admin,  token: token })
         } catch (error) {
             return res.status(500).json(error)
         }
