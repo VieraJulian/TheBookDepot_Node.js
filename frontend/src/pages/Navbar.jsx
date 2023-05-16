@@ -30,13 +30,13 @@ function Navbar() {
                                     <>
                                         <Link to="/users/profile">Mis datos</Link>
                                         <Link to="#" onClick={() => handleLogout()}>Cerrar sesión</Link>
+                                        {cookieGet.admin === true && <Link to="/admin">Dashboard</Link>}
                                     </> :
                                     <>
                                         <Link to="/users/login">Login</Link>
                                         <Link to="/users/register">Registrarse</Link>
                                     </>
                                 }
-                                <Link to="/admin">Dashboard</Link>
                             </div>
                         </div>
                     </div>

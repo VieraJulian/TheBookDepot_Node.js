@@ -35,7 +35,7 @@ function Login() {
 
         if (result.id) {
             const cookies = new Cookies();
-            cookies.set('response', { userId: result.id, token: result.token }, {
+            cookies.set('response', { userId: result.id, admin: result.admin, token: result.token }, {
                 path: '/',
                 expires: new Date(new Date().getTime() + 1 * 24 * 60 * 60 * 1000)
 
