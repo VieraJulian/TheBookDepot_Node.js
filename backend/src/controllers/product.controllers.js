@@ -48,7 +48,7 @@ module.exports = {
                 image: base64Image
             })
 
-            return res.status(200).json("Product created")
+            return res.status(200).json({ id: productCreate.id})
         } catch (error) {
             return res.status(500).json(error)
         }

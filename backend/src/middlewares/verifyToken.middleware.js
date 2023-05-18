@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 
 function verifyToken(req, res, next) {
-    const token = req.headers['authorization'];
+    let token = req.headers.authorization;
 
     if (!token) {
         res.status(401).send({
@@ -11,7 +11,7 @@ function verifyToken(req, res, next) {
 
     token = token.split(' ')[1]
 
-    jwt.verify(token, process.env.SHARED_SECRET, function (err, user) {
+    jwt.verify(token, process.env.SECRET_SHARED, function (err, user) {
         if (err) {
             res.status(401).send({
                 error: 'Token inválido'
