@@ -25,7 +25,7 @@ function Detail() {
                                         <p>Más Vendidos</p>
                                     </div>
                                 }
-                                <img src={article.image} alt="" />
+                                <img src={article.image} alt={article.title} />
                             </div>
                             <div className='detail-first'>
                                 <div className='detail-description'>

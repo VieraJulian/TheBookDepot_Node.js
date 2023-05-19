@@ -188,13 +188,17 @@ module.exports = {
                 ]
             });
 
-            let data = {
+            const buffer = userDB.image.image
+            const base64 = Buffer.from(buffer).toString('base64');
+            const image = `data:image/png;base64,${Buffer.from(base64, 'base64').toString()}`;
+
+            const data = {
                 firstName: userDB.firstName,
                 lastName: userDB.lastName,
                 birthDate: userDB.birthDate,
                 phone: userDB.phone,
                 email: userDB.email,
-                image: userDB.image.image
+                image: image
             }
 
             return res.status(200).json(data)
