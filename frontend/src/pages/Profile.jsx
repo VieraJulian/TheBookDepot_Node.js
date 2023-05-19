@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import { useGetUserInfo } from '../hooks/getUserInfo';
+import { useGetUserInfo } from '../hooks/useGetUserInfo';
 
 import Navbar from './Navbar'
 import Footer from './Footer'

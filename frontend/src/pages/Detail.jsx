@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Navbar from './Navbar'
 import Footer from './Footer'
-import { useGetArticle } from "../hooks/getArticle";
+import { useGetArticle } from "../hooks/useGetArticle";
 
 import "../../public/css/detail/detail-mobile.css"
 import "../../public/css/detail/detail-tablet.css"
