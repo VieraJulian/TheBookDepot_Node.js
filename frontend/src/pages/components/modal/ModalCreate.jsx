@@ -63,8 +63,6 @@ function ModalCreate() {
 
         const result = await productCreate(formData, token)
 
-        console.log(result)
-
         if (!Array.isArray(result)) {
             window.location.href = `/products/detail/${result.id}`
         }

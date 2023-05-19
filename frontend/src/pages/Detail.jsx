@@ -1,11 +1,16 @@
+import { useParams } from "react-router-dom";
 import Navbar from './Navbar'
 import Footer from './Footer'
+import { useGetArticle } from "../hooks/getArticle";
 
 import "../../public/css/detail/detail-mobile.css"
 import "../../public/css/detail/detail-tablet.css"
 import "../../public/css/detail/detail-desktop.css"
 
 function Detail() {
+    const { id } = useParams()
+    const { article } = useGetArticle({ id })
+
     return (
         <>
             <div className='detail-container'>
