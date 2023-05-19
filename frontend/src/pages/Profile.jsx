@@ -50,7 +50,7 @@ function Profile() {
                                 </div>
                             </div>
                             <div className='profile-selected'>
-                                {selectedContent === 'Information' && <Information />}
+                                {selectedContent === 'Information' && <Information userInfoProfile={userInfoProfile}/>}
                                 {selectedContent === 'Address' && <Address />}
                                 {selectedContent === 'Order' && <Order />}
                                 {selectedContent === 'ProductFavorite' && <ProductFavorite />}
