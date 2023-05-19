@@ -198,6 +198,10 @@ module.exports = {
         try {
             const productDB = await Product.findByPk(req.params.id, { include: [{ association: "productImage" }] })
 
+            const buffer = productDB.productImage.image
+            const base64 = Buffer.from(buffer).toString('base64');
+            const image = `data:image/png;base64,${Buffer.from(base64, 'base64').toString()}`;
+
             const data = {
                 id: productDB.id,
                 title: productDB.title,
@@ -213,7 +217,7 @@ module.exports = {
                 edition: productDB.edition,
                 sold: productDB.sold,
                 stock: productDB.stock,
-                image: productDB.productImage.image
+                image: image
             }
 
             return res.status(200).json(data)
