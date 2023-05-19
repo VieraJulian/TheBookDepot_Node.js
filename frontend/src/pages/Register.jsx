@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { userRegister } from '../services/usersRegister'
+import { useRegister } from '../hooks/useRegister'
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -10,52 +10,7 @@ import "../../public/css/register/register-tablet.css"
 import "../../public/css/register/register-desktop.css"
 
 function Register() {
-    const [image, setImage] = useState(null);
-    const [values, setValues] = useState({
-        firstName: '',
-        lastName: '',
-        birthDate: '',
-        phone: '',
-        email: '',
-        password: ''
-    })
-
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        setImage(file);
-    };
-
-    const handleChange = (event) => {
-        const { target } = event;
-        const { name, value } = target;
-
-        const newValues = {
-            ...values,
-            [name]: value,
-        };
-
-        setValues(newValues);
-    }
-
-    const handleOnSubmit = async (event) => {
-        event.preventDefault();
-
-        const formData = new FormData()
-
-        formData.append('firstName', values.firstName)
-        formData.append('lastName', values.lastName)
-        formData.append('birthDate', values.birthDate)
-        formData.append('phone', values.phone)
-        formData.append('email', values.email)
-        formData.append('password', values.password)
-        formData.append('image', image)
-
-        const result = await userRegister(formData)
-
-        if (result ===  "User registered") {
-            window.location.href = '/users/login'
-        }
-    }
+const { handleImageChange, handleChange, handleOnSubmit, values } = useRegister()
 
     return (
         <>
@@ -84,7 +39,7 @@ function Register() {
                                         <input className='register-input'
                                             type="text"
                                             name='lastName'
-                                            placeholder='Apellidos'
+                                            placeholder='Apellido'
                                             value={values.lastName}
                                             onChange={handleChange} />
                                         <input className='register-input'
