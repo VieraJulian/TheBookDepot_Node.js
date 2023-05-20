@@ -21,6 +21,11 @@ function Address() {
         <>
             <div className="address-container">
                 <p className="p-address">Mis Direcciones</p>
+                {
+                    addresses && addresses.length === 0
+                    ? <AddAddress />
+                    : null
+                }
                 {addresses &&
                     addresses.map((address, index) => {
                         return (
@@ -44,7 +49,7 @@ function Address() {
                     })
                 }
                 {
-                    addresses && addresses.length < 2
+                    addresses && addresses.length === 1
                         ?
                         <>
                             <button className="add-address" onClick={() => handleMenuClick('addAddress')}>Nueva dirección</button>

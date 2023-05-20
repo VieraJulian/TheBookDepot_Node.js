@@ -5,7 +5,7 @@ function AddAddress() {
 
     return (
         <>
-            <form className="address-form second" onSubmit={handleOnSubmit}>
+            <form className="address-form" onSubmit={handleOnSubmit}>
                 <div className="address-inputs">
                     <p className="p-direccion">Añadir dirección</p>
                     <label>Destinatario:</label>
