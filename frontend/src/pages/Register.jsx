@@ -73,7 +73,6 @@ const { handleImageChange, handleChange, handleOnSubmit, values } = useRegister(
                                         <input type="file"
                                             name='image'
                                             className='register-file'
-                                            value={values.image}
                                             onChange={handleImageChange} />
                                     </fieldset>
                                     <button type='submit' className='btn-submit'>Ingresar</button>
