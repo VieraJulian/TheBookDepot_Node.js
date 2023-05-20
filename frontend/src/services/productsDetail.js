@@ -1,11 +1,8 @@
-export const productDetail = (id, token) => {
+export const productDetail = (id) => {
     const PRODUCT_DETAIL_URL = `http://localhost:8000/products/${id}/detail`
 
     const options = {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
+        method: 'GET'
     }
 
     return fetch(PRODUCT_DETAIL_URL, options)
