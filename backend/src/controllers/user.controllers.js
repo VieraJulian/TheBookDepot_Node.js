@@ -219,6 +219,7 @@ module.exports = {
             })
 
             let data = addressesDB.map(address => Object({
+                id: address.id,
                 addresse: address.addresse,
                 phone: address.phone,
                 province: address.province,
