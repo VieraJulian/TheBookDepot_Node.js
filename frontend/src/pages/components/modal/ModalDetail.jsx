@@ -2,7 +2,7 @@ import React from "react";
 
 import "../../../../public/css/modal/detailModal.css"
 
-function ModalDetail() {
+function ModalDetail({ product }) {
 
     return (
         <>

@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import ModalCreate from "../modal/ModalCreate"
 import ModalDetail from "../modal/ModalDetail"
 import ModalEdit from "../modal/ModalEdit";
+import { useGetAllProduct } from "../../../hooks/useGetAllProduct";
 
 import "../../../../public/css/components/admin/product/product-mobile.css"
 import "../../../../public/css/components/admin/product/product-desktop.css"
 
 function Product() {
+    const [page, setPage] = useState(1)
+    const [size, setSize] = useState(5)
+
+    const { products } = useGetAllProduct(page, size)
 
     return (
         <>
@@ -34,44 +39,26 @@ function Product() {
                                 <p className="p-vendido">Vendidos</p>
                                 <p className="p-detalle">Detalle</p>
                             </div>
-                            <div className="info-product">
-                                <div className="product-detail-img">
-                                    <img src="../../../../public/img/portadaEj.png" alt="" />
-                                </div>
-                                <p className="p-info-nombre">Lorem ipsum dolor sit.</p>
-                                <p className="p-info-detail">$5000.00</p>
-                                <p className="p-info-detail">234</p>
-                                <p className="p-info-detail">190</p>
-                                <div className="view-detail">
-                                    <button data-bs-toggle="modal" data-bs-target="#modalDetail"><i className="fa-solid fa-eye"></i></button>
-                                </div>
-                            </div>
-                            <div className="info-product">
-                                <div className="product-detail-img">
-                                    <img src="../../../../public/img/portadaEj.png" alt="" />
-                                </div>
-                                <p className="p-info-nombre">Lorem ipsum dolor sit.</p>
-                                <p className="p-info-detail">$5000.00</p>
-                                <p className="p-info-detail">234</p>
-                                <p className="p-info-detail">190</p>
-                                <div className="view-detail">
-                                    <button data-bs-toggle="modal" data-bs-target="#modalDetail"><i className="fa-solid fa-eye"></i></button>
-                                </div>
-                            </div>
-                            <div className="info-product">
-                                <div className="product-detail-img">
-                                    <img src="../../../../public/img/portadaEj.png" alt="" />
-                                </div>
-                                <p className="p-info-nombre">Lorem ipsum dolor sit.</p>
-                                <p className="p-info-detail">$5000.00</p>
-                                <p className="p-info-detail">234</p>
-                                <p className="p-info-detail">190</p>
-                                <div className="view-detail">
-                                    <button data-bs-toggle="modal" data-bs-target="#modalDetail"><i className="fa-solid fa-eye"></i></button>
-                                </div>
-                            </div>
+                            {products &&
+                                products.map((product) => {
+                                    return (
+                                        <div className="info-product" key={product.id}>
+                                            <div className="product-detail-img">
+                                                <img src={product.image} alt={product.title} />
+                                            </div>
+                                            <p className="p-info-nombre">{product.title}</p>
+                                            <p className="p-info-detail">${product.price}</p>
+                                            <p className="p-info-detail">{product.stock}</p>
+                                            <p className="p-info-detail">{product.sold}</p>
+                                            <div className="view-detail">
+                                                <button data-bs-toggle="modal" data-bs-target="#modalDetail"><i className="fa-solid fa-eye"></i></button>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                            <ModalDetail />
                             <ModalCreate />
-                            <ModalDetail/>
                             <ModalEdit />
                         </div>
                     </div>

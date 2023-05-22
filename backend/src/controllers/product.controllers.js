@@ -48,7 +48,7 @@ module.exports = {
                 image: base64Image
             })
 
-            return res.status(200).json({ id: productCreate.id})
+            return res.status(200).json({ id: productCreate.id })
         } catch (error) {
             return res.status(500).json(error)
         }
@@ -273,6 +273,10 @@ module.exports = {
             });
 
             const productsAll = productsDB.map(p => {
+                const buffer = p.productImage.image
+                const base64 = Buffer.from(buffer).toString('base64');
+                const image = `data:image/png;base64,${Buffer.from(base64, 'base64').toString()}`;
+
                 return {
                     id: p.id,
                     title: p.title,
@@ -288,7 +292,7 @@ module.exports = {
                     edition: p.edition,
                     sold: p.sold,
                     stock: p.stock,
-                    image: p.productImage.image
+                    image: image
                 }
             })
 
