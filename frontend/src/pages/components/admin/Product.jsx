@@ -3,6 +3,7 @@ import ModalCreate from "../modal/ModalCreate"
 import ModalDetail from "../modal/ModalDetail"
 import ModalEdit from "../modal/ModalEdit";
 import { useGetAllProduct } from "../../../hooks/useGetAllProduct";
+import { usePaginationProductsAdmin } from "../../../hooks/usePaginationProductsAdmin";
 
 import "../../../../public/css/components/admin/product/product-mobile.css"
 import "../../../../public/css/components/admin/product/product-desktop.css"
@@ -10,45 +11,8 @@ import "../../../../public/css/components/admin/product/product-desktop.css"
 function Product() {
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(1)
-
     const { products, totalPages } = useGetAllProduct(page, size)
-
-    const handleChangePage = (event) => {
-        const number = parseInt(event.target.innerHTML);
-        setPage(number);
-    };
-
-    const handlePrevClick = () => {
-        if (page > 1) {
-            setPage(page - 1);
-        }
-    };
-
-    const handleNextClick = () => {
-        if (page < totalPages) {
-            setPage(page + 1);
-        }
-    };
-
-    const paginationNumbers = [];
-    let startPage = Math.max(page - 2, 1);
-    let endPage = Math.min(page + 1, totalPages);
-
-    if (startPage === 1) {
-        endPage = Math.min(startPage + 3, totalPages);
-    }
-
-    if (endPage === totalPages) {
-        startPage = Math.max(endPage - 3, 1);
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-        paginationNumbers.push(
-            <li key={i} className={i === page ? 'active' : ''} onClick={handleChangePage}>
-                {i}
-            </li>
-        );
-    }
+    const { handleChangePage, handlePrevClick, handleNextClick, paginationNumbers } = usePaginationProductsAdmin(page, totalPages, setPage)
 
     return (
         <>
@@ -62,7 +26,7 @@ function Product() {
                         {page !== 1 && (
                             <button onClick={handlePrevClick}><i className="fa-solid fa-caret-left"></i></button>
                         )}
-                        {paginationNumbers.map((number, i) => (
+                        {paginationNumbers && paginationNumbers.map((number, i) => (
                             <button className={page === number ? 'active' : ''} onClick={handleChangePage} key={i}>{number}</button>
                         ))}
                         {
