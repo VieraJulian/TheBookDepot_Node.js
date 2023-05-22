@@ -11,7 +11,10 @@ function Product() {
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(5)
 
-    const { products } = useGetAllProduct(page, size)
+    const { products, totalPages } = useGetAllProduct(page, size)
+
+    const handleChangePage = () => {}
+    const handleChangeSize = () => {}
 
     return (
         <>

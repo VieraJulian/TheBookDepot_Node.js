@@ -266,11 +266,17 @@ module.exports = {
             const limit = parseInt(size);
             const offset = (page - 1) * size;
 
+            const totalProductsDB = await Product.findAll();
+
+            const totalProducts = totalProductsDB.length
+
             const productsDB = await Product.findAll({
                 limit,
                 offset,
                 include: [{ association: "productImage" }]
             });
+
+            const totalPages = Math.ceil(totalProducts / limit);
 
             const productsAll = productsDB.map(p => {
                 const buffer = p.productImage.image
@@ -296,7 +302,12 @@ module.exports = {
                 }
             })
 
-            return res.status(200).json(productsAll);
+            const data = {
+                totalPages,
+                productsAll
+            }
+
+            return res.status(200).json(data);
         } catch (error) {
             return res.status(500).json(error);
         }
