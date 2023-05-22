@@ -9,12 +9,46 @@ import "../../../../public/css/components/admin/product/product-desktop.css"
 
 function Product() {
     const [page, setPage] = useState(1)
-    const [size, setSize] = useState(5)
+    const [size, setSize] = useState(1)
 
     const { products, totalPages } = useGetAllProduct(page, size)
 
-    const handleChangePage = () => {}
-    const handleChangeSize = () => {}
+    const handleChangePage = (event) => {
+        const number = parseInt(event.target.innerHTML);
+        setPage(number);
+    };
+
+    const handlePrevClick = () => {
+        if (page > 1) {
+            setPage(page - 1);
+        }
+    };
+
+    const handleNextClick = () => {
+        if (page < totalPages) {
+            setPage(page + 1);
+        }
+    };
+
+    const paginationNumbers = [];
+    let startPage = Math.max(page - 2, 1);
+    let endPage = Math.min(page + 1, totalPages);
+
+    if (startPage === 1) {
+        endPage = Math.min(startPage + 3, totalPages);
+    }
+
+    if (endPage === totalPages) {
+        startPage = Math.max(endPage - 3, 1);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+        paginationNumbers.push(
+            <li key={i} className={i === page ? 'active' : ''} onClick={handleChangePage}>
+                {i}
+            </li>
+        );
+    }
 
     return (
         <>
@@ -25,12 +59,19 @@ function Product() {
                 <button className="add-product" data-bs-toggle="modal" data-bs-target="#modalCreate">AGREGAR NUEVO PRODUCTO</button>
                 <div className="products-order-container">
                     <div className="pagination-container">
-                        <button><i className="fa-solid fa-caret-left"></i></button>
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>4</button>
-                        <button><i className="fa-solid fa-caret-right"></i></button>
+                        {page !== 1 && (
+                            <button onClick={handlePrevClick}><i className="fa-solid fa-caret-left"></i></button>
+                        )}
+                        {paginationNumbers.map((number, i) => (
+                            <button className={page === number ? 'active' : ''} onClick={handleChangePage} key={i}>{number}</button>
+                        ))}
+                        {
+                            page !== totalPages && (
+                                <button onClick={handleNextClick}><i className="fa-solid fa-caret-right"></i></button>
+                            )
+                        }
+
+
                     </div>
                     <div className="detail-product">
                         <div className="info-product-container">

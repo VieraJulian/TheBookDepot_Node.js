@@ -13,7 +13,7 @@ export function useGetAllProduct(page, size) {
         }
 
         getProducts()
-    }, [])
+    }, [page])
 
     return { products, totalPages }
 }

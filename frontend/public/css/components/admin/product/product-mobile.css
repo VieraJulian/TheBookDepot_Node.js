@@ -14,3 +14,12 @@
     font-weight: 600;
     font-size: 1.2rem;
 }
+
+.pagination-container button {
+    list-style: none;
+}
+
+.pagination-container .active{
+    color: red;
+    font-weight: 600;
+}
