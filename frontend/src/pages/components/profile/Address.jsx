@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AddAddress from './AddAdress';
 import { useGetUserAddresses } from '../../../hooks/useGetUserAddress';
 import { useEditAddress } from '../../../hooks/useEditAddress';
+import { useDeleteAddress } from '../../../hooks/useDeleteAddress';
 
 import "../../../../public/css/components/profile/address/address-mobile.css"
 import "../../../../public/css/components/profile/address/address-desktop.css"
@@ -10,6 +11,7 @@ function Address() {
     const { addresses } = useGetUserAddresses()
     const [selectedContent, setSelectedContent] = useState('')
     const { handleInputChange, handleOnSubmit } = useEditAddress(addresses)
+    const { handleDeleteAddress } = useDeleteAddress()
 
     function handleMenuClick(content) {
         if (selectedContent === content) {
@@ -65,7 +67,7 @@ function Address() {
                                         defaultValue={address.address}
                                         onChange={(event) => handleInputChange(index, event)} />
                                     <button className="address-saved">Guardar cambios</button>
-                                    <button className="delete-address">Eliminar direccíon</button>
+                                    <button className="delete-address" onClick={(event) => handleDeleteAddress(address.id, event)}>Eliminar direccíon</button>
                                 </div>
                             </form>)
                     })
