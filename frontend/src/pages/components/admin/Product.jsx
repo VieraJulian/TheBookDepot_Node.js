@@ -10,9 +10,14 @@ import "../../../../public/css/components/admin/product/product-desktop.css"
 
 function Product() {
     const [page, setPage] = useState(1)
-    const [size, setSize] = useState(1)
+    const [size, setSize] = useState(3)
+    const [productS, setProductS] = useState(null)
     const { products, totalPages } = useGetAllProduct(page, size)
     const { handleChangePage, handlePrevClick, handleNextClick, paginationNumbers } = usePaginationProductsAdmin(page, totalPages, setPage)
+
+    const handleProductModal = (product) => {
+        setProductS(product)
+    }
 
     return (
         <>
@@ -34,8 +39,6 @@ function Product() {
                                 <button onClick={handleNextClick}><i className="fa-solid fa-caret-right"></i></button>
                             )
                         }
-
-
                     </div>
                     <div className="detail-product">
                         <div className="info-product-container">
@@ -59,15 +62,15 @@ function Product() {
                                             <p className="p-info-detail">{product.stock}</p>
                                             <p className="p-info-detail">{product.sold}</p>
                                             <div className="view-detail">
-                                                <button data-bs-toggle="modal" data-bs-target="#modalDetail"><i className="fa-solid fa-eye"></i></button>
+                                                <button data-bs-toggle="modal" data-bs-target="#modalDetail" onClick={() => handleProductModal(product)}><i className="fa-solid fa-eye"></i></button>
                                             </div>
                                         </div>
                                     )
                                 })
                             }
-                            <ModalDetail />
+                            <ModalDetail productS={productS} />
                             <ModalCreate />
-                            <ModalEdit />
+                            <ModalEdit productS={productS} />
                         </div>
                     </div>
                 </div>
