@@ -15,8 +15,7 @@ export function userEditAddress(data, token) {
             if (!response.ok) {
                 throw new Error(response.status)
             }
-
-            // "Edited Address"
+            
             return response.json()
         })
 }

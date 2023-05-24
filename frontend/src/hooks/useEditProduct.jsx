@@ -1,30 +1,31 @@
-import React, { useState } from "react";
-import { productCreate } from "../services/productsCreate";
+import React, { useEffect, useState } from "react";
+import { editProduct } from "../services/productsEdit";
 import Cookies from 'universal-cookie';
 
-export function useEditProduct() {
-    const [image, setImage] = useState(null);
-    const [values, setValues] = useState({
-        title: '',
-        author: '',
-        editorial: '',
-        price: '',
-        collection: '',
-        numberPages: '',
-        language: '',
-        format: '',
-        isbn: '',
-        weight: '',
-        edition: '',
-        stock: '',
-    })
+export function useEditProduct(productS) {
+    const [image, setImage] = useState(null)
+    const [values, setValues] = useState(null)
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        setImage(file);
-    };
+    useEffect(() => {
+        if (productS) {
+            setValues({
+                title: productS.title,
+                author: productS.author,
+                editorial: productS.editorial,
+                price: productS.price,
+                collection: productS.collection,
+                numberPages: productS.numberPages,
+                language: productS.language,
+                format: productS.format,
+                isbn: productS.isbn,
+                weight: productS.weight,
+                edition: productS.edition,
+                stock: productS.stock,
+            });
+        }
+    }, [productS]);
 
-    const handleChange = (event) => {
+    const handleValueChange = (event) => {
         const { target } = event
         const { name, value } = target
 
@@ -36,11 +37,17 @@ export function useEditProduct() {
         setValues(newValues)
     }
 
+    const handleImageChange = (event) => {
+        const file = event.target.files[0]
+        setImage(file)
+    }
+
     const handleOnSubmit = async (event) => {
-        event.preventDefault();
+        event.preventDefault()
 
         const formData = new FormData()
 
+        formData.append('id', productS && productS.id)
         formData.append('title', values.title)
         formData.append('author', values.author)
         formData.append('editorial', values.editorial)
@@ -59,12 +66,12 @@ export function useEditProduct() {
         const cookieGet = cookies.get('response')
         const token = cookieGet.token
 
-        const result = await productCreate(formData, token)
+        const result = await editProduct(formData, token)
 
-        if (!Array.isArray(result)) {
-            window.location.href = `/products/detail/${result.id}`
+        if (result === 'Product edited') {
+            window.location.href = '/admin'
         }
     }
 
-    return { handleImageChange, handleChange, handleOnSubmit, values }
+    return { handleImageChange, handleValueChange, handleOnSubmit, values, image }
 }

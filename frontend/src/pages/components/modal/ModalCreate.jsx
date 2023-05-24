@@ -1,10 +1,10 @@
 import React from "react";
-import { useEditProduct } from "../../../hooks/useEditProduct";
+import { useCreateProduct } from "../../../hooks/useCreateProduct"
 
 import "../../../../public/css/modal/modal.css"
 
 function ModalCreate() {
-    const { handleImageChange, handleChange, handleOnSubmit, values } = useEditProduct()
+    const { handleImageChange, handleChange, handleOnSubmit, values } = useCreateProduct()
     return (
         <>
             <div className="modal fade" id="modalCreate" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
