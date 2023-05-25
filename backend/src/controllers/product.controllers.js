@@ -273,7 +273,8 @@ module.exports = {
             const productsDB = await Product.findAll({
                 limit,
                 offset,
-                include: [{ association: "productImage" }]
+                include: [{ association: "productImage" }],
+                order: [['createdAt', 'DESC']]
             });
 
             const totalPages = Math.ceil(totalProducts / limit);

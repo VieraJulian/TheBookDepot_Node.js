@@ -1,4 +1,7 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
+import { useGetAllProduct } from '../hooks/useGetAllProduct'
+import { usePaginationProductsAdmin } from '../hooks/usePaginationProductsAdmin'
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -8,6 +11,11 @@ import "../../public/css/carousel/carousel-desktop.css"
 import "../../public/css/home/home-mobile.css"
 
 function Home() {
+    const [page, setPage] = useState(1)
+    const [size, setSize] = useState(20)
+    const { products, totalPages } = useGetAllProduct(page, size)
+    const { handleChangePage, handlePrevClick, handleNextClick, paginationNumbers } = usePaginationProductsAdmin(page, totalPages, setPage)
+
     return (
         <>
             <Navbar />
@@ -49,62 +57,30 @@ function Home() {
                     </div>
                     <div className='home-articles-container'>
                         <div className='articles-container'>
-                            <div className='article'>
-                                <Link to="/products/detail/1">
-                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
-                                </Link>
+                            {products &&
+                                products.map(product => {
+                                    return (
+                                        <div className='article'>
+                                            <Link to={`/products/detail/${product.id}`}>
+                                                <img className='article-img' src={product.image} alt={product.title} />
+                                            </Link>
+                                        </div>
+                                    )
+                                })
+                            }
+                            <div className="pagination-container-home">
+                                {page !== 1 && (
+                                    <button onClick={handlePrevClick}><i className="fa-solid fa-caret-left"></i></button>
+                                )}
+                                {paginationNumbers && paginationNumbers.map((number, i) => (
+                                    <button className={page === number ? 'active' : ''} onClick={handleChangePage} key={i}>{number}</button>
+                                ))}
+                                {
+                                    page !== totalPages && (
+                                        <button onClick={handleNextClick}><i className="fa-solid fa-caret-right"></i></button>
+                                    )
+                                }
                             </div>
-                            <div className='article'>
-                                <Link to="/products/detail/1">
-                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
-                                </Link>
-                            </div>
-                            <div className='article'>
-                                <Link to="/products/detail/1">
-                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
-                                </Link>
-                            </div>
-                            <div className='article'>
-                                <Link to="/products/detail/1">
-                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
-                                </Link>
-                            </div>
-                            <div className='article'>
-                                <Link to="/products/detail/1">
-                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
-                                </Link>
-                            </div>
-                            <div className='article'>
-                                <Link to="/products/detail/1">
-                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
-                                </Link>
-                            </div>
-                            <div className='article'>
-                                <Link to="/products/detail/1">
-                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
-                                </Link>
-                            </div>
-                            <div className='article'>
-                                <Link to="/products/detail/1">
-                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
-                                </Link>
-                            </div>
-                            <div className='article'>
-                                <Link to="/products/detail/1">
-                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
-                                </Link>
-                            </div>
-                            <div className='article'>
-                                <Link to="/products/detail/1">
-                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
-                                </Link>
-                            </div>
-                            <div className='article'>
-                                <Link to="/products/detail/1">
-                                    <img className='article-img' src="../../public/img/portadaEj.png" alt="libro" />
-                                </Link>
-                            </div>
-
                         </div>
                     </div>
                 </div>
