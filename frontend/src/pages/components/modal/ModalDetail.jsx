@@ -1,8 +1,11 @@
 import React from "react";
+import { useDeleteProduct } from "../../../hooks/useDeleteProduct";
 
 import "../../../../public/css/modal/detailModal.css"
 
 function ModalDetail({ productS }) {
+    const { handleDeleteProduct } = useDeleteProduct()
+
     return (
         <>
             <div className="modal fade" id="modalDetail" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -31,7 +34,7 @@ function ModalDetail({ productS }) {
                                     <img src={productS.image} alt={productS.title} />
                                 </div>
                                 <div className="detailModal-button">
-                                    <button type="button" className="btn btn-danger">Eliminar</button>
+                                    <button type="button" className="btn btn-danger" onClick={() => handleDeleteProduct(productS.id)}>Eliminar</button>
                                     <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEdit">Modificar</button>
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                 </div>
