@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useGetAllProduct } from '../hooks/useGetAllProduct'
-import { usePaginationProductsAdmin } from '../hooks/usePaginationProductsAdmin'
+import { usePaginationProducts } from '../hooks/usePaginationProducts'
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -14,7 +14,7 @@ function Home() {
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(20)
     const { products, totalPages } = useGetAllProduct(page, size)
-    const { handleChangePage, handlePrevClick, handleNextClick, paginationNumbers } = usePaginationProductsAdmin(page, totalPages, setPage)
+    const { handleChangePage, handlePrevClick, handleNextClick, paginationNumbers } = usePaginationProducts(page, totalPages, setPage)
 
     return (
         <>

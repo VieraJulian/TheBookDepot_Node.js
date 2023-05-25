@@ -3,7 +3,7 @@ import ModalCreate from "../modal/ModalCreate"
 import ModalDetail from "../modal/ModalDetail"
 import ModalEdit from "../modal/ModalEdit";
 import { useGetAllProduct } from "../../../hooks/useGetAllProduct";
-import { usePaginationProductsAdmin } from "../../../hooks/usePaginationProductsAdmin";
+import { usePaginationProducts } from "../../../hooks/usePaginationProducts";
 
 import "../../../../public/css/components/admin/product/product-mobile.css"
 import "../../../../public/css/components/admin/product/product-desktop.css"
@@ -13,7 +13,7 @@ function Product() {
     const [size, setSize] = useState(3)
     const [productS, setProductS] = useState(null)
     const { products, totalPages } = useGetAllProduct(page, size)
-    const { handleChangePage, handlePrevClick, handleNextClick, paginationNumbers } = usePaginationProductsAdmin(page, totalPages, setPage)
+    const { handleChangePage, handlePrevClick, handleNextClick, paginationNumbers } = usePaginationProducts(page, totalPages, setPage)
 
     const handleProductModal = (product) => {
         setProductS(product)

@@ -1,4 +1,4 @@
-export function usePaginationProductsAdmin( page, totalPages, setPage) {
+export function usePaginationProducts( page, totalPages, setPage) {
     const handleChangePage = (event) => {
         const number = parseInt(event.target.innerHTML);
         setPage(number);
