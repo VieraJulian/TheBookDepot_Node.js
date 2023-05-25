@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import { useGetUserSaved } from '../../../hooks/useGetUserSaved'
+import { useDeleteProductSaved } from '../../../hooks/useDeleteProductSaved'
 
 import '../../../../public/css/components/profile/saved/saved-mobile.css'
 
 function ProductSaved() {
     const { products } = useGetUserSaved()
+    const { handleDeleteSaved } = useDeleteProductSaved()
 
     return (
         <>
@@ -12,7 +14,7 @@ function ProductSaved() {
                 <p className="p-saved">Productos Guardados</p>
                 <div className="saved-p-container">
                     {
-                        products ?
+                        products && products.length > 0 ?
                             products.map(product => {
                                 return (
                                     <Link to={`/products/detail/${product.id}`} key={product.id}>
@@ -26,7 +28,10 @@ function ProductSaved() {
                                             </div>
                                             <div className="saved-btns">
                                                 <button><i className="fa-solid fa-cart-plus"></i></button>
-                                                <button><i className="fa-solid fa-circle-xmark"></i></button>
+                                                <button onClick={(event) => {
+                                                    event.stopPropagation();
+                                                    handleDeleteSaved(product.id);
+                                                }}><i className="fa-solid fa-circle-xmark"></i></button>
                                                 <button><i className="fa-brands fa-whatsapp"></i></button>
                                             </div>
                                         </div>

@@ -28,7 +28,10 @@ function ProductFavorite() {
                                             </div>
                                             <div className="favorite-btns">
                                                 <button><i className="fa-solid fa-cart-plus"></i></button>
-                                                <button onClick={() => handleDeleteFavorites(product.id)}><i className="fa-solid fa-circle-xmark"></i></button>
+                                                <button onClick={(event) => {
+                                                    event.stopPropagation();
+                                                    handleDeleteFavorites(product.id)
+                                                }}><i className="fa-solid fa-circle-xmark"></i></button>
                                                 <button><i className="fa-brands fa-whatsapp"></i></button>
                                             </div>
                                         </div>
