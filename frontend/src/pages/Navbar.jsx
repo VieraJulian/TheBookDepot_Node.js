@@ -29,8 +29,8 @@ function Navbar() {
                                 {cookieGet ?
                                     <>
                                         <Link to="/users/profile">Mis datos</Link>
-                                        <Link to="#" onClick={() => handleLogout()}>Cerrar sesión</Link>
                                         {cookieGet.admin === true && <Link to="/admin">Dashboard</Link>}
+                                        <Link to="#" onClick={() => handleLogout()}>Cerrar sesión</Link>
                                     </> :
                                     <>
                                         <Link to="/users/login">Login</Link>

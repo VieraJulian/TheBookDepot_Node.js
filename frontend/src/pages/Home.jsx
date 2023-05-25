@@ -60,7 +60,7 @@ function Home() {
                             {products &&
                                 products.map(product => {
                                     return (
-                                        <div className='article'>
+                                        <div className='article' key={product.id}>
                                             <Link to={`/products/detail/${product.id}`}>
                                                 <img className='article-img' src={product.image} alt={product.title} />
                                             </Link>

@@ -7,6 +7,8 @@ function verifyToken(req, res, next) {
         res.status(401).send({
             error: "Es necesario el token de autenticación"
         });
+
+        return
     }
 
     token = token.split(' ')[1]

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { useGetArticle } from "../hooks/useGetArticle";
+import { useProductAddFavorites } from "../hooks/useProductAddFavorites";
 
 import "../../public/css/detail/detail-mobile.css"
 import "../../public/css/detail/detail-tablet.css"
@@ -10,6 +11,7 @@ import "../../public/css/detail/detail-desktop.css"
 function Detail() {
     const { id } = useParams()
     const { article } = useGetArticle({ id })
+    const { handleAddFavorite } = useProductAddFavorites()
 
     return (
         <>
@@ -43,7 +45,7 @@ function Detail() {
                                         }
                                     </div>
                                     <div className='detail-actions'>
-                                        <button>
+                                        <button onClick={() => handleAddFavorite(article.id)}>
                                             <i className="fa-regular fa-heart"></i>
                                             {/* <i className="fa-solid fa-heart"></i> */}
                                         </button>
