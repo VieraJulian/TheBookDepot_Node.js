@@ -187,10 +187,15 @@ module.exports = {
             const data = await Promise.all(saved.map(async (f) => {
                 const product = await Product.findByPk(f.productId, { include: [{ association: "productImage" }] })
 
+                const buffer = product.productImage.image
+                const base64 = Buffer.from(buffer).toString('base64');
+                const image = `data:image/png;base64,${Buffer.from(base64, 'base64').toString()}`;
+
                 return {
+                    id: product.id,
                     title: product.title,
                     price: product.price,
-                    image: product.productImage.image
+                    image: image
                 }
             }))
 

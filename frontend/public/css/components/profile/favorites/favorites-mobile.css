@@ -109,6 +109,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        height: 22em;
+        width: 12em;
         max-width: 12em;
     }
 
