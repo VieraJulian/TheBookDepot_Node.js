@@ -1,35 +1,46 @@
 import { Link } from 'react-router-dom'
+import { useGetUserFavorite } from '../../../hooks/useGetUserFavorite'
 
 import "../../../../public/css/components/profile/favorites/favorites-mobile.css"
 
 function ProductFavorite() {
+    const { products } = useGetUserFavorite()
+
     return (
         <>
             <div className="favorite-container">
                 <p className="p-favorites">Mis Favoritos</p>
                 <div className="favorite-p-container">
-                    <Link to="#">
-                        <div className="favorite-product">
-                            <div className="favorite-img-container">
-                                <img src="../../../public/img/portadaEj.png" alt="" />
+                    {
+                        products ?
+                            products.map(product => {
+                                return (
+                                    <Link to={`/products/detail/${product.id}`} key={product.id}>
+                                        <div className="favorite-product">
+                                            <div className="favorite-img-container">
+                                                <img src={product.image} alt={product.title} />
+                                            </div>
+                                            <div className="favorite-detail">
+                                                <p>{product.title}</p>
+                                                <p className="favorite-price">$ {product.price}</p>
+                                            </div>
+                                            <div className="favorite-btns">
+                                                <button><i className="fa-solid fa-cart-plus"></i></button>
+                                                <button><i className="fa-solid fa-circle-xmark"></i></button>
+                                                <button><i className="fa-brands fa-whatsapp"></i></button>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                )
+                            })
+                            :
+                            <div>
+                                <div className='nothing-favorite'>
+                                    <p>No tienes productos en favoritos</p>
+                                    <i className="fa-regular fa-face-frown"></i>
+                                </div>
                             </div>
-                            <div className="favorite-detail">
-                                <p>Lorem, ipsum dolor.</p>
-                                <p className="favorite-price">$ 5000.00</p>
-                            </div>
-                            <div className="favorite-btns">
-                                <button><i className="fa-solid fa-cart-plus"></i></button>
-                                <button><i className="fa-solid fa-circle-xmark"></i></button>
-                                <button><i className="fa-brands fa-whatsapp"></i></button>
-                            </div>
-                        </div>
-                    </Link>
-                    <div>
-                        <div className='nothing-favorite'>
-                            <p>No tienes productos en favoritos</p>
-                            <i className="fa-regular fa-face-frown"></i>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </>
