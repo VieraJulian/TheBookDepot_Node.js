@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import { useGetArticle } from "../hooks/useGetArticle";
 import { useProductAddFavorites } from "../hooks/useProductAddFavorites";
+import { useSaveProduct } from "../hooks/useSaveProduct";
 
 import "../../public/css/detail/detail-mobile.css"
 import "../../public/css/detail/detail-tablet.css"
@@ -12,6 +13,7 @@ function Detail() {
     const { id } = useParams()
     const { article } = useGetArticle({ id })
     const { handleAddFavorite } = useProductAddFavorites()
+    const { handleProductSaved } = useSaveProduct()
 
     return (
         <>
@@ -49,7 +51,7 @@ function Detail() {
                                             <i className="fa-regular fa-heart"></i>
                                             {/* <i className="fa-solid fa-heart"></i> */}
                                         </button>
-                                        <button>
+                                        <button onClick={() => handleProductSaved(article.id)}>
                                             <i className="fa-regular fa-bookmark"></i>
                                             {/* <i class="fa-solid fa-bookmark"></i> */}
                                         </button>
