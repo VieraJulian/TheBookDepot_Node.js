@@ -17,7 +17,7 @@ function ProductFavorite() {
                         products && products.length > 0 ?
                             products.map(product => {
                                 return (
-                                    <Link to='#' key={product.id}>
+                                    <Link to={`/products/detail/${product.id}`} key={product.id}>
                                         <div className="favorite-product">
                                             <div className="favorite-img-container">
                                                 <img src={product.image} alt={product.title} />
