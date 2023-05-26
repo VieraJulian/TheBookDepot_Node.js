@@ -376,6 +376,16 @@ module.exports = {
                 ]
             });
 
+            const totalProducts = await Product.count({
+                where: {
+                    sold: {
+                        [Op.gte]: 20
+                    }
+                }
+            });
+
+            const totalPages = Math.ceil(totalProducts / limit);
+
             const productsAll = productsDB.map(p => {
                 const buffer = p.productImage.image
                 const base64 = Buffer.from(buffer).toString('base64');
@@ -400,7 +410,12 @@ module.exports = {
                 }
             })
 
-            return res.status(200).json(productsAll);
+            const data = {
+                totalPages,
+                productsAll
+            }
+
+            return res.status(200).json(data);
         } catch (error) {
             return res.status(500).json(error);
         }
