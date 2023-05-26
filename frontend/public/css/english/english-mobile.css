@@ -54,3 +54,15 @@
     color: red;
     font-weight: 600;
 }
+
+@media (min-width: 80em) {
+    .english {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .english-container {
+        width: 100%;
+        max-width: 80em;
+    }
+}
