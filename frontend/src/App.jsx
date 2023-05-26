@@ -7,6 +7,7 @@ import Profile from "./pages/Profile"
 import Detail from './pages/Detail'
 import Cart from "./pages/Cart"
 import Admin from './pages/Admin'
+import English from './pages/English'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/users/cart" element={<Cart />}></Route>
         <Route path="/users/profile" element={<Profile />}></Route>
         <Route path="/products/detail/:id" element={<Detail />}></Route>
+        <Route path="/products/english" element={<English />}></Route>
         <Route path="/admin" element={<Admin />}></Route>
       </Routes>
     </>

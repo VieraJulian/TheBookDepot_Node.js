@@ -1,5 +1,7 @@
 const { Product, ProductImage, User, FavoriteProduct, SavedProduct, CartProduct, Cart } = require("../database/models/index")
 const { validationResult } = require("express-validator");
+const { Op } = require('sequelize');
+
 
 const handleValidationErrors = (validations) => {
     const errors = validations.array();
@@ -364,12 +366,21 @@ module.exports = {
                 limit,
                 offset,
                 include: [{ association: "productImage" }],
+                where: {
+                    sold: {
+                        [Op.gte]: 20
+                    }
+                },
                 order: [
                     ['sold', 'DESC']
                 ]
             });
 
             const productsAll = productsDB.map(p => {
+                const buffer = p.productImage.image
+                const base64 = Buffer.from(buffer).toString('base64');
+                const image = `data:image/png;base64,${Buffer.from(base64, 'base64').toString()}`;
+
                 return {
                     id: p.id,
                     title: p.title,
@@ -385,7 +396,7 @@ module.exports = {
                     edition: p.edition,
                     sold: p.sold,
                     stock: p.stock,
-                    image: p.productImage.image
+                    image: image
                 }
             })
 
@@ -399,21 +410,37 @@ module.exports = {
             const { page, size } = req.query;
 
             const limit = parseInt(size);
-            const offset = (page - 1) * size;
+            const offset = (parseInt(page) - 1) * size;
 
             const productsDB = await Product.findAll({
                 where: {
-                    language: "ingles"
+                    [Op.or]: [
+                        { language: "ingles" },
+                        { language: "inglés" }
+                    ]
                 },
                 limit,
                 offset,
                 include: [{ association: "productImage" }],
-                order: [
-                    ['sold', 'DESC']
-                ]
+                order: [['createdAt', 'DESC']]
             });
-
+            
+            const totalProducts = await Product.count({
+                where: {
+                    [Op.or]: [
+                        { language: "ingles" },
+                        { language: "inglés" }
+                    ]
+                }
+            });
+            
+            const totalPages = Math.ceil(totalProducts / limit);
+            
             const englishAll = productsDB.map(p => {
+                const buffer = p.productImage.image
+                const base64 = Buffer.from(buffer).toString('base64');
+                const image = `data:image/png;base64,${Buffer.from(base64, 'base64').toString()}`;
+
                 return {
                     id: p.id,
                     title: p.title,
@@ -429,11 +456,16 @@ module.exports = {
                     edition: p.edition,
                     sold: p.sold,
                     stock: p.stock,
-                    image: p.productImage.image
+                    image: image
                 }
             })
 
-            return res.status(200).json(englishAll);
+            const data = {
+                totalPages,
+                englishAll
+            }
+
+            return res.status(200).json(data);
         } catch (error) {
             return res.status(500).json(error);
         }

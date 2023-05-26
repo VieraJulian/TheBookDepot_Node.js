@@ -79,17 +79,17 @@ function Navbar() {
                         </div>
                     </div>
                     <div className='navbar-bottom'>
+                        <Link to="/">
+                            <p>Inicio</p>
+                        </Link>
                         <Link to="#">
                             <p>Libros</p>
                         </Link>
                         <Link to="#">
                             <p>Más Vendidos</p>
                         </Link>
-                        <Link to="#">
+                        <Link to="/products/english">
                             <p>Inglés</p>
-                        </Link>
-                        <Link to="#">
-                            <p>Nosotros</p>
                         </Link>
                     </div>
                 </div>
