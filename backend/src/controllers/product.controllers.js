@@ -158,7 +158,7 @@ module.exports = {
     },
     favorites: async (req, res) => {
         try {
-            const favorites = await FavoriteProduct.findAll({ where: { userId: req.params.id } })
+            const favorites = await FavoriteProduct.findAll({ where: { userId: req.params.id }, order: [['createdAt', 'DESC']] })
 
             const data = await Promise.all(favorites.map(async (f) => {
                 const product = await Product.findByPk(f.productId, { include: [{ association: "productImage" }] })
@@ -182,7 +182,7 @@ module.exports = {
     },
     saved: async (req, res) => {
         try {
-            const saved = await SavedProduct.findAll({ where: { userId: req.params.id } })
+            const saved = await SavedProduct.findAll({ where: { userId: req.params.id }, order: [['createdAt', 'DESC']] })
 
             const data = await Promise.all(saved.map(async (f) => {
                 const product = await Product.findByPk(f.productId, { include: [{ association: "productImage" }] })

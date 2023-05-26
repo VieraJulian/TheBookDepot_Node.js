@@ -6,6 +6,11 @@ export function useProductAddFavorites(){
 
         const cookies = new Cookies();
         const cookieGet = cookies.get('response')
+
+        if (!cookieGet){
+            return
+        }
+
         const token = cookieGet.token
         const idUser = cookieGet.userId
 
