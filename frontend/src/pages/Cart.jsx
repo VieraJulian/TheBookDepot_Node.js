@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { useCartDetail } from '../hooks/useCartDetal'
+import { Link } from 'react-router-dom'
+import { useCartDetail } from '../hooks/useCartDetail'
 import { useGetUserAddresses } from '../hooks/useGetUserAddress'
 import { useCartAddOneMore } from '../hooks/useCartAddOneMore';
 import Cookies from 'universal-cookie';
@@ -12,10 +13,10 @@ import "../../public/css/cart/cart-tablet.css"
 import "../../public/css/cart/cart-desktop.css"
 
 function Cart() {
+    const { handleAddOneMore } = useCartAddOneMore()
     const { products, total, quantity } = useCartDetail()
     const { addresses } = useGetUserAddresses()
     const [addressId, setAddressId] = useState(null)
-    const { handleAddOneMore } = useCartAddOneMore()
 
     const handleAddressSelect = (id) => {
         setAddressId(id)
@@ -28,13 +29,20 @@ function Cart() {
                 <p className='cart-title'>Carrito de compras</p>
                 <div className='cart-left'>
                     <div className="cart-item">
-                        <div className="cart-item-header">
-                            <p className='cart-header-producto'>Producto</p>
-                            <p className='cart-header-p'>Precio</p>
-                            <p className='cart-header-p'>Cantidad</p>
-                            <p className='cart-header-p'>Total</p>
-                            <p className='cart-header-action'>Acción</p>
-                        </div>
+                        {products ?
+                            <div className="cart-item-header">
+                                <p className='cart-header-producto'>Producto</p>
+                                <p className='cart-header-p'>Precio</p>
+                                <p className='cart-header-p'>Cantidad</p>
+                                <p className='cart-header-p'>Total</p>
+                                <p className='cart-header-action'>Acción</p>
+                            </div>
+                            :
+                            <div>
+                                <p>No hay productos en el carrito</p>
+                                <Link to='/'>Añadir</Link>
+                            </div>
+                        }
                         {
                             products &&
                             products.map(product => {
@@ -62,36 +70,39 @@ function Cart() {
                             })
                         }
                     </div>
-                    <form className="cart-shipping">
-                        <p className='shipping-title'>Escoge dirección de envío</p>
-                        {
-                            addresses &&
-                            addresses.map((address, index) => {
-                                return (
-                                    <div className="cart-shipping-options" key={address.id}>
-                                        <div className="cart-shipping-option">
-                                            <p>Dirección {index + 1}:</p><input className='radio' type="radio" name="opcion" value="1" onClick={() => handleAddressSelect(address.id)} />
+                    {
+                        products &&
+                        <form className="cart-shipping">
+                            <p className='shipping-title'>Escoge dirección de envío</p>
+                            {
+                                addresses &&
+                                addresses.map((address, index) => {
+                                    return (
+                                        <div className="cart-shipping-options" key={address.id}>
+                                            <div className="cart-shipping-option">
+                                                <p>Dirección {index + 1}:</p><input className='radio' type="radio" name="opcion" value="1" onClick={() => handleAddressSelect(address.id)} />
+                                            </div>
+                                            <div className="cart-shipping-details">
+                                                <p>Destinatario: {address.addresse}</p>
+                                                <p>Celular: {address.phone}</p>
+                                                <p>Provincia: {address.province}</p>
+                                                <p>Ciudad: {address.city}</p>
+                                                <p>Dirección: {address.address}</p>
+                                            </div>
                                         </div>
-                                        <div className="cart-shipping-details">
-                                            <p>Destinatario: {address.addresse}</p>
-                                            <p>Celular: {address.phone}</p>
-                                            <p>Provincia: {address.province}</p>
-                                            <p>Ciudad: {address.city}</p>
-                                            <p>Dirección: {address.address}</p>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                        <div className="cart-shipping-options">
-                            <div className="cart-shipping-option">
-                                <p>Recoger en local:</p><input className='radio' type="radio" name="opcion" value="2" />
+                                    )
+                                })
+                            }
+                            <div className="cart-shipping-options">
+                                <div className="cart-shipping-option">
+                                    <p>Recoger en local:</p><input className='radio' type="radio" name="opcion" value="2" />
+                                </div>
+                                <div className="cart-shipping-details">
+                                    <p>Dirección del local: Avenida Libertad, 1234 - Buenos Aires</p>
+                                </div>
                             </div>
-                            <div className="cart-shipping-details">
-                                <p>Dirección del local: Avenida Libertad, 1234 - Buenos Aires</p>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    }
                 </div>
                 {
                     products &&

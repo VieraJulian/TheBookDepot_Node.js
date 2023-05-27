@@ -161,6 +161,10 @@ module.exports = {
                 }]
             });
 
+            if (cartDB.length < 1) {
+                return res.status(200).json("not cart");
+            }
+
             let productsQuantity = 0
 
             const cartP = cartDB[0].cartProducts.map((cp) => {
@@ -186,8 +190,6 @@ module.exports = {
                 cartProducts: cartP
             }
 
-            console.log(data)
-
             return res.status(200).json(data);
         } catch (error) {
             return res.status(500).json(error);
@@ -195,39 +197,40 @@ module.exports = {
     },
     add: async (req, res) => {
         try {
-            const userDB = await User.findByPk(req.body.id, { include: [{ association: "cart" }] })
-            const productDB = await Product.findByPk(req.body.productId)
+            const userDB = await User.findByPk(req.body.id, { include: [{ association: "cart" }] });
+            const productDB = await Product.findByPk(req.body.productId);
             const cart = await Cart.findByPk(userDB.cart.id, {
                 include: [
                     { association: "cartProducts" }
                 ]
-            })
-
-            let total = parseFloat(productDB.price)
-
-            for (let cartProducts of cart.cartProducts) {
-                if (cartProducts.productId === parseInt(req.body.productId)) {
-
+            });
+    
+            let total = parseFloat(productDB.price);
+            let shouldUpdateQuantity = false;
+    
+            for (let cartProduct of cart.cartProducts) {
+                if (cartProduct.productId === parseInt(req.body.productId)) {
                     const product = await Product.findByPk(req.body.productId, { attributes: ['stock'] });
                     const stock = product.stock;
-
-                    if (stock > cartProducts.quantity) {
-                        await cartProducts.update({ quantity: cartProducts.quantity + 1 });
+    
+                    if (stock > cartProduct.quantity) {
+                        await cartProduct.update({ quantity: cartProduct.quantity + 1 });
+                        shouldUpdateQuantity = true;
                         break;
                     }
-                    total = 0
-                } else {
-                    total = 0
                 }
             }
-
-            await cart.update({ total: parseFloat(cart.total) + total });
-
+    
+            if (shouldUpdateQuantity) {
+                await cart.update({ total: parseFloat(cart.total) + total });
+            }
+    
             return res.status(200).json("Added quantity");
         } catch (error) {
             return res.status(500).json(error);
         }
-    },
+    }
+    ,
     remove: async (req, res) => {
         try {
             const userDB = await User.findByPk(req.body.id, { include: [{ association: "cart" }] });

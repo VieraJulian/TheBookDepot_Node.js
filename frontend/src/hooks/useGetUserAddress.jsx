@@ -9,7 +9,7 @@ export function useGetUserAddresses() {
     const cookieGet = cookies.get('response')
 
     if (!cookieGet) {
-        return 
+        return { addresses }
     }
     
     const token = cookieGet.token

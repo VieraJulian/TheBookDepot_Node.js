@@ -21,7 +21,6 @@ export function useCartAddOneMore() {
         const result = await cartAddOneMoreProduct(data, token)
 
         if (result === "Added quantity") {
-            
         }
     }
 

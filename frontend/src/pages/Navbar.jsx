@@ -70,7 +70,7 @@ function Navbar() {
                             </div>
                         </div>
                         <div className='cart'>
-                            <Link to="/users/cart">
+                            <Link to={cookieGet ? "/users/cart" : "/users/login"}>
                                 <i className="fa-solid fa-cart-shopping"></i>
                             </Link>
                             <div className='cart-number'>
