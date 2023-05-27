@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useCartDetail } from '../hooks/useCartDetal'
+import { useGetUserAddresses } from '../hooks/useGetUserAddress'
+import { useCartAddOneMore } from '../hooks/useCartAddOneMore';
+import Cookies from 'universal-cookie';
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -10,6 +13,13 @@ import "../../public/css/cart/cart-desktop.css"
 
 function Cart() {
     const { products, total, quantity } = useCartDetail()
+    const { addresses } = useGetUserAddresses()
+    const [addressId, setAddressId] = useState(null)
+    const { handleAddOneMore } = useCartAddOneMore()
+
+    const handleAddressSelect = (id) => {
+        setAddressId(id)
+    }
 
     return (
         <div className="cart-container">
@@ -39,7 +49,7 @@ function Cart() {
                                         <p className="cart-item-price">$ {product.price}</p>
                                         <div className="cart-item-quantity">
                                             <p>{product.quantity}</p>
-                                            <button className="increment">+</button>
+                                            <button className="increment" onClick={() => handleAddOneMore(product.id)}>+</button>
                                             <button className="decrement">-</button>
                                         </div>
                                         <p className="cart-item-total">$ {product.total}</p>
@@ -54,36 +64,31 @@ function Cart() {
                     </div>
                     <form className="cart-shipping">
                         <p className='shipping-title'>Escoge dirección de envío</p>
-                        <div className="cart-shipping-options">
-                            <div className="cart-shipping-option">
-                                <p>Dirección 1:</p><input className='radio' type="radio" name="opcion" value="1" />
-                            </div>
-                            <div className="cart-shipping-details">
-                                <p>Destinatario: Lorem ipsum dolor sit amet.</p>
-                                <p>Celular: +111111111111</p>
-                                <p>Provincia: Lorem.</p>
-                                <p>Ciudad: Lorem, ipsum.</p>
-                                <p>Dirección: Lorem ipsum dolor sit.</p>
-                            </div>
-                        </div>
-                        <div className="cart-shipping-options">
-                            <div className="cart-shipping-option">
-                                <p>Dirección 2:</p><input className='radio' type="radio" name="opcion" value="1" />
-                            </div>
-                            <div className="cart-shipping-details">
-                                <p>Destinatario: Lorem ipsum dolor sit amet.</p>
-                                <p>Celular: +111111111111</p>
-                                <p>Provincia: Lorem.</p>
-                                <p>Ciudad: Lorem, ipsum.</p>
-                                <p>Dirección: Lorem ipsum dolor sit.</p>
-                            </div>
-                        </div>
+                        {
+                            addresses &&
+                            addresses.map((address, index) => {
+                                return (
+                                    <div className="cart-shipping-options" key={address.id}>
+                                        <div className="cart-shipping-option">
+                                            <p>Dirección {index + 1}:</p><input className='radio' type="radio" name="opcion" value="1" onClick={() => handleAddressSelect(address.id)} />
+                                        </div>
+                                        <div className="cart-shipping-details">
+                                            <p>Destinatario: {address.addresse}</p>
+                                            <p>Celular: {address.phone}</p>
+                                            <p>Provincia: {address.province}</p>
+                                            <p>Ciudad: {address.city}</p>
+                                            <p>Dirección: {address.address}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
                         <div className="cart-shipping-options">
                             <div className="cart-shipping-option">
                                 <p>Recoger en local:</p><input className='radio' type="radio" name="opcion" value="2" />
                             </div>
                             <div className="cart-shipping-details">
-                                <p>Dirección del local: Lorem ipsum dolor sit amet.</p>
+                                <p>Dirección del local: Avenida Libertad, 1234 - Buenos Aires</p>
                             </div>
                         </div>
                     </form>

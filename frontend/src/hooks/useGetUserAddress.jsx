@@ -7,6 +7,11 @@ export function useGetUserAddresses() {
 
     const cookies = new Cookies();
     const cookieGet = cookies.get('response')
+
+    if (!cookieGet) {
+        return 
+    }
+    
     const token = cookieGet.token
     const id = cookieGet.userId
 

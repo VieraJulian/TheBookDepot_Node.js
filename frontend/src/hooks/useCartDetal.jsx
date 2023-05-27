@@ -11,8 +11,13 @@ export function useCartDetail() {
         async function getCartInfo() {
             const cookies = new Cookies();
             const cookieGet = cookies.get('response')
-            const token = cookieGet.token
+            
+            if (!cookieGet) {
+                return
+            }
+
             const id = cookieGet.userId
+            const token = cookieGet.token
 
             const results = await cartDetail(id, token)
 
