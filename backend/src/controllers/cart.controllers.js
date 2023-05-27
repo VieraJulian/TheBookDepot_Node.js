@@ -165,13 +165,17 @@ module.exports = {
 
             const cartP = cartDB[0].cartProducts.map((cp) => {
                 productsQuantity = productsQuantity + parseInt(cp.quantity)
+                const buffer = cp.product.productImage.image
+                const base64 = Buffer.from(buffer).toString('base64');
+                const image = `data:image/png;base64,${Buffer.from(base64, 'base64').toString()}`;
 
                 return {
+                    id: cp.product.id,
                     title: cp.product.title,
                     price: cp.product.price,
                     quantity: cp.quantity,
                     total: parseInt(cp.quantity) * parseFloat(cp.product.price),
-                    imagen: cp.product.productImage.image
+                    imagen: image
                 }
 
             })
@@ -181,6 +185,8 @@ module.exports = {
                 quantity: productsQuantity,
                 cartProducts: cartP
             }
+
+            console.log(data)
 
             return res.status(200).json(data);
         } catch (error) {

@@ -1,3 +1,6 @@
+import React from 'react'
+import { useCartDetail } from '../hooks/useCartDetal'
+
 import Navbar from './Navbar'
 import Footer from './Footer'
 
@@ -6,6 +9,8 @@ import "../../public/css/cart/cart-tablet.css"
 import "../../public/css/cart/cart-desktop.css"
 
 function Cart() {
+    const { products, total, quantity } = useCartDetail()
+
     return (
         <div className="cart-container">
             <Navbar />
@@ -20,46 +25,34 @@ function Cart() {
                             <p className='cart-header-p'>Total</p>
                             <p className='cart-header-action'>Acción</p>
                         </div>
-                        <div className="cart-item-content">
-                            <div className="cart-item-image">
-                                <img src="../../public/img/portadaEj.png" alt="" />
-                                <div className="cart-item-info">
-                                    <p>Lorem ipsum dolor sit.</p>
-                                </div>
-                            </div>
-                            <p className="cart-item-price">$ 3000.00</p>
-                            <div className="cart-item-quantity">
-                                <p>1</p>
-                                <button className="increment">+</button>
-                                <button className="decrement">-</button>
-                            </div>
-                            <p className="cart-item-total">$ 6000.00</p>
-                            <div className="cart-item-actions">
-                                <button><i className="fa-sharp fa-solid fa-trash"></i></button>
-                                <button><i className="fa-regular fa-bookmark"></i></button>
-                            </div>
-                        </div>
-                        <div className="cart-item-content">
-                            <div className="cart-item-image">
-                                <img src="../../public/img/portadaEj.png" alt="" />
-                                <div className="cart-item-info">
-                                    <p>Lorem ipsum dolor sit.</p>
-                                </div>
-                            </div>
-                            <p className="cart-item-price">$ 3000.00</p>
-                            <div className="cart-item-quantity">
-                                <p>1</p>
-                                <button className="increment">+</button>
-                                <button className="decrement">-</button>
-                            </div>
-                            <p className="cart-item-total">$ 6000.00</p>
-                            <div className="cart-item-actions">
-                                <button><i className="fa-sharp fa-solid fa-trash"></i></button>
-                                <button><i className="fa-regular fa-bookmark"></i></button>
-                            </div>
-                        </div>
+                        {
+                            products &&
+                            products.map(product => {
+                                return (
+                                    <div className="cart-item-content" key={product.id}>
+                                        <div className="cart-item-image">
+                                            <img src={product.imagen} alt={product.title} />
+                                            <div className="cart-item-info">
+                                                <p>{product.title}</p>
+                                            </div>
+                                        </div>
+                                        <p className="cart-item-price">$ {product.price}</p>
+                                        <div className="cart-item-quantity">
+                                            <p>{product.quantity}</p>
+                                            <button className="increment">+</button>
+                                            <button className="decrement">-</button>
+                                        </div>
+                                        <p className="cart-item-total">$ {product.total}</p>
+                                        <div className="cart-item-actions">
+                                            <button><i className="fa-sharp fa-solid fa-trash"></i></button>
+                                            <button><i className="fa-regular fa-bookmark"></i></button>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
-                    <form className="cart-shipping" action="">
+                    <form className="cart-shipping">
                         <p className='shipping-title'>Escoge dirección de envío</p>
                         <div className="cart-shipping-options">
                             <div className="cart-shipping-option">
@@ -95,24 +88,27 @@ function Cart() {
                         </div>
                     </form>
                 </div>
-                <div className="cart-summary">
-                    <p className='summary-title'>Resumen de pedido</p>
-                    <div className="cart-summary-item">
-                        <p>Cantidad:</p><p className="item-value">1</p>
+                {
+                    products &&
+                    <div className="cart-summary">
+                        <p className='summary-title'>Resumen de pedido</p>
+                        <div className="cart-summary-item">
+                            <p>Cantidad:</p><p className="item-value">{quantity}</p>
+                        </div>
+                        <div className="cart-summary-item">
+                            <p>Total a pagar:</p><p className="item-value">${total}</p>
+                        </div>
+                        <div className="cart-summary-item">
+                            <p>Envío:</p><p className="item-value">A tratar</p>
+                        </div>
+                        <button className='buy'>Pagar ahora</button>
+                        <div className="cart-help">
+                            <div className='mastercard'><img src="../../public/img/cart/masterCard.png" alt="" /><img src="../../public/img/cart/icon-mp.webp" alt="" /></div>
+                            <div className='promo'><img src="../../public/img/cart/2x1.jpg" alt="" /></div>
+                            <button className='help-wts'>Ayuda al whatsapp: +11111111111<i className="fa-brands fa-whatsapp wts"></i></button>
+                        </div>
                     </div>
-                    <div className="cart-summary-item">
-                        <p>Total a pagar:</p><p className="item-value">$3000.00</p>
-                    </div>
-                    <div className="cart-summary-item">
-                        <p>Envío:</p><p className="item-value">A tratar</p>
-                    </div>
-                    <button className='buy'>Pagar ahora</button>
-                    <div className="cart-help">
-                        <div className='mastercard'><img src="../../public/img/cart/masterCard.png" alt="" /><img src="../../public/img/cart/icon-mp.webp" alt="" /></div>
-                        <div className='promo'><img src="../../public/img/cart/2x1.jpg" alt="" /></div>
-                        <button className='help-wts'>Ayuda al whatsapp: +11111111111<i className="fa-brands fa-whatsapp wts"></i></button>
-                    </div>
-                </div>
+                }
             </div>
             <Footer />
         </div>
