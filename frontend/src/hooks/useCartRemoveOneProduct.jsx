@@ -1,15 +1,10 @@
-import { cartAddOneMoreProduct } from '../services/cartAddOneMoreProducts'
 import Cookies from 'universal-cookie';
+import { cartRemoveOneProduct } from '../services/cartRemoveOneProduct';
 
-export function useCartAddOneMore() {
-    const handleAddOneMore = async (id) => {
+export function useCartRemoveOneProduct() {
+    const handleRemoveOneProduct = async (id) => {
         const cookies = new Cookies();
         const cookieGet = cookies.get('response')
-
-        if (!cookieGet) {
-            return
-        }
-
         const token = cookieGet.token
         const userId = cookieGet.userId
 
@@ -18,8 +13,8 @@ export function useCartAddOneMore() {
             productId: id
         }
 
-        await cartAddOneMoreProduct(data, token)
+        await cartRemoveOneProduct(data, token)
     }
 
-    return { handleAddOneMore }
+    return { handleRemoveOneProduct }
 }

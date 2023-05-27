@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useCartDetail } from '../hooks/useCartDetail'
 import { useGetUserAddresses } from '../hooks/useGetUserAddress'
 import { useCartAddOneMore } from '../hooks/useCartAddOneMore';
-import Cookies from 'universal-cookie';
+import { useCartRemoveOneProduct } from '../hooks/useCartRemoveOneProduct';
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -14,7 +14,8 @@ import "../../public/css/cart/cart-desktop.css"
 
 function Cart() {
     const { handleAddOneMore } = useCartAddOneMore()
-    const { products, total, quantity } = useCartDetail({handleAddOneMore})
+    const { handleRemoveOneProduct } = useCartRemoveOneProduct()
+    const { products, total, quantity } = useCartDetail({ handleAddOneMore, handleRemoveOneProduct })
     const { addresses } = useGetUserAddresses()
     const [addressId, setAddressId] = useState(null)
 
@@ -29,7 +30,7 @@ function Cart() {
                 <p className='cart-title'>Carrito de compras</p>
                 <div className='cart-left'>
                     <div className="cart-item">
-                        {products ?
+                        {products && products.length > 0 ?
                             <div className="cart-item-header">
                                 <p className='cart-header-producto'>Producto</p>
                                 <p className='cart-header-p'>Precio</p>
@@ -58,7 +59,7 @@ function Cart() {
                                         <div className="cart-item-quantity">
                                             <p>{product.quantity}</p>
                                             <button className="increment" onClick={() => handleAddOneMore(product.id)}>+</button>
-                                            <button className="decrement">-</button>
+                                            <button className="decrement" onClick={() => handleRemoveOneProduct(product.id)}>-</button>
                                         </div>
                                         <p className="cart-item-total">$ {product.total}</p>
                                         <div className="cart-item-actions">
@@ -71,7 +72,7 @@ function Cart() {
                         }
                     </div>
                     {
-                        products &&
+                        products && products.length > 0 &&
                         <form className="cart-shipping">
                             <p className='shipping-title'>Escoge dirección de envío</p>
                             {
@@ -105,7 +106,7 @@ function Cart() {
                     }
                 </div>
                 {
-                    products &&
+                    products && products.length > 0 &&
                     <div className="cart-summary">
                         <p className='summary-title'>Resumen de pedido</p>
                         <div className="cart-summary-item">
