@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { cartDetail } from '../services/cartDetail'
 import Cookies from 'universal-cookie';
 
-export function useCartDetail() {
+export function useCartDetail({handleAddOneMore}) {
     const [products, setProducts] = useState(null)
     const [total, setTotal] = useState(null)
     const [quantity, setQuantity] = useState(null)
@@ -27,7 +27,7 @@ export function useCartDetail() {
         }
 
         getCartInfo()
-    }, [])
+    }, [handleAddOneMore])
 
     return { products, total, quantity }
 }

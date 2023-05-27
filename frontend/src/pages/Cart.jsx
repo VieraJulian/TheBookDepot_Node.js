@@ -14,7 +14,7 @@ import "../../public/css/cart/cart-desktop.css"
 
 function Cart() {
     const { handleAddOneMore } = useCartAddOneMore()
-    const { products, total, quantity } = useCartDetail()
+    const { products, total, quantity } = useCartDetail({handleAddOneMore})
     const { addresses } = useGetUserAddresses()
     const [addressId, setAddressId] = useState(null)
 
