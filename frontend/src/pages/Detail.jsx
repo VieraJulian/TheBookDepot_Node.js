@@ -4,6 +4,7 @@ import Footer from './Footer'
 import { useGetArticle } from "../hooks/useGetArticle";
 import { useProductAddFavorites } from "../hooks/useProductAddFavorites";
 import { useSaveProduct } from "../hooks/useSaveProduct";
+import { useCartAddProduct } from "../hooks/useCartAddProduct";
 
 import "../../public/css/detail/detail-mobile.css"
 import "../../public/css/detail/detail-tablet.css"
@@ -14,6 +15,7 @@ function Detail() {
     const { article } = useGetArticle({ id })
     const { handleAddFavorite } = useProductAddFavorites()
     const { handleProductSaved } = useSaveProduct()
+    const { handleAddCartProduct } = useCartAddProduct()
 
     return (
         <>
@@ -61,7 +63,7 @@ function Detail() {
                                     </div>
                                 </div>
                                 <div className='detail-add-to-cart'>
-                                    <button>Agregar al carrito</button>
+                                    <button onClick={() => handleAddCartProduct(article.id)}>Agregar al carrito</button>
                                 </div>
                             </div>
                             <div className='detail-details'>

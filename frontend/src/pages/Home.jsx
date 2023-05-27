@@ -39,7 +39,7 @@ function Home() {
                                         <img src="../../public/img/carousel/slider2.jpg" className="d-block w-100" alt="slider2" />
                                     </div>
                                 </Link>
-                                <Link to="#">
+                                <Link to="/products/english">
                                     <div className="carousel-item">
                                         <img src="../../public/img/carousel/slider3.jpg" className="d-block w-100" alt="slider3" />
                                     </div>
