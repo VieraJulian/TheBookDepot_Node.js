@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useGetUserSaved } from '../../../hooks/useGetUserSaved'
 import { useDeleteProductSaved } from '../../../hooks/useDeleteProductSaved'
+import { useCartAddProduct } from '../../../hooks/useCartAddProduct'
 
 import '../../../../public/css/components/profile/saved/saved-mobile.css'
 
 function ProductSaved() {
     const { products } = useGetUserSaved()
     const { handleDeleteSaved } = useDeleteProductSaved()
+    const { handleAddCartProduct } = useCartAddProduct()
 
     return (
         <>
@@ -27,7 +29,7 @@ function ProductSaved() {
                                                 <p className="saved-price">$ {product.price}</p>
                                             </div>
                                             <div className="saved-btns">
-                                                <button><i className="fa-solid fa-cart-plus"></i></button>
+                                                <button onClick={() => handleAddCartProduct(product.id)}><i className="fa-solid fa-cart-plus"></i></button>
                                                 <button onClick={(event) => {
                                                     event.stopPropagation();
                                                     handleDeleteSaved(product.id);
