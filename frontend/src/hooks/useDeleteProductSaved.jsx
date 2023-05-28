@@ -15,10 +15,7 @@ export function useDeleteProductSaved() {
 
         const result = await productsDeleteSaved(data, token)
 
-        console.log(result)
-
         if (result === 'Saved deleted') {
-            window.location.reload()
         }
 
     }

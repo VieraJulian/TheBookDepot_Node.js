@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { userGetSaved } from '../services/usersGetSaved'
 import Cookies from 'universal-cookie';
 
-export function useGetUserSaved(){
+export function useGetUserSaved({ handleDeleteSaved }){
     const [products, setProducts] = useState(null)
 
     const cookies = new Cookies();
@@ -17,7 +17,7 @@ export function useGetUserSaved(){
         }
 
         getProductsSaved()
-    }, [])
+    }, [handleDeleteSaved])
 
     return { products }
 }

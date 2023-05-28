@@ -14,10 +14,6 @@ export function useDeleteProductFavorite() {
         }
 
         const result = await productsDeleteFavorites(data, token)
-
-        if (result === 'Favorite deleted') {
-            window.location.href = '/users/profile'
-        }
     }
 
     return { handleDeleteFavorites }

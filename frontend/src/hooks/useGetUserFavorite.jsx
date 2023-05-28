@@ -2,7 +2,7 @@ import { usersGetFavorites } from '../services/usersGetFavorites'
 import Cookies from 'universal-cookie';
 import { useEffect, useState } from 'react';
 
-export function useGetUserFavorite() {
+export function useGetUserFavorite({ handleDeleteFavorites }) {
     const [products, setProducts] = useState(null)
 
     const cookies = new Cookies();
@@ -18,7 +18,7 @@ export function useGetUserFavorite() {
         }
 
         getFavoritesProducts()
-    }, [])
+    }, [ handleDeleteFavorites ])
 
     return { products }
 }

@@ -6,8 +6,8 @@ import { useCartAddProduct } from '../../../hooks/useCartAddProduct'
 import "../../../../public/css/components/profile/favorites/favorites-mobile.css"
 
 function ProductFavorite() {
-    const { products } = useGetUserFavorite()
     const { handleDeleteFavorites } = useDeleteProductFavorite()
+    const { products } = useGetUserFavorite({ handleDeleteFavorites })
     const { handleAddCartProduct } = useCartAddProduct()
 
     return (
@@ -19,8 +19,8 @@ function ProductFavorite() {
                         products && products.length > 0 ?
                             products.map(product => {
                                 return (
-                                    <Link to={`/products/detail/${product.id}`} key={product.id}>
-                                        <div className="favorite-product">
+                                    <div className="favorite-product" key={product.id}>
+                                        <Link to={`/products/detail/${product.id}`}>
                                             <div className="favorite-img-container">
                                                 <img src={product.image} alt={product.title} />
                                             </div>
@@ -28,16 +28,16 @@ function ProductFavorite() {
                                                 <p>{product.title}</p>
                                                 <p className="favorite-price">$ {product.price}</p>
                                             </div>
-                                            <div className="favorite-btns">
-                                                <button onClick={() => handleAddCartProduct(product.id)}><i className="fa-solid fa-cart-plus"></i></button>
-                                                <button onClick={(event) => {
-                                                    event.stopPropagation();
-                                                    handleDeleteFavorites(product.id)
-                                                }}><i className="fa-solid fa-circle-xmark"></i></button>
-                                                <button><i className="fa-brands fa-whatsapp"></i></button>
-                                            </div>
+                                        </Link>
+                                        <div className="favorite-btns">
+                                            <button onClick={() => handleAddCartProduct(product.id)}><i className="fa-solid fa-cart-plus"></i></button>
+                                            <button onClick={(event) => {
+                                                event.stopPropagation();
+                                                handleDeleteFavorites(product.id)
+                                            }}><i className="fa-solid fa-circle-xmark"></i></button>
+                                            <button><i className="fa-brands fa-whatsapp"></i></button>
                                         </div>
-                                    </Link>
+                                    </div>
                                 )
                             })
                             :

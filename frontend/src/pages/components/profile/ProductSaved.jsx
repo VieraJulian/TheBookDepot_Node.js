@@ -6,8 +6,8 @@ import { useCartAddProduct } from '../../../hooks/useCartAddProduct'
 import '../../../../public/css/components/profile/saved/saved-mobile.css'
 
 function ProductSaved() {
-    const { products } = useGetUserSaved()
     const { handleDeleteSaved } = useDeleteProductSaved()
+    const { products } = useGetUserSaved({ handleDeleteSaved })
     const { handleAddCartProduct } = useCartAddProduct()
 
     return (
@@ -19,8 +19,8 @@ function ProductSaved() {
                         products && products.length > 0 ?
                             products.map(product => {
                                 return (
-                                    <Link to={`/products/detail/${product.id}`} key={product.id}>
-                                        <div className="saved-product">
+                                    <div className="saved-product" key={product.id}>
+                                        <Link to={`/products/detail/${product.id}`}>
                                             <div className="saved-img-container">
                                                 <img src={product.image} alt={product.title} />
                                             </div>
@@ -28,16 +28,16 @@ function ProductSaved() {
                                                 <p>{product.title}</p>
                                                 <p className="saved-price">$ {product.price}</p>
                                             </div>
-                                            <div className="saved-btns">
-                                                <button onClick={() => handleAddCartProduct(product.id)}><i className="fa-solid fa-cart-plus"></i></button>
-                                                <button onClick={(event) => {
-                                                    event.stopPropagation();
-                                                    handleDeleteSaved(product.id);
-                                                }}><i className="fa-solid fa-circle-xmark"></i></button>
-                                                <button><i className="fa-brands fa-whatsapp"></i></button>
-                                            </div>
+                                        </Link>
+                                        <div className="saved-btns">
+                                            <button onClick={() => handleAddCartProduct(product.id)}><i className="fa-solid fa-cart-plus"></i></button>
+                                            <button onClick={(event) => {
+                                                event.stopPropagation();
+                                                handleDeleteSaved(product.id);
+                                            }}><i className="fa-solid fa-circle-xmark"></i></button>
+                                            <button><i className="fa-brands fa-whatsapp"></i></button>
                                         </div>
-                                    </Link>
+                                    </div>
                                 )
                             })
                             :
