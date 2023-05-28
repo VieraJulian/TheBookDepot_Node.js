@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useGetUserFavorite } from '../../../hooks/useGetUserFavorite'
 import { useDeleteProductFavorite } from '../../../hooks/useDeleteProductFavorite'
+import { useCartAddProduct } from '../../../hooks/useCartAddProduct'
 
 import "../../../../public/css/components/profile/favorites/favorites-mobile.css"
 
 function ProductFavorite() {
     const { products } = useGetUserFavorite()
     const { handleDeleteFavorites } = useDeleteProductFavorite()
+    const { handleAddCartProduct } = useCartAddProduct()
 
     return (
         <>
@@ -27,7 +29,7 @@ function ProductFavorite() {
                                                 <p className="favorite-price">$ {product.price}</p>
                                             </div>
                                             <div className="favorite-btns">
-                                                <button><i className="fa-solid fa-cart-plus"></i></button>
+                                                <button onClick={() => handleAddCartProduct(product.id)}><i className="fa-solid fa-cart-plus"></i></button>
                                                 <button onClick={(event) => {
                                                     event.stopPropagation();
                                                     handleDeleteFavorites(product.id)
