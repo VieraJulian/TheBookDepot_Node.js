@@ -5,6 +5,7 @@ import { useGetUserAddresses } from '../hooks/useGetUserAddress'
 import { useCartAddOneMore } from '../hooks/useCartAddOneMore';
 import { useCartRemoveOneProduct } from '../hooks/useCartRemoveOneProduct';
 import { useCartDeleteProduct } from '../hooks/useCartDeleteProduct';
+import { useSaveProduct } from '../hooks/useSaveProduct'
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -18,6 +19,7 @@ function Cart() {
     const { handleRemoveOneProduct } = useCartRemoveOneProduct()
     const { handleProductCartDelete } = useCartDeleteProduct()
     const { products, total, quantity } = useCartDetail({ handleAddOneMore, handleRemoveOneProduct })
+    const { handleProductSaved } = useSaveProduct()
     const { addresses } = useGetUserAddresses()
     const [addressId, setAddressId] = useState(null)
 
@@ -66,7 +68,7 @@ function Cart() {
                                         <p className="cart-item-total">$ {product.total}</p>
                                         <div className="cart-item-actions">
                                             <button onClick={() => handleProductCartDelete(product.id)}><i className="fa-sharp fa-solid fa-trash"></i></button>
-                                            <button><i className="fa-regular fa-bookmark"></i></button>
+                                            <button onClick={() => handleProductSaved(product.id)}><i className="fa-regular fa-bookmark"></i></button>
                                         </div>
                                     </div>
                                 )
