@@ -21,7 +21,7 @@ export function useCartAddProduct() {
         const result = await cartAddProduct(data, token)
 
         if (result === 'Product added'){
-            // Poner una alerta
+            // Poner una alerta.
         }
     }
 
