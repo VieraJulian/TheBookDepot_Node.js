@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { useCartDetail } from '../hooks/useCartDetail'
 import { useGetUserAddresses } from '../hooks/useGetUserAddress'
 import { useSaveProduct } from '../hooks/useSaveProduct'
-
 import { useCart } from '../hooks/useCart';
 
 import Navbar from './Navbar'
@@ -71,9 +70,12 @@ function Cart() {
                                 )
                             })
                         }
-                        <button onClick={clearCart}>
-                            Vaciar Carrito
-                        </button>
+                        {
+                            products && products.length > 0 &&
+                            <button onClick={clearCart}>
+                                Vaciar Carrito
+                            </button>
+                        }
                     </div>
                     {
                         products && products.length > 0 &&

@@ -1,13 +1,11 @@
 import { useParams } from "react-router-dom";
+import { useGetArticle } from "../hooks/useGetArticle";
+import { useSaveProduct } from "../hooks/useSaveProduct";
+import { useCart } from '../hooks/useCart'
+import { useProductFavorite } from '../hooks/useProductFavorite'
+
 import Navbar from './Navbar'
 import Footer from './Footer'
-import { useGetArticle } from "../hooks/useGetArticle";
-import { useProductAddFavorites } from "../hooks/useProductAddFavorites";
-import { useSaveProduct } from "../hooks/useSaveProduct";
-import { useCartAddProduct } from "../hooks/useCartAddProduct";
-
-// Carrito new
-import { useCart } from '../hooks/useCart'
 
 import "../../public/css/detail/detail-mobile.css"
 import "../../public/css/detail/detail-tablet.css"
@@ -16,13 +14,9 @@ import "../../public/css/detail/detail-desktop.css"
 function Detail() {
     const { id } = useParams()
     const { article } = useGetArticle({ id })
-    const { handleAddFavorite } = useProductAddFavorites()
-    const { handleProductSaved } = useSaveProduct()
-    const { handleAddCartProduct } = useCartAddProduct()
-
-    // Carrito new
     const { addToCart, cart } = useCart()
-
+    const { handleProductSaved } = useSaveProduct()
+    const {  addFavorite } = useProductFavorite()
 
     return (
         <>
@@ -56,7 +50,7 @@ function Detail() {
                                         }
                                     </div>
                                     <div className='detail-actions'>
-                                        <button onClick={() => handleAddFavorite(article.id)}>
+                                        <button onClick={() => addFavorite(article)}>
                                             <i className="fa-regular fa-heart"></i>
                                             {/* <i className="fa-solid fa-heart"></i> */}
                                         </button>

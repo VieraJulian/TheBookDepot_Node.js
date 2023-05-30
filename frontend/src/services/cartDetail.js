@@ -1,6 +1,6 @@
-export function cartDetail(data, token) {
-    const CART_DETAIL_URL = `http://localhost:8000/carts/detail`
+const CART_DETAIL_URL = `http://localhost:8000/carts/detail`
 
+export function cartDetail(data, token) {
     const options = {
         method: 'POST',
         headers: {

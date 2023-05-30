@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
-import { useGetUserFavorite } from '../../../hooks/useGetUserFavorite'
 import { useDeleteProductFavorite } from '../../../hooks/useDeleteProductFavorite'
 import { useCartAddProduct } from '../../../hooks/useCartAddProduct'
+
+import { useProductFavorite } from '../../../hooks/useProductFavorite'
 
 import "../../../../public/css/components/profile/favorites/favorites-mobile.css"
 
 function ProductFavorite() {
     const { handleDeleteFavorites } = useDeleteProductFavorite()
-    const { products } = useGetUserFavorite({ handleDeleteFavorites })
     const { handleAddCartProduct } = useCartAddProduct()
+    const { productsFavorites, clearFavorites, removeFavoriteProduct } = useProductFavorite()
 
     return (
         <>
@@ -16,8 +17,8 @@ function ProductFavorite() {
                 <p className="p-favorites">Mis Favoritos</p>
                 <div className="favorite-p-container">
                     {
-                        products && products.length > 0 ?
-                            products.map(product => {
+                        productsFavorites && productsFavorites.length > 0 ?
+                            productsFavorites.map(product => {
                                 return (
                                     <div className="favorite-product" key={product.id}>
                                         <Link to={`/products/detail/${product.id}`}>
@@ -31,10 +32,7 @@ function ProductFavorite() {
                                         </Link>
                                         <div className="favorite-btns">
                                             <button onClick={() => handleAddCartProduct(product.id)}><i className="fa-solid fa-cart-plus"></i></button>
-                                            <button onClick={(event) => {
-                                                event.stopPropagation();
-                                                handleDeleteFavorites(product.id)
-                                            }}><i className="fa-solid fa-circle-xmark"></i></button>
+                                            <button onClick={() => removeFavoriteProduct(product)}><i className="fa-solid fa-circle-xmark"></i></button>
                                             <button><i className="fa-brands fa-whatsapp"></i></button>
                                         </div>
                                     </div>
@@ -48,6 +46,7 @@ function ProductFavorite() {
                                 </div>
                             </div>
                     }
+                    <button onClick={() => clearFavorites()}>Elimiar</button>
                 </div>
             </div>
         </>
