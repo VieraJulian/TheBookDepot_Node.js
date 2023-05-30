@@ -7,6 +7,9 @@ import { useCartRemoveOneProduct } from '../hooks/useCartRemoveOneProduct';
 import { useCartDeleteProduct } from '../hooks/useCartDeleteProduct';
 import { useSaveProduct } from '../hooks/useSaveProduct'
 
+// Cart new
+import { useCart } from '../hooks/useCart';
+
 import Navbar from './Navbar'
 import Footer from './Footer'
 
@@ -26,6 +29,9 @@ function Cart() {
     const handleAddressSelect = (id) => {
         setAddressId(id)
     }
+
+    // cart new
+    const { cart, clearCart, addToCart } = useCart()
 
     return (
         <div className="cart-container">
@@ -49,12 +55,12 @@ function Cart() {
                             </div>
                         }
                         {
-                            products &&
-                            products.map(product => {
+                            cart &&
+                            cart.map(product => {
                                 return (
                                     <div className="cart-item-content" key={product.id}>
                                         <div className="cart-item-image">
-                                            <img src={product.imagen} alt={product.title} />
+                                            <img src={product.image} alt={product.title} />
                                             <div className="cart-item-info">
                                                 <p>{product.title}</p>
                                             </div>
@@ -62,7 +68,7 @@ function Cart() {
                                         <p className="cart-item-price">$ {product.price}</p>
                                         <div className="cart-item-quantity">
                                             <p>{product.quantity}</p>
-                                            <button className="increment" onClick={() => handleAddOneMore(product.id)}>+</button>
+                                            <button className="increment" onClick={() => addToCart(product)}>+</button>
                                             <button className="decrement" onClick={() => handleRemoveOneProduct(product.id)}>-</button>
                                         </div>
                                         <p className="cart-item-total">$ {product.total}</p>
@@ -74,6 +80,9 @@ function Cart() {
                                 )
                             })
                         }
+                        <button onClick={clearCart}>
+                            Vaciar Carrito
+                        </button>
                     </div>
                     {
                         products && products.length > 0 &&

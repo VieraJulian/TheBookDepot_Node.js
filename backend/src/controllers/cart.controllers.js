@@ -280,6 +280,12 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error);
         }
+    },
+    pay: async (req, res) => {
+        try {
+            return res.status(200).json("successful purchase");
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     }
-
 }

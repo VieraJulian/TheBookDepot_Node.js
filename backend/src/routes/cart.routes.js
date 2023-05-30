@@ -10,5 +10,6 @@ router.post("/buy", verifyToken, cartControllers.buy)
 router.get("/:id", verifyToken, cartControllers.detail)
 router.post("/add", verifyToken, cartControllers.add)
 router.post("/remove", verifyToken, cartControllers.remove)
+router.post("/pay", cartControllers.pay)
 
 module.exports = router

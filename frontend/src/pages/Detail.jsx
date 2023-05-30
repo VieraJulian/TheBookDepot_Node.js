@@ -6,6 +6,9 @@ import { useProductAddFavorites } from "../hooks/useProductAddFavorites";
 import { useSaveProduct } from "../hooks/useSaveProduct";
 import { useCartAddProduct } from "../hooks/useCartAddProduct";
 
+// Carrito new
+import { useCart } from '../hooks/useCart'
+
 import "../../public/css/detail/detail-mobile.css"
 import "../../public/css/detail/detail-tablet.css"
 import "../../public/css/detail/detail-desktop.css"
@@ -16,6 +19,9 @@ function Detail() {
     const { handleAddFavorite } = useProductAddFavorites()
     const { handleProductSaved } = useSaveProduct()
     const { handleAddCartProduct } = useCartAddProduct()
+
+    // Carrito new
+    const { addToCart, cart } = useCart()
 
     return (
         <>
@@ -63,7 +69,9 @@ function Detail() {
                                     </div>
                                 </div>
                                 <div className='detail-add-to-cart'>
-                                    <button onClick={() => handleAddCartProduct(article.id)}>Agregar al carrito</button>
+                                    <button onClick={() => {
+                                        addToCart(article)
+                                    }}>Agregar al carrito</button>
                                 </div>
                             </div>
                             <div className='detail-details'>
