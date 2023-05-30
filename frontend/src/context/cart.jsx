@@ -1,27 +1,26 @@
 import { createContext, useEffect, useState } from "react";
 
-// 1. Crear el contexto
 export const CartContext = createContext()
 
-// 2. Crear el Provider, para proveer el contexto
 export function CartProvider({ children }) {
-    const [cart, setCart] = useState([])
-
-    useEffect(() => {
-        const carritoLS = JSON.parse(localStorage.getItem('cart')) ?? [];
-        setCart(carritoLS)
-    }, [])
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart') ?? []))
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
     }, [cart])
 
-    const addToCart = product => {
+    const addToCart = (article) => {
+
+        const product = {
+            id: article.id,
+            quantity: 0
+        }
+
         const productInCartIndex = cart.findIndex(p => p.id === product.id)
 
-        if(productInCartIndex >= 0){
+        if (productInCartIndex >= 0) {
             const newCart = structuredClone(cart)
-            newCart[productInCartIndex].quantity += 1
+            article.stock > newCart[productInCartIndex].quantity ? newCart[productInCartIndex].quantity += 1 : newCart[productInCartIndex].quantity
             return setCart(newCart)
         }
 
@@ -37,7 +36,7 @@ export function CartProvider({ children }) {
     const clearCart = () => {
         setCart([])
     }
-    
+
     return (
         <CartContext.Provider value={{
             cart,

@@ -23,6 +23,8 @@ function Detail() {
     // Carrito new
     const { addToCart, cart } = useCart()
 
+    console.log(cart)
+
     return (
         <>
             <div className='detail-container'>
