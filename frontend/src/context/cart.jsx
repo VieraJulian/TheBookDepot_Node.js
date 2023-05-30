@@ -3,31 +3,35 @@ import { createContext, useEffect, useState } from "react";
 export const CartContext = createContext()
 
 export function CartProvider({ children }) {
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart') ?? []))
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) ?? [])
+    const [quantityTotal, setQuantityTotal] = useState(0)
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
     }, [cart])
 
-    const addToCart = (article) => {
+    useEffect(() => {
+        let acumulador = 0;
+        cart.map(p => acumulador += p.quantity)
+        setQuantityTotal(acumulador)
+    }, [cart])
 
-        const product = {
-            id: article.id,
-            quantity: 0
-        }
+    const addToCart = (product) => {
+        const stock = product.stock
+        const id = product.id
 
-        const productInCartIndex = cart.findIndex(p => p.id === product.id)
+        const productInCartIndex = cart.findIndex(p => p.id === id)
 
         if (productInCartIndex >= 0) {
             const newCart = structuredClone(cart)
-            article.stock > newCart[productInCartIndex].quantity ? newCart[productInCartIndex].quantity += 1 : newCart[productInCartIndex].quantity
+            stock > newCart[productInCartIndex].quantity ? newCart[productInCartIndex].quantity += 1 : newCart[productInCartIndex].quantity
             return setCart(newCart)
         }
 
         setCart(prevState => ([
             ...prevState,
             {
-                ...product,
+                id: id,
                 quantity: 1
             }
         ]))
@@ -40,6 +44,7 @@ export function CartProvider({ children }) {
     return (
         <CartContext.Provider value={{
             cart,
+            quantityTotal,
             addToCart,
             clearCart
         }}>

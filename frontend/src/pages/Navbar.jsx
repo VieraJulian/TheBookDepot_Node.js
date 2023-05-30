@@ -4,7 +4,13 @@ import Cookies from 'universal-cookie';
 import "../../public/css/navbar/navbar-mobile.css"
 import "../../public/css/navbar/navbar-desktop.css"
 
+// Carrito new
+import { useCart } from '../hooks/useCart'
+
 function Navbar() {
+    // Carrito new
+    const { cart, quantityTotal } = useCart()
+
     const cookies = new Cookies();
     const cookieGet = cookies.get('response')
 
@@ -60,7 +66,7 @@ function Navbar() {
                         </div>
                         <div className='cart-detail'>
                             <div className='cart-product'>
-                                <p className='cart-quantity'>0</p>
+                                <p className='cart-quantity'>{quantityTotal ? quantityTotal : 0}</p>
                                 <p className='cart-producto'>producto</p>
                             </div>
                             <p className='p-bar'>|</p>
@@ -74,7 +80,7 @@ function Navbar() {
                                 <i className="fa-solid fa-cart-shopping"></i>
                             </Link>
                             <div className='cart-number'>
-                                0
+                                {cart ? cart.length : 0}
                             </div>
                         </div>
                     </div>

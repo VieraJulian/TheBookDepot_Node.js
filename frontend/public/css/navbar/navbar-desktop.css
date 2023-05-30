@@ -10,10 +10,6 @@
         border: 2px solid #000
     }
 
-    .cart-number {
-        display: none;
-    }
-
     .cart-product {
         display: flex;
         justify-content: center;
