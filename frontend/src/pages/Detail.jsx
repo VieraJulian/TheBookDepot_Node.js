@@ -23,7 +23,6 @@ function Detail() {
     // Carrito new
     const { addToCart, cart } = useCart()
 
-    console.log(cart)
 
     return (
         <>
@@ -70,11 +69,14 @@ function Detail() {
                                         </button>
                                     </div>
                                 </div>
-                                <div className='detail-add-to-cart'>
-                                    <button onClick={() => {
-                                        addToCart(article)
-                                    }}>Agregar al carrito</button>
-                                </div>
+                                {
+                                    article && article.stock > 1 &&
+                                    <div className='detail-add-to-cart'>
+                                        <button onClick={() => {
+                                            addToCart(article)
+                                        }}>Agregar al carrito</button>
+                                    </div>
+                                }
                             </div>
                             <div className='detail-details'>
                                 <p className='detail-text'>Detalles:</p>

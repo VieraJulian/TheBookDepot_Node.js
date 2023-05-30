@@ -148,46 +148,51 @@ module.exports = {
     },
     detail: async (req, res) => {
         try {
-            let cartDB = await Cart.findAll({
-                where: { userId: req.params.id },
-                include: [{
-                    association: "cartProducts",
-                    include: [{
-                        association: "product",
+            const productsData = req.body;
+            const productIds = productsData.map(product => product.id);
+
+            const products = await Promise.all(
+                productIds.map(async (productId) => {
+                    return await Product.findByPk(productId, {
                         include: [{
-                            association: "productImage",
-                        }]
-                    }]
-                }]
-            });
+                            association: "productImage"
+                        }],
+                    });
+                })
+            );
 
-            if (cartDB.length < 1) {
-                return res.status(200).json("not cart");
-            }
-
-            let productsQuantity = 0
-
-            const cartP = cartDB[0].cartProducts.map((cp) => {
-                productsQuantity = productsQuantity + parseInt(cp.quantity)
-                const buffer = cp.product.productImage.image
+            const result = products.map(product => {
+                const { quantity } = productsData.find(p => p.id === product.id);
+                const buffer = product.productImage.image
                 const base64 = Buffer.from(buffer).toString('base64');
                 const image = `data:image/png;base64,${Buffer.from(base64, 'base64').toString()}`;
 
                 return {
-                    id: cp.product.id,
-                    title: cp.product.title,
-                    price: cp.product.price,
-                    quantity: cp.quantity,
-                    total: parseInt(cp.quantity) * parseFloat(cp.product.price),
-                    imagen: image
-                }
+                    id: product.id,
+                    stock: product.stock,
+                    title: product.title,
+                    image: image,
+                    quantity,
+                    price: product.price,
+                    totalPrice: product.price * quantity
+                };
+            });
 
+            let total = 0
+            result.map(p => {
+                total += p.totalPrice
+                return total
             })
 
-            let data = {
-                total: parseFloat(cartDB[0].total),
-                quantity: productsQuantity,
-                cartProducts: cartP
+            let quantityOfProducts = 0
+            productsData.map(product => {
+                quantityOfProducts += product.quantity
+            })
+
+            const data = {
+                total,
+                quantityOfProducts,
+                products: result
             }
 
             return res.status(200).json(data);
@@ -204,15 +209,15 @@ module.exports = {
                     { association: "cartProducts" }
                 ]
             });
-    
+
             let total = parseFloat(productDB.price);
             let shouldUpdateQuantity = false;
-    
+
             for (let cartProduct of cart.cartProducts) {
                 if (cartProduct.productId === parseInt(req.body.productId)) {
                     const product = await Product.findByPk(req.body.productId, { attributes: ['stock'] });
                     const stock = product.stock;
-    
+
                     if (stock > cartProduct.quantity) {
                         await cartProduct.update({ quantity: cartProduct.quantity + 1 });
                         shouldUpdateQuantity = true;
@@ -220,11 +225,11 @@ module.exports = {
                     }
                 }
             }
-    
+
             if (shouldUpdateQuantity) {
                 await cart.update({ total: parseFloat(cart.total) + total });
             }
-    
+
             return res.status(200).json("Added quantity");
         } catch (error) {
             return res.status(500).json(error);

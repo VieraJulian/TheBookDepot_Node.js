@@ -2,12 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useCartDetail } from '../hooks/useCartDetail'
 import { useGetUserAddresses } from '../hooks/useGetUserAddress'
-import { useCartAddOneMore } from '../hooks/useCartAddOneMore';
-import { useCartRemoveOneProduct } from '../hooks/useCartRemoveOneProduct';
-import { useCartDeleteProduct } from '../hooks/useCartDeleteProduct';
 import { useSaveProduct } from '../hooks/useSaveProduct'
 
-// Cart new
 import { useCart } from '../hooks/useCart';
 
 import Navbar from './Navbar'
@@ -18,10 +14,8 @@ import "../../public/css/cart/cart-tablet.css"
 import "../../public/css/cart/cart-desktop.css"
 
 function Cart() {
-    const { handleAddOneMore } = useCartAddOneMore()
-    const { handleRemoveOneProduct } = useCartRemoveOneProduct()
-    const { handleProductCartDelete } = useCartDeleteProduct()
-    const { products, total, quantity } = useCartDetail({ handleAddOneMore, handleRemoveOneProduct })
+    const { cart, clearCart, addToCart, reduceCartProductQuantity, removeCartProduct } = useCart()
+    const { products, total, quantity } = useCartDetail({ cart })
     const { handleProductSaved } = useSaveProduct()
     const { addresses } = useGetUserAddresses()
     const [addressId, setAddressId] = useState(null)
@@ -29,9 +23,6 @@ function Cart() {
     const handleAddressSelect = (id) => {
         setAddressId(id)
     }
-
-    // cart new
-    const { cart, clearCart, addToCart } = useCart()
 
     return (
         <div className="cart-container">
@@ -55,8 +46,8 @@ function Cart() {
                             </div>
                         }
                         {
-                            cart &&
-                            cart.map(product => {
+                            products &&
+                            products.map(product => {
                                 return (
                                     <div className="cart-item-content" key={product.id}>
                                         <div className="cart-item-image">
@@ -69,11 +60,11 @@ function Cart() {
                                         <div className="cart-item-quantity">
                                             <p>{product.quantity}</p>
                                             <button className="increment" onClick={() => addToCart(product)}>+</button>
-                                            <button className="decrement" onClick={() => handleRemoveOneProduct(product.id)}>-</button>
+                                            <button className="decrement" onClick={() => reduceCartProductQuantity(product)}>-</button>
                                         </div>
-                                        <p className="cart-item-total">$ {product.total}</p>
+                                        <p className="cart-item-total">$ {product.totalPrice}</p>
                                         <div className="cart-item-actions">
-                                            <button onClick={() => handleProductCartDelete(product.id)}><i className="fa-sharp fa-solid fa-trash"></i></button>
+                                            <button onClick={() => removeCartProduct(product)}><i className="fa-sharp fa-solid fa-trash"></i></button>
                                             <button onClick={() => handleProductSaved(product.id)}><i className="fa-regular fa-bookmark"></i></button>
                                         </div>
                                     </div>

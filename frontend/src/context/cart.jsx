@@ -16,7 +16,7 @@ export function CartProvider({ children }) {
         setQuantityTotal(acumulador)
     }, [cart])
 
-    const addToCart = (product) => {
+    const addToCart = product => {
         const stock = product.stock
         const id = product.id
 
@@ -37,6 +37,25 @@ export function CartProvider({ children }) {
         ]))
     }
 
+    const removeCartProduct = product => {
+        const productInCartIndex = cart.findIndex(p => p.id === product.id)
+
+        if (productInCartIndex >= 0) {
+            const newCart = cart.filter(p => p.id !== product.id)
+            return setCart(newCart)
+        }
+    }
+    
+    const reduceCartProductQuantity = product => {
+        const productInCartIndex = cart.findIndex(p => p.id === product.id)
+        
+        if (productInCartIndex >= 0) {
+            let newCart = structuredClone(cart)
+            newCart[productInCartIndex].quantity > 1 ? newCart[productInCartIndex].quantity -= 1 :  newCart = cart.filter(p => p.id !== product.id)
+            return setCart(newCart)
+        }
+    }
+
     const clearCart = () => {
         setCart([])
     }
@@ -46,6 +65,8 @@ export function CartProvider({ children }) {
             cart,
             quantityTotal,
             addToCart,
+            reduceCartProductQuantity,
+            removeCartProduct,
             clearCart
         }}>
             {children}
