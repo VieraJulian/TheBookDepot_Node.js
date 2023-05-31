@@ -4,12 +4,12 @@ const cartControllers = require("../controllers/cart.controllers")
 
 const { verifyToken } = require('../middlewares/verifyToken.middleware')
 
+router.post("/pay", cartControllers.pay)
 router.post("/product/add", verifyToken, cartControllers.addProduct)
 router.post("/product/delete", verifyToken, cartControllers.deleteProduct)
 router.post("/buy", verifyToken, cartControllers.buy)
 router.post("/:id", verifyToken, cartControllers.detail)
 router.post("/add", verifyToken, cartControllers.add)
 router.post("/remove", verifyToken, cartControllers.remove)
-router.post("/pay", cartControllers.pay)
 
 module.exports = router

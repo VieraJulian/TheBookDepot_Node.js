@@ -286,6 +286,52 @@ module.exports = {
         }
     },
     pay: async (req, res) => {
+        const userId = req.body.id
+        const addressId = req.body.addressId;
+        const products = req.body.products;
+        const productIds = products.map(product => product.id);
+
+        const now = new Date();
+        const orderNumber = Math.floor(now.getTime() / 1000) + Math.floor(Math.random() * 10000);
+
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+        const day = String(currentDate.getDate()).padStart(2, "0");
+        const currentDateFormatted = `${year}/${month}/${day}`;
+
+        const productsDB = await Promise.all(
+            productIds.map(async (productId) => {
+                return await Product.findByPk(productId);
+            })
+        );
+
+        let totalPay = 0;
+        productsDB.map(product => {
+            const { quantity } = products.find(p => p.id === product.id);
+            totalPay += product.price * quantity
+        })
+
+        const newOrder = await Order.create({
+            userId,
+            addressId,
+            total: totalPay,
+            paymentMethod: addressId ? "Mercado Pago" : "Efectivo",
+            date: currentDateFormatted,
+            orderNumber: orderNumber,
+            delivered: false
+        })
+
+        await Promise.all(
+            products.map(async product => {
+                await OrderItem.create({
+                    orderId: newOrder.id,
+                    productId: product.id,
+                    quantity: product.quantity,
+                })
+            })
+        )
+
         try {
             return res.status(200).json("successful purchase");
         } catch (error) {

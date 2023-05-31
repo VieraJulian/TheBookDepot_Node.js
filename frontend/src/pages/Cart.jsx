@@ -88,7 +88,7 @@ function Cart() {
                                     return (
                                         <div className="cart-shipping-options" key={address.id}>
                                             <div className="cart-shipping-option">
-                                                <p>Dirección {index + 1}:</p><input className='radio' type="radio" name="opcion" value="1" onClick={() => handleAddressSelect(address.id)} />
+                                                <p>Dirección {index + 1}:</p><input className='radio' type="radio" name="opcion" onClick={() => handleAddressSelect(address.id)} />
                                             </div>
                                             <div className="cart-shipping-details">
                                                 <p>Destinatario: {address.addresse}</p>
@@ -103,7 +103,7 @@ function Cart() {
                             }
                             <div className="cart-shipping-options">
                                 <div className="cart-shipping-option">
-                                    <p>Recoger en local:</p><input className='radio' type="radio" name="opcion" value="2" />
+                                    <p>Recoger en local:</p><input className='radio' type="radio" name="opcion" onClick={() => handleAddressSelect(null)} />
                                 </div>
                                 <div className="cart-shipping-details">
                                     <p>Dirección del local: Avenida Libertad, 1234 - Buenos Aires</p>
