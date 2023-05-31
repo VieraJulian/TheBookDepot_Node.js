@@ -16,10 +16,10 @@ router.post("/delete/saved", verifyToken, productControllers.deleteSaved)
 router.post("/:id/delete", verifyToken, productControllers.delete)
 router.get("/:id/favorites", verifyToken, productControllers.favorites)
 router.get("/:id/saved", verifyToken, productControllers.saved)
+router.post("/info", verifyToken, productControllers.info)
 router.get("/:id/detail", productControllers.detail)
 router.get("/all", productControllers.all)
 router.get("/bestSellers", productControllers.bestSellers)
 router.get("/english", productControllers.english)
-router.post("/info", verifyToken, productControllers.info)
 
 module.exports = router

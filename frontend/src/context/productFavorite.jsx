@@ -24,10 +24,6 @@ export function ProductFavoriteProvider({ children }) {
         ]))
     }
 
-    const clearFavorites = () => {
-        setProductsFavorite([])
-    }
-
     const removeFavoriteProduct = product => {
         const productInFavoritesIndex = productsFavorites.findIndex(p => p.id === product.id)
         
@@ -37,6 +33,10 @@ export function ProductFavoriteProvider({ children }) {
         }
     }
 
+    const clearFavorites = () => {
+        setProductsFavorite([])
+    }
+    
     return (
         <ProductFavoriteContext.Provider value={{
             productsFavorites,

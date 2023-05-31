@@ -1,14 +1,15 @@
-import { Link } from 'react-router-dom'
-import { useGetUserSaved } from '../../../hooks/useGetUserSaved'
+import { useProductSaved } from '../../../hooks/useProductSaved'
 import { useDeleteProductSaved } from '../../../hooks/useDeleteProductSaved'
-import { useCartAddProduct } from '../../../hooks/useCartAddProduct'
+import { useCart } from '../../../hooks/useCart' 
+import { Link } from 'react-router-dom'
+import { useProductInfo } from '../../../hooks/useProductInfo'
 
 import '../../../../public/css/components/profile/saved/saved-mobile.css'
 
 function ProductSaved() {
-    const { handleDeleteSaved } = useDeleteProductSaved()
-    const { products } = useGetUserSaved({ handleDeleteSaved })
-    const { handleAddCartProduct } = useCartAddProduct()
+    const { saved, removeSavedProduct, clearSaved } = useProductSaved()
+    const { products } = useProductInfo(saved)
+    const { addToCart } = useCart()
 
     return (
         <>
@@ -30,11 +31,8 @@ function ProductSaved() {
                                             </div>
                                         </Link>
                                         <div className="saved-btns">
-                                            <button onClick={() => handleAddCartProduct(product.id)}><i className="fa-solid fa-cart-plus"></i></button>
-                                            <button onClick={(event) => {
-                                                event.stopPropagation();
-                                                handleDeleteSaved(product.id);
-                                            }}><i className="fa-solid fa-circle-xmark"></i></button>
+                                            <button onClick={() => addToCart(product)}><i className="fa-solid fa-cart-plus"></i></button>
+                                            <button onClick={() => removeSavedProduct(product)}><i className="fa-solid fa-circle-xmark"></i></button>
                                             <button><i className="fa-brands fa-whatsapp"></i></button>
                                         </div>
                                     </div>
@@ -48,6 +46,7 @@ function ProductSaved() {
                                 </div>
                             </div>
                     }
+                    <button onClick={() => clearSaved()}>Eliminar</button>
                 </div>
             </div>
         </>

@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useGetArticle } from "../hooks/useGetArticle";
-import { useSaveProduct } from "../hooks/useSaveProduct";
 import { useCart } from '../hooks/useCart'
 import { useProductFavorite } from '../hooks/useProductFavorite'
+import { useProductSaved } from "../hooks/useProductSaved";
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -14,9 +14,9 @@ import "../../public/css/detail/detail-desktop.css"
 function Detail() {
     const { id } = useParams()
     const { article } = useGetArticle({ id })
-    const { addToCart, cart } = useCart()
-    const { handleProductSaved } = useSaveProduct()
-    const {  addFavorite } = useProductFavorite()
+    const { addToCart } = useCart()
+    const { addFavorite } = useProductFavorite()
+    const { addSaved } = useProductSaved()
 
     return (
         <>
@@ -54,7 +54,7 @@ function Detail() {
                                             <i className="fa-regular fa-heart"></i>
                                             {/* <i className="fa-solid fa-heart"></i> */}
                                         </button>
-                                        <button onClick={() => handleProductSaved(article.id)}>
+                                        <button onClick={() => addSaved(article)}>
                                             <i className="fa-regular fa-bookmark"></i>
                                             {/* <i class="fa-solid fa-bookmark"></i> */}
                                         </button>

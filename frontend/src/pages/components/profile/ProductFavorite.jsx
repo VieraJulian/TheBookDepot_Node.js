@@ -8,7 +8,7 @@ import "../../../../public/css/components/profile/favorites/favorites-mobile.css
 function ProductFavorite() {
     const { clearFavorites, removeFavoriteProduct, productsFavorites } = useProductFavorite()
     const { addToCart } = useCart()
-    const { products } = useProductInfo({ productsFavorites })
+    const { products } = useProductInfo(productsFavorites)
 
     return (
         <>

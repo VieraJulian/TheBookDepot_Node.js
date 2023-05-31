@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useCartDetail } from '../hooks/useCartDetail'
 import { useGetUserAddresses } from '../hooks/useGetUserAddress'
-import { useSaveProduct } from '../hooks/useSaveProduct'
+import { useProductSaved } from '../hooks/useProductSaved'
 import { useCart } from '../hooks/useCart';
 
 import Navbar from './Navbar'
@@ -15,7 +15,8 @@ import "../../public/css/cart/cart-desktop.css"
 function Cart() {
     const { cart, clearCart, addToCart, reduceCartProductQuantity, removeCartProduct } = useCart()
     const { products, total, quantity } = useCartDetail({ cart })
-    const { handleProductSaved } = useSaveProduct()
+    const { addSaved } = useProductSaved()
+    
     const { addresses } = useGetUserAddresses()
     const [addressId, setAddressId] = useState(null)
 
@@ -64,7 +65,7 @@ function Cart() {
                                         <p className="cart-item-total">$ {product.totalPrice}</p>
                                         <div className="cart-item-actions">
                                             <button onClick={() => removeCartProduct(product)}><i className="fa-sharp fa-solid fa-trash"></i></button>
-                                            <button onClick={() => handleProductSaved(product.id)}><i className="fa-regular fa-bookmark"></i></button>
+                                            <button onClick={() => addSaved(product)}><i className="fa-regular fa-bookmark"></i></button>
                                         </div>
                                     </div>
                                 )
