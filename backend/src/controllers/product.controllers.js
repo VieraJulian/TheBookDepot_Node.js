@@ -237,6 +237,40 @@ module.exports = {
             return res.status(500).json(error)
         }
     },
+    info: async (req, res) => {
+        try {
+            const productsData = req.body;
+            const productIds = productsData.map(product => product.id);
+
+            const products = await Promise.all(
+                productIds.map(async (productId) => {
+                    return await Product.findByPk(productId, {
+                        include: [{
+                            association: "productImage"
+                        }],
+                    });
+                })
+            );
+
+            const result = products.map(product => {
+                const buffer = product.productImage.image
+                const base64 = Buffer.from(buffer).toString('base64');
+                const image = `data:image/png;base64,${Buffer.from(base64, 'base64').toString()}`;
+
+                return {
+                    id: product.id,
+                    stock: product.stock,
+                    title: product.title,
+                    image: image,
+                    price: product.price
+                };
+            });
+
+            return res.status(200).json(result)
+        } catch (error) {
+            return res.status(500).json(error)
+        }
+    },
     delete: async (req, res) => {
         try {
             const productDB = await Product.findByPk(req.params.id, { include: [{ association: "productImage" }] });

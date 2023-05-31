@@ -234,8 +234,7 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error);
         }
-    }
-    ,
+    },
     remove: async (req, res) => {
         try {
             const userDB = await User.findByPk(req.body.id, { include: [{ association: "cart" }] });

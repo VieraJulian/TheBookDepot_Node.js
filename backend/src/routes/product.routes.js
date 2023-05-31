@@ -20,5 +20,6 @@ router.get("/:id/detail", productControllers.detail)
 router.get("/all", productControllers.all)
 router.get("/bestSellers", productControllers.bestSellers)
 router.get("/english", productControllers.english)
+router.post("/info", verifyToken, productControllers.info)
 
 module.exports = router
