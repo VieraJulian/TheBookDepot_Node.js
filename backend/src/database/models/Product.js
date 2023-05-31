@@ -89,25 +89,6 @@ module.exports = (sequelize, DataTypes) => {
       as: "orderItems",
       foreignKey: "productId"
     })
-
-    Product.hasMany(models.CartProduct, {
-      as: "cartProducts",
-      foreignKey: "productId"
-    })
-
-    Product.belongsToMany(models.User, {
-      as: "favoritesProducts",
-      foreignKey: "productId",
-      otherkey: "userId",
-      through: "favoritesproducts",
-    })
-
-    Product.belongsToMany(models.User, {
-      as: "productsSalved",
-      foreignKey: "productId",
-      otherkey: "userId",
-      through: "savedproducts",
-    })
   }
 
   return Product

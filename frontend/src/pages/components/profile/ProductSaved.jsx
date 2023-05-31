@@ -1,6 +1,5 @@
 import { useProductSaved } from '../../../hooks/useProductSaved'
-import { useDeleteProductSaved } from '../../../hooks/useDeleteProductSaved'
-import { useCart } from '../../../hooks/useCart' 
+import { useCart } from '../../../hooks/useCart'
 import { Link } from 'react-router-dom'
 import { useProductInfo } from '../../../hooks/useProductInfo'
 
@@ -31,7 +30,10 @@ function ProductSaved() {
                                             </div>
                                         </Link>
                                         <div className="saved-btns">
-                                            <button onClick={() => addToCart(product)}><i className="fa-solid fa-cart-plus"></i></button>
+                                            {
+                                                product.stock > 0 &&
+                                                <button onClick={() => addToCart(product)}><i className="fa-solid fa-cart-plus"></i></button>
+                                            }
                                             <button onClick={() => removeSavedProduct(product)}><i className="fa-solid fa-circle-xmark"></i></button>
                                             <button><i className="fa-brands fa-whatsapp"></i></button>
                                         </div>
@@ -46,7 +48,10 @@ function ProductSaved() {
                                 </div>
                             </div>
                     }
-                    <button onClick={() => clearSaved()}>Eliminar</button>
+                    {
+                        products && products.length > 0 &&
+                        <button onClick={() => clearSaved()}>Eliminar</button>
+                    }
                 </div>
             </div>
         </>

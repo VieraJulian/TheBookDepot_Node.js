@@ -27,7 +27,8 @@ function Product() {
             <div className="product-container">
                 <button className="add-product" data-bs-toggle="modal" data-bs-target="#modalCreate">AGREGAR NUEVO PRODUCTO</button>
                 <div className="products-order-container">
-                    <div className="pagination-container">
+                    {   products && products.length > 0 &&
+                        <div className="pagination-container">
                         {page !== 1 && (
                             <button onClick={handlePrevClick}><i className="fa-solid fa-caret-left"></i></button>
                         )}
@@ -40,9 +41,12 @@ function Product() {
                             )
                         }
                     </div>
+                    }
                     <div className="detail-product">
                         <div className="info-product-container">
-                            <div className="info-product-header">
+                            {
+                                products && products.length > 0 ?
+                                <div className="info-product-header">
                                 <p className="p-imagen">Imagen</p>
                                 <p className="p-nombre">Nombre</p>
                                 <p className="p-precio">Precio</p>
@@ -50,6 +54,9 @@ function Product() {
                                 <p className="p-vendido">Vendidos</p>
                                 <p className="p-detalle">Detalle</p>
                             </div>
+                            : 
+                            <p>No hay productos</p>
+                            }
                             {products &&
                                 products.map((product) => {
                                     return (

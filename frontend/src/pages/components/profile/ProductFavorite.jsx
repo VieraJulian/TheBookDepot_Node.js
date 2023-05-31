@@ -30,7 +30,10 @@ function ProductFavorite() {
                                             </div>
                                         </Link>
                                         <div className="favorite-btns">
-                                            <button onClick={() => addToCart(product)}><i className="fa-solid fa-cart-plus"></i></button>
+                                            {
+                                                product.stock > 0 &&
+                                                <button onClick={() => addToCart(product)}><i className="fa-solid fa-cart-plus"></i></button>
+                                            }
                                             <button onClick={() => removeFavoriteProduct(product)}><i className="fa-solid fa-circle-xmark"></i></button>
                                             <button><i className="fa-brands fa-whatsapp"></i></button>
                                         </div>
@@ -45,7 +48,11 @@ function ProductFavorite() {
                                 </div>
                             </div>
                     }
-                    <button onClick={() => clearFavorites()}>Eliminar</button>
+                    {
+                    products && products.length > 0 &&
+                        <button onClick={() => clearFavorites()}>Eliminar</button>
+
+                    }
                 </div>
             </div>
         </>

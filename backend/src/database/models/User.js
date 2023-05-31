@@ -70,25 +70,6 @@ module.exports = (sequelize, DataTypes) => {
             as: "orders",
             foreignKey: "userId"
         })
-
-        User.hasOne(models.Cart, {
-            as: "cart",
-            foreignKey: "userId"
-        })
-
-        User.belongsToMany(models.Product, {
-            as: "favoritesProducts",
-            foreignKey: "userId",
-            otherkey: "productId",
-            through: "favoritesproducts",
-        })
-
-        User.belongsToMany(models.Product, {
-            as: "productsSalved",
-            foreignKey: "userId",
-            otherkey: "productId",
-            through: "savedproducts",
-        })
     }
 
     return User
