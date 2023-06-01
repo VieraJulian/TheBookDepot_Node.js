@@ -4,6 +4,7 @@ import { useCartDetail } from '../hooks/useCartDetail'
 import { useGetUserAddresses } from '../hooks/useGetUserAddress'
 import { useProductSaved } from '../hooks/useProductSaved'
 import { useCart } from '../hooks/useCart';
+import { useCartPay } from '../hooks/useCartPay'
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -16,9 +17,10 @@ function Cart() {
     const { cart, clearCart, addToCart, reduceCartProductQuantity, removeCartProduct } = useCart()
     const { products, total, quantity } = useCartDetail({ cart })
     const { addSaved } = useProductSaved()
-    
-    const { addresses } = useGetUserAddresses()
     const [addressId, setAddressId] = useState(null)
+    const { addresses } = useGetUserAddresses()
+    const { pay } = useCartPay({ clearCart, addressId })
+
 
     const handleAddressSelect = (id) => {
         setAddressId(id)
@@ -103,7 +105,7 @@ function Cart() {
                             }
                             <div className="cart-shipping-options">
                                 <div className="cart-shipping-option">
-                                    <p>Recoger en local:</p><input className='radio' type="radio" name="opcion" onClick={() => handleAddressSelect(null)} />
+                                    <p>Recoger en local:</p><input className='radio' type="radio" name="opcion" onClick={() => handleAddressSelect(null)} defaultChecked />
                                 </div>
                                 <div className="cart-shipping-details">
                                     <p>Dirección del local: Avenida Libertad, 1234 - Buenos Aires</p>
@@ -125,11 +127,11 @@ function Cart() {
                         <div className="cart-summary-item">
                             <p>Envío:</p><p className="item-value">A tratar</p>
                         </div>
-                        <button className='buy'>Pagar ahora</button>
+                        <button className='buy' onClick={() => pay()}>Pagar ahora</button>
                         <div className="cart-help">
                             <div className='mastercard'><img src="../../public/img/cart/masterCard.png" alt="" /><img src="../../public/img/cart/icon-mp.webp" alt="" /></div>
                             <div className='promo'><img src="../../public/img/cart/2x1.jpg" alt="" /></div>
-                            <button className='help-wts'>Ayuda al whatsapp: +11111111111<i className="fa-brands fa-whatsapp wts"></i></button>
+                            <button className='help-wts'>Ayuda al whatsapp: +98751827463<i className="fa-brands fa-whatsapp wts"></i></button>
                         </div>
                     </div>
                 }
