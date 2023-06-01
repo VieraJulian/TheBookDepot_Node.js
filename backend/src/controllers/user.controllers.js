@@ -75,7 +75,7 @@ module.exports = {
                 expiresIn: 60 * 60 * 24
             })
 
-            return res.status(200).json({ id: userDB.id, admin: userDB.admin,  token: token })
+            return res.status(200).json({ id: userDB.id, admin: userDB.admin, token: token })
         } catch (error) {
             return res.status(500).json(error)
         }
@@ -254,33 +254,48 @@ module.exports = {
                 ]
             });
 
-            const data = await Promise.all(ordersDB.map(async order => {
-                const address = await Address.findByPk(order.addressId);
-                const orderItems = order.orderItems.map(oi => {
-                    return {
-                        image: oi.product.productImage.image,
-                        title: oi.product.title,
-                        quantity: oi.quantity,
-                        price: oi.product.price,
-                    }
-                })
+            const data = await Promise.all(
+                ordersDB.map(async order => {
+                    const address = await Address.findByPk(order.addressId);
 
-                return {
-                    orderNumber: order.orderNumber,
-                    date: order.date,
-                    total: order.total,
-                    delivered: order.delivered,
-                    paymentMethod: order.paymentMethod,
-                    address: {
-                        addresse: address.addresse,
-                        phone: address.phone,
-                        province: address.province,
-                        city: address.city,
-                        address: address.address
-                    },
-                    orderItems
-                };
-            }));
+                    let addressOrder;
+
+                    if (address) {
+                        addressOrder = {
+                            addresse: address.addresse,
+                            phone: address.phone,
+                            province: address.province,
+                            city: address.city,
+                            address: address.address
+                        }
+                    } else {
+                        addressOrder = null
+                    }
+                    const orderItems = order.orderItems.map(oi => {
+                        const buffer = oi.product.productImage.image
+                        const base64 = Buffer.from(buffer).toString('base64');
+                        const image = `data:image/png;base64,${Buffer.from(base64, 'base64').toString()}`;
+
+                        return {
+                            id: oi.product.id,
+                            image: image,
+                            title: oi.product.title,
+                            quantity: oi.quantity,
+                            price: oi.product.price,
+                        }
+                    })
+
+                    return {
+                        orderId: order.id,
+                        orderNumber: order.orderNumber,
+                        date: order.date,
+                        total: order.total,
+                        delivered: order.delivered,
+                        paymentMethod: order.paymentMethod,
+                        addressOrder: addressOrder && addressOrder,
+                        orderItems
+                    };
+                }));
 
             return res.status(200).json(data);
         } catch (error) {
