@@ -42,7 +42,7 @@ function Cart() {
                                 <p className='cart-header-action'>Acción</p>
                             </div>
                             :
-                            <div>
+                            <div className='cart-empty'>
                                 <p>No hay productos en el carrito</p>
                                 <Link to='/'>Añadir</Link>
                             </div>
@@ -75,7 +75,7 @@ function Cart() {
                         }
                         {
                             products && products.length > 0 &&
-                            <button onClick={clearCart}>
+                            <button className='clearCart' onClick={clearCart}>
                                 Vaciar Carrito
                             </button>
                         }

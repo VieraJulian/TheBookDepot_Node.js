@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useProductInfo } from '../../../hooks/useProductInfo'
 
 import '../../../../public/css/components/profile/saved/saved-mobile.css'
+import '../../../../public/css/components/profile/saved/saved-desktop.css'
 
 function ProductSaved() {
     const { saved, removeSavedProduct, clearSaved } = useProductSaved()
@@ -50,7 +51,9 @@ function ProductSaved() {
                     }
                     {
                         products && products.length > 0 &&
-                        <button onClick={() => clearSaved()}>Eliminar</button>
+                        <div className='clearSaved'>
+                            <button onClick={() => clearSaved()}>Eliminar guardados</button>
+                        </div>
                     }
                 </div>
             </div>

@@ -240,3 +240,25 @@
     height: 18rem;
     object-fit: contain;
 }
+
+.cart-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 1rem;
+}
+
+.cart-empty a {
+    text-decoration: none;
+    color: rgb(231, 34, 34);
+    font-weight: 600;
+}
+
+.clearCart {
+    border: 1px solid #999;
+    width: 100%;
+    height: 2rem;
+    background-color: rgb(231, 34, 34);
+    color: #fff;
+}

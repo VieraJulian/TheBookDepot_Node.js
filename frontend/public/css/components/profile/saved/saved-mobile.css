@@ -94,6 +94,21 @@
     margin: 0 .4rem 0 0;
 }
 
+.clearSaved  {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.clearSaved  button {
+    border: 1px solid #999;
+    width: 100%;
+    height: 2.6rem;
+    margin-top: 1rem;
+    background-color: rgb(231, 34, 34);
+    color: #fff;
+}
+
 @media screen and (min-width: 26.5em) {
     .saved-p-container {
         display: flex;

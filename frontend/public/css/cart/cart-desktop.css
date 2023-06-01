@@ -15,6 +15,14 @@
         width: 30%;
         height: 80%;
     }
+
+    .cart-empty {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 2rem 0 1rem;
+    }
 }
 
 @media (min-width: 72em) {

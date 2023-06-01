@@ -4,6 +4,7 @@ import { useProductInfo } from '../../../hooks/useProductInfo'
 import { useCart } from '../../../hooks/useCart';
 
 import "../../../../public/css/components/profile/favorites/favorites-mobile.css"
+import "../../../../public/css/components/profile/favorites/favorites-desktop.css"
 
 function ProductFavorite() {
     const { clearFavorites, removeFavoriteProduct, productsFavorites } = useProductFavorite()
@@ -49,8 +50,10 @@ function ProductFavorite() {
                             </div>
                     }
                     {
-                    products && products.length > 0 &&
-                        <button onClick={() => clearFavorites()}>Eliminar</button>
+                        products && products.length > 0 &&
+                        <div className="clearFavorites">
+                            <button onClick={() => clearFavorites()}>Eliminar Favoritos</button>
+                        </div>
 
                     }
                 </div>
