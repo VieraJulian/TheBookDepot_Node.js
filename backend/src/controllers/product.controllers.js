@@ -169,28 +169,12 @@ module.exports = {
         try {
             const productDB = await Product.findByPk(req.params.id, { include: [{ association: "productImage" }] });
             if (productDB) {
-                const favorites = await FavoriteProduct.findAll({ where: { productId: productDB.id } });
-                const saved = await SavedProduct.findAll({ where: { productId: productDB.id } });
-
-                const cartProducts = await CartProduct.findAll({ where: { productId: productDB.id } });
-                await Promise.all(cartProducts.map(async (cp) => {
-                    const cart = await Cart.findOne({ where: { id: cp.cartId } });
-                    const total = cart.total - productDB.price * cp.quantity;
-                    await Cart.update({ total: total }, { where: { id: cp.cartId } });
-                    await cp.destroy();
-                }));
 
                 const productImage = productDB.productImage;
                 if (productImage) {
                     await productImage.destroy();
                 }
-
-                await Promise.all(favorites.map(async (f) => {
-                    await f.destroy();
-                }));
-                await Promise.all(saved.map(async (s) => {
-                    await s.destroy();
-                }));
+                
                 await productDB.destroy();
             }
 
