@@ -248,11 +248,6 @@ module.exports = {
                 limit,
                 offset,
                 include: [{ association: "productImage" }],
-                where: {
-                    sold: {
-                        [Op.gte]: 20
-                    }
-                },
                 order: [
                     ['sold', 'DESC']
                 ]

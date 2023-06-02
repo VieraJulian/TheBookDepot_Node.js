@@ -1,4 +1,4 @@
-const { Product, User, Order } = require("../database/models/index");
+const { Product, User, Order, Address } = require("../database/models/index");
 
 module.exports = {
     stats: async (req, res) => {
@@ -39,5 +39,48 @@ module.exports = {
         } catch (error) {
             return res.status(500).json(error);
         }
+    },
+    orders: async (req, res) => {
+        try {
+            const { page, size } = req.query;
+
+            const limit = parseInt(size);
+            const offset = (page - 1) * size;
+
+            const ordersDB = await Order.findAll({
+                limit,
+                offset,
+                order: [['date', 'ASC']]
+            })
+
+            const totalProducts = await Order.count();
+
+            const totalPages = Math.ceil(totalProducts / limit);
+
+            const orders = await Promise.all(
+                ordersDB.map(async order => {
+                    const address = await Address.findByPk(order.addressId)
+
+                    return {
+                        id: order.id,
+                        total: order.total,
+                        paymentMethod: order.paymentMethod,
+                        date: order.date,
+                        orderNumber: order.orderNumber,
+                        delivered: order.delivered,
+                        address
+                    }
+                })
+            )
+
+            const data = {
+                totalPages,
+                orders
+            }
+
+            return res.status(200).json(data);
+        } catch (error) {
+            return res.status(500).json(error);
+        }
     }
-}
+} 
