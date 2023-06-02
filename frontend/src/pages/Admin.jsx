@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react';
+import { useAdminGetStats } from '../hooks/useAdminGetStats';
 
 import Product from './components/admin/Product';
 import Order from './components/admin/Order';
@@ -10,6 +11,7 @@ import "../../public/css/admin/admin-desktop.css"
 
 function Admin() {
     const [selectedContent, setSelectedContent] = useState('Product');
+    const { stats } = useAdminGetStats()
 
     function handleMenuClick(content) {
         setSelectedContent(content);
@@ -37,12 +39,16 @@ function Admin() {
                         </div>
                     </div>
                     <div className='admin-content'>
-                        <div className='info-site'>
-                            <div className='info-container-div color-div-one'><p>Ventas</p><p className='result'>$ 300.000</p></div>
-                            <div className='info-container-div color-div-two'><p>Pedidos</p><p className='result'>23</p></div>
-                            <div className='info-container-div color-div-three'><p>Productos</p><p className='result'>235</p></div>
-                            <div className='info-container-div color-div-four'><p>Usuarios</p><p className='result'>1289</p></div>
-                        </div>
+                        {
+                            stats &&
+                            <div className='info-site'>
+                                <div className='info-container-div color-div-one'><p>Ventas</p><p className='result'>$ {stats.totalSales}</p></div>
+                                <div className='info-container-div color-div-two'><p>Pedidos</p><p className='result'>{stats.quantityOrdesDelivered}</p></div>
+                                <div className='info-container-div color-div-three'><p>Productos</p><p className='result'>{stats.quantityProducts}</p></div>
+                                <div className='info-container-div color-div-four'><p>Usuarios</p><p className='result'>{stats.quantityUsers
+}</p></div>
+                            </div>
+                        }
                         <div className='select-container'>
                             {selectedContent === 'Product' && <Product />}
                             {selectedContent === 'Order' && <Order />}

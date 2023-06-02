@@ -17,7 +17,7 @@ module.exports = {
             });
 
             const data = {
-                totalSales,
+                totalSales: totalSales.toFixed(2),
                 quantityOrdesDelivered,
                 quantityOrders: ordersDB.length,
                 quantityProducts: productsDB.length,
