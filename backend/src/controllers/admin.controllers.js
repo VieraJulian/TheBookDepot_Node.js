@@ -50,7 +50,7 @@ module.exports = {
             const ordersDB = await Order.findAll({
                 limit,
                 offset,
-                order: [['date', 'ASC']]
+                order: [['date', 'DESC']]
             })
 
             const totalProducts = await Order.count();

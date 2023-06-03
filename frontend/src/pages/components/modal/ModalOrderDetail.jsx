@@ -1,8 +1,10 @@
 import React from "react";
+import { useAdminOrderDelivered } from "../../../hooks/useAdminOrderDelivered";
 
 import "../../../../public/css/modal/modal.css"
 
 function ModalOrderDetail({ orderS }) {
+    const { handleOrderDelivered } = useAdminOrderDelivered()
 
     return (
         <>
@@ -35,7 +37,7 @@ function ModalOrderDetail({ orderS }) {
                         }
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button className="button-order">Pedido entregado</button>
+                            <button className="button-order" onClick={() => handleOrderDelivered(orderS.id)}>Pedido entregado</button>
                         </div>
                     </div>
                 </div>

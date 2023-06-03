@@ -10,7 +10,7 @@ import "../../../../public/css/components/admin/product/product-desktop.css"
 
 function Product() {
     const [page, setPage] = useState(1)
-    const [size, setSize] = useState(3)
+    const [size, setSize] = useState(5)
     const [productS, setProductS] = useState(null)
     const { products, totalPages } = useGetAllProduct(page, size)
     const { handleChangePage, handlePrevClick, handleNextClick, paginationNumbers } = usePaginationProducts(page, totalPages, setPage)
