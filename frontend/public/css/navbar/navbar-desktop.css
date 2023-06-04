@@ -16,16 +16,6 @@
         align-items: center;
     }
 
-    .cart-price {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .p-bar {
-        margin: 0 .5rem;
-    }
-
     .cart-quantity {
         color: #09d92fdb;
         font-size: 1.2rem;
@@ -34,16 +24,6 @@
 
     .cart-producto {
         margin: 0;
-    }
-
-    .ars-p {
-        margin: 0;
-    }
-
-    .cart-total {
-        color: #f26531;
-        font-weight: 600;
-        margin: 0 0 0 .2rem;
     }
 }
 

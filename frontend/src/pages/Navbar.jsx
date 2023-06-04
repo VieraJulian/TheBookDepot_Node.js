@@ -97,12 +97,7 @@ function Navbar() {
                         <div className='cart-detail'>
                             <div className='cart-product'>
                                 <p className='cart-quantity'>{quantityTotal ? quantityTotal : 0}</p>
-                                <p className='cart-producto'>producto</p>
-                            </div>
-                            <p className='p-bar'>|</p>
-                            <div className='cart-price'>
-                                <p className='ars-p'>AR$</p>
-                                <p className='cart-total'>{cartTotalPrice ? cartTotalPrice : 0}</p>
+                                <p className='cart-producto'>productos</p>
                             </div>
                         </div>
                         <div className='cart'>

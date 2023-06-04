@@ -134,6 +134,8 @@
 }
 
 .cart-number {
+    height: 2rem;
+    width: 2rem;
     position: absolute;
     background-color: #e58124;
     color: #fff;
@@ -141,6 +143,9 @@
     border-radius: 50%;
     top: -14px;
     right: -14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-bottom {
