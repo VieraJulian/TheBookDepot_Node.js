@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react';
 import { useAdminGetStats } from '../hooks/useAdminGetStats';
+import Loader from '../components/Loader';
 
 import Product from './components/admin/Product';
 import Order from './components/admin/Order';
@@ -10,8 +11,9 @@ import "../../public/css/admin/admin-tablet.css"
 import "../../public/css/admin/admin-desktop.css"
 
 function Admin() {
+    const [loading, setLoading] = useState(true);
     const [selectedContent, setSelectedContent] = useState('Product');
-    const { stats } = useAdminGetStats()
+    const { stats } = useAdminGetStats(setLoading)
 
     function handleMenuClick(content) {
         setSelectedContent(content);
@@ -38,6 +40,8 @@ function Admin() {
                             <Link to="/">Ir al Sitio</Link>
                         </div>
                     </div>
+                    {loading ?
+                    <Loader /> :
                     <div className='admin-content'>
                         {
                             stats &&
@@ -54,6 +58,7 @@ function Admin() {
                             {selectedContent === 'Order' && <Order />}
                         </div>
                     </div>
+                    }
                 </div>
             </div>
         </div>

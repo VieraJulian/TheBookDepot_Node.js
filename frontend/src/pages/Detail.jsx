@@ -1,8 +1,10 @@
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGetArticle } from "../hooks/useGetArticle";
 import { useCart } from '../hooks/useCart'
 import { useProductFavorite } from '../hooks/useProductFavorite'
 import { useProductSaved } from "../hooks/useProductSaved";
+import Loader from '../components/Loader';
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -13,7 +15,8 @@ import "../../public/css/detail/detail-desktop.css"
 
 function Detail() {
     const { id } = useParams()
-    const { article } = useGetArticle({ id })
+    const [loading, setLoading] = useState(true);
+    const { article } = useGetArticle({ id, setLoading })
     const { addToCart } = useCart()
     const { addFavorite } = useProductFavorite()
     const { addSaved } = useProductSaved()
@@ -22,6 +25,8 @@ function Detail() {
         <>
             <div className='detail-container'>
                 <Navbar />
+                {loading ? 
+                <Loader /> :
                 <div className='detail-page'>
                     {article &&
                         <>
@@ -86,6 +91,7 @@ function Detail() {
                         </>
                     }
                 </div>
+                }
                 <Footer />
             </div>
         </>

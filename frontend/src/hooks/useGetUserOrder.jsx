@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { usersGetOrders } from "../services/usersGetOrders"
 import Cookies from "universal-cookie"
 
-export function useGetUserOrder() {
+export function useGetUserOrder(setLoading) {
     const [orders, setOrders] = useState(null)
 
     useEffect(() => {
@@ -15,6 +15,7 @@ export function useGetUserOrder() {
 
             const result = await usersGetOrders(userId, token)
             setOrders(result)
+            setLoading(false)
         }
 
         getUsersOrders()

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { productsGetEnglish } from '../services/productsGetEnglish';
 
-export function useGetProductEnglish(page, size) {
+export function useGetProductEnglish(page, size,setLoading) {
     const [products, setProducts] = useState(null)
     const [totalPages, setTotalPages] = useState(null)
 
@@ -10,6 +10,7 @@ export function useGetProductEnglish(page, size) {
             const result = await productsGetEnglish(page, size)
             setProducts(result.englishAll)
             setTotalPages(result.totalPages)
+            setLoading(false)
         }
 
         getProductsEnglish()

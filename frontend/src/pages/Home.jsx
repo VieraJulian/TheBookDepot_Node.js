@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useGetAllProduct } from '../hooks/useGetAllProduct'
 import { usePaginationProducts } from '../hooks/usePaginationProducts'
+import Loader from '../components/Loader';
 
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -13,7 +14,8 @@ import "../../public/css/home/home-mobile.css"
 function Home() {
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(20)
-    const { products, totalPages } = useGetAllProduct(page, size)
+    const [loading, setLoading] = useState(true);
+    const { products, totalPages } = useGetAllProduct(page, size, setLoading)
     const { handleChangePage, handlePrevClick, handleNextClick, paginationNumbers } = usePaginationProducts(page, totalPages, setPage)
 
     return (
@@ -56,6 +58,9 @@ function Home() {
                         </div>
                     </div>
                     <div className='home-articles-container'>
+                        {loading ? (
+                            <Loader />
+                        ): (
                         <div className='articles-container'>
                             {products &&
                                 products.map(product => {
@@ -82,6 +87,7 @@ function Home() {
                                 }
                             </div>
                         </div>
+                        )}
                     </div>
                 </div>
             </div >

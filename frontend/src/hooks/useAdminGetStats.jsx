@@ -2,7 +2,7 @@ import { adminGetStats } from '../services/adminGetStats';
 import React, { useEffect, useState } from 'react';
 import Cookies from 'universal-cookie';
 
-export function useAdminGetStats() {
+export function useAdminGetStats(setLoading) {
     const [stats, setStats] = useState(null);
 
     useEffect(() => {
@@ -13,6 +13,7 @@ export function useAdminGetStats() {
 
             const result = await adminGetStats(token)
             setStats(result)
+            setLoading(false)
         }
 
         getAdminStats()

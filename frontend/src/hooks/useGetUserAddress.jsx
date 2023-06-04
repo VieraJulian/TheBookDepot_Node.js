@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { userAddresses } from '../services/usersAddresses';
 import Cookies from 'universal-cookie';
 
-export function useGetUserAddresses() {
+export function useGetUserAddresses(setLoading) {
     const [addresses, setAddresses] = useState([]);
 
     const cookies = new Cookies();
@@ -19,6 +19,7 @@ export function useGetUserAddresses() {
         async function getUserAddresses() {
             const data = await userAddresses(id, token)
             setAddresses(data);
+            setLoading(false)
         }
 
         getUserAddresses();

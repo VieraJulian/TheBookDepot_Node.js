@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { userInfo } from '../services/usersInfo';
 import Cookies from 'universal-cookie';
 
-export function useGetUserInfo() {
+export function useGetUserInfo(setLoading) {
     const [userInfoProfile, setUserInfoProfile] = useState(null);
 
     const cookies = new Cookies();
@@ -14,6 +14,7 @@ export function useGetUserInfo() {
         async function getUserInfo() {
             const info = await userInfo(id, token)
             setUserInfoProfile(info);
+            setLoading(false)
         }
 
         getUserInfo()

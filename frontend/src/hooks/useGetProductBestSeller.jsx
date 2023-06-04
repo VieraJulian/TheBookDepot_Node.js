@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { productsGetBestSellers } from '../services/productsGetBestSellers';
 
-export function useGetProductBestSeller(page, size) {
+export function useGetProductBestSeller(page, size,setLoading) {
     const [products, setProducts] = useState(null)
     const [totalPages, setTotalPages] = useState(null)
 
@@ -10,6 +10,7 @@ export function useGetProductBestSeller(page, size) {
             const result = await productsGetBestSellers(page, size)
             setProducts(result.productsAll)
             setTotalPages(result.totalPages)
+            setLoading(false)
         }
 
         getProductsBestSeller()
