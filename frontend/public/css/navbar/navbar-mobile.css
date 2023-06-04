@@ -164,6 +164,15 @@
     display: none;
 }
 
+.button-navbar {
+    border: none;
+    background-color: transparent;
+}
+
+.fa-bars-staggered {
+    font-size: 2rem;
+}
+
 @media screen and (min-width: 26.5em) {
     .navbar-search input {
         width: 16em;
@@ -219,5 +228,9 @@
         width: 100%;
         padding: .5rem;
         margin: 0;
+    }
+
+    .button-navbar {
+        display: none;
     }
 }

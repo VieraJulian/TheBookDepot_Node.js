@@ -50,11 +50,44 @@ function Navbar() {
                         </Link>
                     </picture>
                     <div className='navbar-center'>
-                        <Link to="#" className='link-bars'>
-                            <div className='bars'>
-                                <i className="fa-solid fa-bars-staggered"></i>
+                        <nav>
+                            <div>
+                                <button className='button-navbar' type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                                <i class="fa-solid fa-bars-staggered"></i>
+                                </button>
+                                <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                                    <div className="offcanvas-header">
+                                        <h5 className="offcanvas-title" id="offcanvasNavbarLabel">TheBookDepot</h5>
+                                        <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                    </div>
+                                    <div className="offcanvas-body">
+                                        <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                            <li className="nav-item">
+                                                <Link className="nav-link active" aria-current="page" to="/">INICIO</Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link className="nav-link" to="/">LIBROS</Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link className="nav-link" to="/products/bestSeller">MÁS VENDIDOS</Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link className="nav-link" to="/products/english">INGLÉS</Link>
+                                            </li>
+                                            <li className="nav-item dropdown">
+                                                <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    MI CUENTA
+                                                </Link>
+                                                <ul className="dropdown-menu">
+                                                    <li><Link className="dropdown-item" to="/users/profile">MIS DATOS</Link></li>
+                                                    <li><Link className="dropdown-item" to="#" onClick={() => handleLogout()}>CERRAR SESIÓN</Link></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                        </Link>
+                        </nav>
                         <div className='navbar-search'>
                             <input type="text"
                                 placeholder='Buscar por título...'
@@ -97,6 +130,7 @@ function Navbar() {
                         </Link>
                     </div>
                 </div>
+
             </div>
         </>
     )
