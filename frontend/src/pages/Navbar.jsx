@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Cookies from 'universal-cookie';
 import { useCart } from '../hooks/useCart'
 import { useSearch } from '../hooks/useSearch';
+import { useLogout } from '../hooks/useLogout';
 
 import "../../public/css/navbar/navbar-mobile.css"
 import "../../public/css/navbar/navbar-desktop.css"
@@ -9,16 +10,10 @@ import "../../public/css/navbar/navbar-desktop.css"
 function Navbar() {
     const { cart, quantityTotal } = useCart()
     const { booksFound, searchValue, clearBooksFound, foundBookDetail } = useSearch()
+    const { handleLogout } = useLogout()
 
     const cookies = new Cookies();
     const cookieGet = cookies.get('response')
-
-    const handleLogout = () => {
-        if (cookieGet && cookieGet.userId) {
-            cookies.remove('response', { path: '/' });
-            window.location.href = '/'
-        }
-    }
 
     return (
         <>
@@ -67,7 +62,7 @@ function Navbar() {
                                                 <Link className="nav-link active" aria-current="page" to="/">INICIO</Link>
                                             </li>
                                             <li className="nav-item">
-                                                <Link className="nav-link" to="/">LIBROS</Link>
+                                                <Link className="nav-link" to="/products/books">LIBROS</Link>
                                             </li>
                                             <li className="nav-item">
                                                 <Link className="nav-link" to="/products/bestSeller">MÁS VENDIDOS</Link>
@@ -133,7 +128,7 @@ function Navbar() {
                         <Link to="/">
                             <p>Inicio</p>
                         </Link>
-                        <Link to="#">
+                        <Link to="/products/books">
                             <p>Libros</p>
                         </Link>
                         <Link to="/products/bestSeller">

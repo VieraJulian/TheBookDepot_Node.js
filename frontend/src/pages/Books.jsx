@@ -1,0 +1,64 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
+import { useGetAllProduct } from '../hooks/useGetAllProduct';
+import { usePaginationProducts } from '../hooks/usePaginationProducts'
+import Loader from '../components/Loader';
+import { useSpanishOnly } from '../hooks/useSpanishOnly';
+
+import '../../public/css/books/books-mobile.css'
+
+import Navbar from './Navbar'
+import Footer from './Footer'
+
+function Books() {
+    const [page, setPage] = useState(1)
+    const [size, setSize] = useState(20)
+    const [loading, setLoading] = useState(true);
+    const { products, totalPages } = useGetAllProduct(page, size, setLoading)
+    const { handleChangePage, handlePrevClick, handleNextClick, paginationNumbers } = usePaginationProducts(page, totalPages, setPage)
+    const { spanishOnly } = useSpanishOnly({ products })
+
+    return (
+        <>
+            <Navbar />
+            <div className='books'>
+                <div className='books-container'>
+                    <div className='books-articles-container'>
+                        {loading ?
+                            <Loader /> :
+                            <div className='articles-container'>
+                                {spanishOnly &&
+                                    spanishOnly.map(product => {
+                                        return (
+                                            <div className='article' key={product.id}>
+                                                <Link to={`/products/detail/${product.id}`}>
+                                                    <img className='article-img' src={product.image} alt={product.title} />
+                                                </Link>
+                                            </div>
+                                        )
+                                    })
+                                }
+                                <div className="pagination-container-books">
+                                    {page !== 1 && (
+                                        <button onClick={handlePrevClick}><i className="fa-solid fa-caret-left"></i></button>
+                                    )}
+                                    {paginationNumbers && paginationNumbers.map((number, i) => (
+                                        <button className={page === number ? 'active' : ''} onClick={handleChangePage} key={i}>{number}</button>
+                                    ))}
+                                    {
+                                        page !== totalPages && (
+                                            <button onClick={handleNextClick}><i className="fa-solid fa-caret-right"></i></button>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div >
+            <Footer />
+        </>
+    )
+}
+
+export default Books

@@ -10,6 +10,7 @@ import Detail from './pages/Detail'
 import Cart from "./pages/Cart"
 import Admin from './pages/Admin'
 import English from './pages/English'
+import Books from './pages/Books';
 import BestSeller from './pages/BestSeller'
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/products/detail/:id" element={<Detail />}></Route>
           <Route path="/products/english" element={<English />}></Route>
           <Route path="/products/bestSeller" element={<BestSeller />}></Route>
+          <Route path="/products/books" element={<Books />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
         </Routes>
       )}
