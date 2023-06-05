@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 import Cookies from 'universal-cookie';
 import { useCart } from '../hooks/useCart'
+import { useSearch } from '../hooks/useSearch';
 
 import "../../public/css/navbar/navbar-mobile.css"
 import "../../public/css/navbar/navbar-desktop.css"
 
 function Navbar() {
-    const { cart, quantityTotal, cartTotalPrice } = useCart()
+    const { cart, quantityTotal } = useCart()
+    const { booksFound, searchValue, clearBooksFound, foundBookDetail } = useSearch()
 
     const cookies = new Cookies();
     const cookieGet = cookies.get('response')
@@ -87,13 +89,31 @@ function Navbar() {
                                 </div>
                             </div>
                         </nav>
-                        <div className='navbar-search'>
-                            <input type="text"
+                        <form className='navbar-search' onSubmit={foundBookDetail}>
+                            <input
+                                className='input-search'
+                                type="text"
                                 placeholder='Buscar por título...'
                                 spellCheck="false"
-                                autoComplete="off" />
-                            <button>Buscar</button>
-                        </div>
+                                autoComplete="off"
+                                onInput={(e) => searchValue(e.target.value)}
+                                list="booksList" />
+                            {booksFound.length > 0 && (
+                                <div className='searchResult'>
+                                    {booksFound.map(book => (
+                                        <article className='search-article' key={book.id}>
+                                            <Link to={`/products/detail/${book.id}`} onClick={clearBooksFound}>
+                                                <picture>
+                                                    <img src={book.image} alt="" />
+                                                </picture>
+                                                <p>{book.title}</p>
+                                            </Link>
+                                        </article>
+                                    ))}
+                                </div>
+                            )}
+                            <button type='submit'>Buscar</button>
+                        </form>
                         <div className='cart-detail'>
                             <div className='cart-product'>
                                 <p className='cart-quantity'>{quantityTotal ? quantityTotal : 0}</p>
