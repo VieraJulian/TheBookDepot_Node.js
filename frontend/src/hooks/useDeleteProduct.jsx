@@ -7,11 +7,24 @@ export function useDeleteProduct() {
         const cookieGet = cookies.get('response')
         const token = cookieGet.token
 
-        const result = await productDelete(id, token);
+        Swal.fire({
+            icon: 'warning',
+            title: '¿Seguro que quieres eliminar este producto?',
+            showDenyButton: true,
+            confirmButtonText: 'Eliminar'
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    productDelete(id, token)
+                        .then((result) => {
+                            if (result === 'Product deleted') {
+                                window.location.href = '/admin'
+                            }
+                        })
+                }
+            })
 
-        if (result === 'Product deleted') {
-            window.location.href = '/admin'
-        }
+
     }
 
     return { handleDeleteProduct }
