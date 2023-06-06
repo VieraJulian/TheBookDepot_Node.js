@@ -1,4 +1,6 @@
 import { createContext, useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ProductFavoriteContext = createContext()
 
@@ -12,7 +14,7 @@ export function ProductFavoriteProvider({ children }) {
     const addFavorite = product => {
         const productInFavoritesIndex = productsFavorites.findIndex(p => p.id === product.id)
 
-        if (productInFavoritesIndex >= 0){
+        if (productInFavoritesIndex >= 0) {
             return
         }
 
@@ -22,11 +24,26 @@ export function ProductFavoriteProvider({ children }) {
                 id: product.id
             }
         ]))
+
+        toast.success('Añadido a favoritos!', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+
+    const checkProductInFavorite = product => {
+        return productsFavorites.some(item => item.id === product.id)
     }
 
     const removeFavoriteProduct = product => {
         const productInFavoritesIndex = productsFavorites.findIndex(p => p.id === product.id)
-        
+
         if (productInFavoritesIndex >= 0) {
             const newFavorites = productsFavorites.filter(p => p.id !== product.id)
             return setProductsFavorite(newFavorites)
@@ -36,13 +53,14 @@ export function ProductFavoriteProvider({ children }) {
     const clearFavorites = () => {
         setProductsFavorite([])
     }
-    
+
     return (
         <ProductFavoriteContext.Provider value={{
             productsFavorites,
             addFavorite,
             clearFavorites,
-            removeFavoriteProduct
+            removeFavoriteProduct,
+            checkProductInFavorite
         }}>
             {children}
         </ProductFavoriteContext.Provider>

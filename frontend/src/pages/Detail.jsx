@@ -18,79 +18,84 @@ function Detail() {
     const [loading, setLoading] = useState(true);
     const { article } = useGetArticle({ id, setLoading })
     const { addToCart } = useCart()
-    const { addFavorite } = useProductFavorite()
+    const { addFavorite, checkProductInFavorite, removeFavoriteProduct } = useProductFavorite()
     const { addSaved } = useProductSaved()
 
     return (
         <>
             <div className='detail-container'>
                 <Navbar />
-                {loading ? 
-                <Loader /> :
-                <div className='detail-page'>
-                    {article &&
-                        <>
-                            <div className='detail-img-container'>
-                                {article.sold >= 100
-                                    &&
-                                    <div className='detail-bestSeller'>
-                                        <p>Más Vendidos</p>
-                                    </div>
-                                }
-                                <img src={article.image} alt={article.title} />
-                            </div>
-                            <div className='detail-first'>
-                                <div className='detail-description'>
-                                    <p className='product-title'>{article.title}</p>
-                                    <p className='detail-description-p'>Colleción: {article.collection}</p>
-                                    <p className='detail-description-p'>Autor: {article.author}</p>
-                                    <p className='detail-description-p'>Editorial: {article.editorial}</p>
+                {loading ?
+                    <Loader /> :
+                    <div className='detail-page'>
+                        {article &&
+                            <>
+                                <div className='detail-img-container'>
+                                    {article.sold >= 100
+                                        &&
+                                        <div className='detail-bestSeller'>
+                                            <p>Más Vendidos</p>
+                                        </div>
+                                    }
+                                    <img src={article.image} alt={article.title} />
                                 </div>
-                                <div className='detail-price'>
-                                    <div className='detail-price-info'>
-                                        <p className='detail-info-price'>$ {article.price}</p>
-                                        {article.stock !== 0
-                                            ? <p className='available-stock'>Disponibilidad: En stock</p>
-                                            : <p className='notAvailable-stock'>Disponibilidad: Sin stock</p>
-                                        }
+                                <div className='detail-first'>
+                                    <div className='detail-description'>
+                                        <p className='product-title'>{article.title}</p>
+                                        <p className='detail-description-p'>Colleción: {article.collection}</p>
+                                        <p className='detail-description-p'>Autor: {article.author}</p>
+                                        <p className='detail-description-p'>Editorial: {article.editorial}</p>
                                     </div>
-                                    <div className='detail-actions'>
-                                        <button onClick={() => addFavorite(article)}>
-                                            <i className="fa-regular fa-heart"></i>
-                                            {/* <i className="fa-solid fa-heart"></i> */}
-                                        </button>
-                                        <button onClick={() => addSaved(article)}>
-                                            <i className="fa-regular fa-bookmark"></i>
-                                            {/* <i class="fa-solid fa-bookmark"></i> */}
-                                        </button>
-                                        <button>
-                                            <i className="fa-brands fa-whatsapp"></i>
-                                        </button>
+                                    <div className='detail-price'>
+                                        <div className='detail-price-info'>
+                                            <p className='detail-info-price'>$ {article.price}</p>
+                                            {article.stock !== 0
+                                                ? <p className='available-stock'>Disponibilidad: En stock</p>
+                                                : <p className='notAvailable-stock'>Disponibilidad: Sin stock</p>
+                                            }
+                                        </div>
+                                        <div className='detail-actions'>
+                                            <button onClick={() => {
+                                                checkProductInFavorite(article) 
+                                                ? removeFavoriteProduct(article)
+                                                :  addFavorite(article)
+                                                }}>
+                                                {checkProductInFavorite(article)
+                                                    ? <i className="fa-solid fa-heart"></i>
+                                                    : <i className="fa-regular fa-heart"></i>}
+                                            </button>
+                                            <button onClick={() => addSaved(article)}>
+                                                <i className="fa-regular fa-bookmark"></i>
+                                                {/* <i class="fa-solid fa-bookmark"></i> */}
+                                            </button>
+                                            <button>
+                                                <i className="fa-brands fa-whatsapp"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {
+                                        article && article.stock > 1 &&
+                                        <div className='detail-add-to-cart'>
+                                            <button onClick={() => {
+                                                addToCart(article)
+                                            }}>Agregar al carrito</button>
+                                        </div>
+                                    }
+                                </div>
+                                <div className='detail-details'>
+                                    <p className='detail-text'>Detalles:</p>
+                                    <div className='detail-details-info'>
+                                        <p>Números de páginas: {article.numberPages}.</p>
+                                        <p>Peso: {article.weight}.</p>
+                                        <p>Formato: {article.format}.</p>
+                                        <p>Edición: {article.edition}.</p>
+                                        <p>Idioma: {article.language}.</p>
+                                        <p>ISBN: {article.isbn}.</p>
                                     </div>
                                 </div>
-                                {
-                                    article && article.stock > 1 &&
-                                    <div className='detail-add-to-cart'>
-                                        <button onClick={() => {
-                                            addToCart(article)
-                                        }}>Agregar al carrito</button>
-                                    </div>
-                                }
-                            </div>
-                            <div className='detail-details'>
-                                <p className='detail-text'>Detalles:</p>
-                                <div className='detail-details-info'>
-                                    <p>Números de páginas: {article.numberPages}.</p>
-                                    <p>Peso: {article.weight}.</p>
-                                    <p>Formato: {article.format}.</p>
-                                    <p>Edición: {article.edition}.</p>
-                                    <p>Idioma: {article.language}.</p>
-                                    <p>ISBN: {article.isbn}.</p>
-                                </div>
-                            </div>
-                        </>
-                    }
-                </div>
+                            </>
+                        }
+                    </div>
                 }
                 <Footer />
             </div>

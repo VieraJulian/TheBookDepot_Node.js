@@ -15,16 +15,16 @@ function Footer() {
                         <Link to="/">
                             <p>Inicio</p>
                         </Link>
-                        <Link to="#">
+                        <Link to="/products/books">
                             <p>Libros</p>
                         </Link>
-                        <Link to="#">
+                        <Link to="/products/bestSeller">
                             <p>Más vendidos</p>
                         </Link>
-                        <Link to="#">
+                        <Link to="/products/english">
                             <p>Inglés</p>
                         </Link>
-                        <Link to="#">
+                        <Link to="/">
                             <p>Nosotros</p>
                         </Link>
                     </nav>

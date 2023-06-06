@@ -83,11 +83,13 @@
 .available-stock {
     color: #5cb85c;
     margin-bottom: .5rem;
+    font-weight: 600;
 }
 
 .notAvailable-stock{ 
     color: #ff0000;
     margin-bottom: .5rem;
+    font-weight: 600;
 }
 
 .detail-actions {
@@ -99,6 +101,7 @@
 .detail-actions button {
     border: none;
     font-size: 1.6rem;
+    background-color: #EBEBEB;
 }
 
 .fa-heart {
