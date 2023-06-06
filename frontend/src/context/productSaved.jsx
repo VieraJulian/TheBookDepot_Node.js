@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ProductSavedContext = createContext()
 
@@ -22,6 +24,21 @@ export function ProductSavedProvider({ children }) {
                 id: product.id
             }
         ]))
+
+        toast.success('Producto guardado!', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+
+    const checkProductInSaved = product => {
+        return saved.some(item => item.id === product.id)
     }
 
     const removeSavedProduct = product => {
@@ -42,7 +59,8 @@ export function ProductSavedProvider({ children }) {
             saved,
             addSaved,
             removeSavedProduct,
-            clearSaved
+            clearSaved,
+            checkProductInSaved
         }}>
             {children}
         </ProductSavedContext.Provider>

@@ -19,7 +19,7 @@ function Detail() {
     const { article } = useGetArticle({ id, setLoading })
     const { addToCart } = useCart()
     const { addFavorite, checkProductInFavorite, removeFavoriteProduct } = useProductFavorite()
-    const { addSaved } = useProductSaved()
+    const { addSaved, checkProductInSaved, removeSavedProduct } = useProductSaved()
 
     return (
         <>
@@ -56,17 +56,22 @@ function Detail() {
                                         </div>
                                         <div className='detail-actions'>
                                             <button onClick={() => {
-                                                checkProductInFavorite(article) 
-                                                ? removeFavoriteProduct(article)
-                                                :  addFavorite(article)
-                                                }}>
+                                                checkProductInFavorite(article)
+                                                    ? removeFavoriteProduct(article)
+                                                    : addFavorite(article)
+                                            }}>
                                                 {checkProductInFavorite(article)
                                                     ? <i className="fa-solid fa-heart"></i>
                                                     : <i className="fa-regular fa-heart"></i>}
                                             </button>
-                                            <button onClick={() => addSaved(article)}>
-                                                <i className="fa-regular fa-bookmark"></i>
-                                                {/* <i class="fa-solid fa-bookmark"></i> */}
+                                            <button onClick={() => {
+                                                checkProductInSaved(article)
+                                                    ? removeSavedProduct(article)
+                                                    : addSaved(article)
+                                            }}>
+                                                {checkProductInSaved(article)
+                                                    ? <i className="fa-solid fa-bookmark"></i>
+                                                    : <i className="fa-regular fa-bookmark"></i>}
                                             </button>
                                             <button>
                                                 <i className="fa-brands fa-whatsapp"></i>
