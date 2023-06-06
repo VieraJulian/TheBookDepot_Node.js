@@ -31,12 +31,12 @@ function Home() {
                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                             </div>
                             <div className="carousel-inner">
-                                <Link to="#">
+                                <Link to="/products/detail/12">
                                     <div className="carousel-item active">
                                         <img src="../../public/img/carousel/slider1.jpg" className="d-block w-100" alt="slider1" />
                                     </div>
                                 </Link>
-                                <Link to="#">
+                                <Link to="/products/detail/13">
                                     <div className="carousel-item">
                                         <img src="../../public/img/carousel/slider2.jpg" className="d-block w-100" alt="slider2" />
                                     </div>

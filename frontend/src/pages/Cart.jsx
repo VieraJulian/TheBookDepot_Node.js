@@ -18,7 +18,7 @@ function Cart() {
     const [loading, setLoading] = useState(true);
     const { cart, clearCart, addToCart, reduceCartProductQuantity, removeCartProduct } = useCart()
     const { products, total, quantity } = useCartDetail({ cart, setLoading })
-    const { addSaved } = useProductSaved()
+    const { addSaved, checkProductInSaved, removeSavedProduct } = useProductSaved()
     const [addressId, setAddressId] = useState(null)
     const { addresses } = useGetUserAddresses()
     const { pay } = useCartPay({ clearCart, addressId })
@@ -71,7 +71,16 @@ function Cart() {
                                             <p className="cart-item-total">$ {product.totalPrice}</p>
                                             <div className="cart-item-actions">
                                                 <button onClick={() => removeCartProduct(product)}><i className="fa-sharp fa-solid fa-trash"></i></button>
-                                                <button onClick={() => addSaved(product)}><i className="fa-regular fa-bookmark"></i></button>
+                                                <button onClick={() => {
+                                                    checkProductInSaved(product)
+                                                        ? removeSavedProduct(product)
+                                                        : addSaved(product)
+                                                }}>
+                                                    {checkProductInSaved(product)
+                                                        ? <i className="fa-solid fa-bookmark"></i>
+                                                        : <i className="fa-regular fa-bookmark"></i>
+                                                    }
+                                                </button>
                                             </div>
                                         </div>
                                     )
