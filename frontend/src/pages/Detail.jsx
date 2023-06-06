@@ -4,6 +4,7 @@ import { useGetArticle } from "../hooks/useGetArticle";
 import { useCart } from '../hooks/useCart'
 import { useProductFavorite } from '../hooks/useProductFavorite'
 import { useProductSaved } from "../hooks/useProductSaved";
+import { useWhatsapp } from "../hooks/useWhatsapp";
 import Loader from '../components/Loader';
 
 import Navbar from './Navbar'
@@ -20,6 +21,7 @@ function Detail() {
     const { addToCart } = useCart()
     const { addFavorite, checkProductInFavorite, removeFavoriteProduct } = useProductFavorite()
     const { addSaved, checkProductInSaved, removeSavedProduct } = useProductSaved()
+    const { handleWhatsAppClick } = useWhatsapp()
 
     return (
         <>
@@ -73,7 +75,7 @@ function Detail() {
                                                     ? <i className="fa-solid fa-bookmark"></i>
                                                     : <i className="fa-regular fa-bookmark"></i>}
                                             </button>
-                                            <button>
+                                            <button onClick={() => handleWhatsAppClick(article)}>
                                                 <i className="fa-brands fa-whatsapp"></i>
                                             </button>
                                         </div>

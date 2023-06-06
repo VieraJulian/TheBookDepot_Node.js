@@ -5,6 +5,7 @@ import { useGetUserAddresses } from '../hooks/useGetUserAddress'
 import { useProductSaved } from '../hooks/useProductSaved'
 import { useCart } from '../hooks/useCart';
 import { useCartPay } from '../hooks/useCartPay'
+import { useWhatsapp } from '../hooks/useWhatsapp'
 import Loader from '../components/Loader';
 
 import Navbar from './Navbar'
@@ -20,8 +21,9 @@ function Cart() {
     const { products, total, quantity } = useCartDetail({ cart, setLoading })
     const { addSaved, checkProductInSaved, removeSavedProduct } = useProductSaved()
     const [addressId, setAddressId] = useState(null)
-    const { addresses } = useGetUserAddresses()
+    const { addresses } = useGetUserAddresses(setLoading)
     const { pay } = useCartPay({ clearCart, addressId })
+    const { handleWhatsAppClick } = useWhatsapp()
 
     const handleAddressSelect = (id) => {
         setAddressId(id)
@@ -144,7 +146,7 @@ function Cart() {
                             <div className="cart-help">
                                 <div className='mastercard'><img src="../../public/img/cart/masterCard.png" alt="" /><img src="../../public/img/cart/icon-mp.webp" alt="" /></div>
                                 <div className='promo'><img src="../../public/img/cart/2x1.jpg" alt="" /></div>
-                                <button className='help-wts'>Ayuda al whatsapp: +98751827463<i className="fa-brands fa-whatsapp wts"></i></button>
+                                <button className='help-wts' onClick={() => handleWhatsAppClick(products)}>Ayuda al whatsapp: +98751827463<i className="fa-brands fa-whatsapp wts"></i></button>
                             </div>
                         </div>
                     }
