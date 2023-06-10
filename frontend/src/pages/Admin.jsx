@@ -30,7 +30,7 @@ function Admin() {
                             {userInfoProfile &&
                                 <>
                                     <div className='admin-navbar-logo'>
-                                        <img src="../../public/img/logo.png" alt="Logo" />
+                                        <img src="../../public/img/logos/logoTBD.png" alt="Logo" />
                                     </div>
                                     <div className='admin-navbar-img'>
                                         <img src={userInfoProfile.image} alt={userInfoProfile.firstName} />

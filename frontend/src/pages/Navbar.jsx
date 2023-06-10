@@ -42,7 +42,7 @@ function Navbar() {
                     </div>
                     <picture className='navbar-logo'>
                         <Link to="/">
-                            <img src="../../public/img/logo.png" alt="Logo" />
+                            <img src="../../public/img/logos/logoTBD.png" alt="Logo" />
                         </Link>
                     </picture>
                     <div className='navbar-center'>

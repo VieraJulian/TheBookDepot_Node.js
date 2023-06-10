@@ -20,7 +20,7 @@
 }
 
 .detail-bestSeller {
-    background-color: #f26531;
+    background-color: #ffa800;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +57,7 @@
     font-size: 1.2rem;
     font-weight: 600;
     text-align: center;
-    border-bottom: 2px solid rgb(231, 34, 34);
+    border-bottom: 2px solid #3a4bae;
     padding-bottom: .5rem;
     margin-bottom: 1rem;
 }
@@ -78,6 +78,8 @@
 .detail-info-price {
     font-size: 2rem;
     margin-bottom: .5rem;
+    color: #E72222;
+    font-weight: 500;
 }
 
 .available-stock {
@@ -119,7 +121,7 @@
     width: 100%;
     height: 2.6rem;
     margin-top: 1rem;
-    background-color: #5cb85c;
+    background-color: #3a4bae;
     color: #fff;
 }
 

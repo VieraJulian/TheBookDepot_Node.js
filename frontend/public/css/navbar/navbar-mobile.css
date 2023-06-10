@@ -28,7 +28,7 @@
 
 .dropdown-content a:hover {
     color: #FFFFFF;
-    background-color: #f26531;
+    background-color: #ffa800;
 }
 
 .navbar {
@@ -56,13 +56,13 @@
 }
 
 .navbar-p-bd {
-    color: #f26531;
+    color: #ffa800;
     padding: .3rem .6rem;
     margin: 0;
 }
 
 .navbar-p-mc {
-    background-color: #7edb0c;
+    background-color: #3a4bae;
     color: #fff;
     padding: .3rem .6rem;
     margin: 0;
@@ -103,7 +103,7 @@
 }
 
 .navbar-search button {
-    background-color: #f26531;
+    background-color: #ffa800;
     color: #fff;
     border: none;
     padding: .35rem .6rem;
@@ -121,7 +121,7 @@
 
 .cart {
     font-size: 1rem;
-    background-color: #7edb0c;
+    background-color: #3a4bae;
     padding: .5rem .7rem;
     border-radius: 50%;
     border: 1px solid #999;
@@ -130,14 +130,14 @@
 }
 
 .cart a {
-    color: #000
+    color: #fff
 }
 
 .cart-number {
     height: 2rem;
     width: 2rem;
     position: absolute;
-    background-color: #e58124;
+    background-color: #ffa800;
     color: #fff;
     padding: .3rem .7rem;
     border-radius: 50%;

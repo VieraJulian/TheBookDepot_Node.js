@@ -9,7 +9,7 @@ function Footer() {
             <div className='footer'>
                 <div className='footer-container'>
                     <picture>
-                        <img src="../../public/img/logo.png" alt="Logo" />
+                        <img src="../../public/img/logos/logoTBD.png" alt="Logo" />
                     </picture>
                     <nav className='footer-links'>
                         <Link to="/">
