@@ -174,7 +174,7 @@ module.exports = {
                 if (productImage) {
                     await productImage.destroy();
                 }
-                
+
                 await productDB.destroy();
             }
 
@@ -245,6 +245,11 @@ module.exports = {
             const offset = (page - 1) * size;
 
             const productsDB = await Product.findAll({
+                where: {
+                    sold: {
+                        [Op.gte]: 20
+                    }
+                },
                 limit,
                 offset,
                 include: [{ association: "productImage" }],
@@ -310,7 +315,7 @@ module.exports = {
                 include: [{ association: "productImage" }],
                 order: [['createdAt', 'DESC']]
             });
-            
+
             const totalProducts = await Product.count({
                 where: {
                     [Op.or]: [
@@ -319,9 +324,9 @@ module.exports = {
                     ]
                 }
             });
-            
+
             const totalPages = Math.ceil(totalProducts / limit);
-            
+
             const englishAll = productsDB.map(p => {
                 const buffer = p.productImage.image
                 const base64 = Buffer.from(buffer).toString('base64');
