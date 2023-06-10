@@ -1,5 +1,5 @@
-import { cartPay } from '../services/cartPay'
 import Cookies from 'universal-cookie';
+import { payment } from '../services/payment';
 
 export function useCartPay({ clearCart, addressId }) {
     const pay = async () => {
@@ -11,14 +11,14 @@ export function useCartPay({ clearCart, addressId }) {
         const cart = JSON.parse(localStorage.getItem('cart'))
 
         const data = {
-            id: userId,
-            addressId: addressId,
-            products: cart
+            userId,
+            addressId,
+            cart
         }
 
-        const result = await cartPay(data, token)
+        const result = await payment(data, token)
 
-        clearCart()
+        window.location.href = result.init_point
     }
 
     return { pay }
