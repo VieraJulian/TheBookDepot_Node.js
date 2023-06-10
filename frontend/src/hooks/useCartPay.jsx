@@ -1,7 +1,7 @@
 import Cookies from 'universal-cookie';
 import { payment } from '../services/payment';
 
-export function useCartPay({ clearCart, addressId }) {
+export function useCartPay({ addressId }) {
     const pay = async () => {
         const cookies = new Cookies();
         const cookieGet = cookies.get('response')

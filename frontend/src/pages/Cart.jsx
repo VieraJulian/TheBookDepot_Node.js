@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { useCartDetail } from '../hooks/useCartDetail'
 import { useGetUserAddresses } from '../hooks/useGetUserAddress'
 import { useProductSaved } from '../hooks/useProductSaved'
@@ -24,6 +24,18 @@ function Cart() {
     const { addresses } = useGetUserAddresses(setLoading)
     const { pay } = useCartPay({ clearCart, addressId })
     const { handleWhatsAppClick } = useWhatsapp()
+
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const success = searchParams.get('status') === 'approved';
+
+    useEffect(() => {
+        if (success) {
+            clearCart();
+            localStorage.setItem('showAlert', 'true');
+            window.location.href = "/users/cart"
+        }
+    }, [success]);
 
     const handleAddressSelect = (id) => {
         setAddressId(id)

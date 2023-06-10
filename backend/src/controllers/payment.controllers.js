@@ -33,11 +33,12 @@ module.exports = {
         const result = await mercadopago.preferences.create({
             items: items,
             back_urls: {
-                success: "http://localhost:5173/",
-                failure: "http://localhost:5173/",
+                success: "http://localhost:5173/users/cart",
+                failure: "http://localhost:5173/users/cart",
                 pending: "http://localhost:8000/pending",
             },
-            notification_url: `https://db29-181-15-127-212.sa.ngrok.io/webhook?userId=${req.body.userId}&addressId=${req.body.addressId}`
+            notification_url: `${process.env.NOTIFICATION_URL}/webhook?userId=${req.body.userId}&addressId=${req.body.addressId}`
+            // PONER EN VARIABLE
         })
 
         return res.status(200).json(result.body);
