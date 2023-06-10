@@ -11,7 +11,7 @@ import Footer from './Footer'
 
 function BestSeller() {
     const [page, setPage] = useState(1)
-    const [size, setSize] = useState(20)
+    const [size, setSize] = useState(15)
     const [loading, setLoading] = useState(true);
     const { products, totalPages } = useGetProductBestSeller(page, size, setLoading)
     const { handleChangePage, handlePrevClick, handleNextClick, paginationNumbers } = usePaginationProducts(page, totalPages, setPage)

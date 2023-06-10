@@ -253,13 +253,7 @@ module.exports = {
                 ]
             });
 
-            const totalProducts = await Product.count({
-                where: {
-                    sold: {
-                        [Op.gte]: 20
-                    }
-                }
-            });
+            const totalProducts = await Product.count();
 
             const totalPages = Math.ceil(totalProducts / limit);
 
