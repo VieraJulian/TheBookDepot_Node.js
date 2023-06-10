@@ -38,7 +38,6 @@ module.exports = {
                 pending: "http://localhost:8000/pending",
             },
             notification_url: `${process.env.NOTIFICATION_URL}/webhook?userId=${req.body.userId}&addressId=${req.body.addressId}`
-            // PONER EN VARIABLE
         })
 
         return res.status(200).json(result.body);
