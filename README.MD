@@ -3,22 +3,6 @@
 
 ¡Bienvenido/a a TheBookDepot, tu destino en línea para explorar un vasto universo literario de novelas cautivadoras, cómics vibrantes y apasionantes mangas! Nos apasiona el arte de contar historias y nos enorgullece brindar una plataforma que nutre la imaginación y el amor por la lectura.
 
-## Descubre un Mundo de Posibilidades
-Sumérgete en nuestro vasto catálogo, cuidadosamente seleccionado para abarcar una amplia variedad de géneros literarios y estilos visuales. Desde las inmortales novelas que han resistido el paso del tiempo hasta las emocionantes series de cómics y los cautivadores mundos de los mangas, encontrarás una gama completa de opciones para todos los gustos y preferencias.
-
-## Un Oasis para los Amantes de la Lectura
-En TheBookDepot, hemos creado una experiencia en línea que va más allá de la simple transacción. Aquí, los amantes de la literatura se reúnen para explorar, conectarse y descubrir nuevas obras maestras. Nuestra plataforma se ha diseñado meticulosamente para ofrecerte una navegación intuitiva, proporcionándote una interfaz amigable que facilita el descubrimiento de tus próximas joyas literarias.
-
-## Cada Obra Cuenta una Historia
-Cada libro, novela, cómic y manga que ofrecemos ha sido seleccionado con cuidado para asegurarnos de que cuente una historia que despierte emociones, desafíe perspectivas y lleve a los lectores a un viaje inolvidable. Ya sea que busques una novela clásica que te transporte a épocas pasadas, un cómic lleno de acción que te haga vibrar con cada viñeta o un manga que te sumerja en universos de fantasía, tenemos la obra perfecta esperando por ti.
-
-## Una Comunidad Apasionada
-Únete a una comunidad de entusiastas lectores, donde podrás compartir tus recomendaciones, participar en discusiones enriquecedoras y descubrir nuevas perspectivas literarias. Nuestro objetivo es fomentar el intercambio de ideas y la conexión entre aquellos que comparten el amor por las palabras impresas y las historias visuales cautivadoras.
-
-En TheBookDepot, creemos en el poder de la lectura para inspirar, entretener y transformar vidas. Estamos emocionados de embarcarnos en este viaje literario contigo y ayudarte a descubrir un mundo de aventuras entre las páginas de nuestros libros.
-
-¡Prepárate para perderse en la magia de la literatura en TheBookDepot!
-
 # Demo 📽️
 
 ![](./frontend/public/img/readme/Home.png)
