@@ -5,7 +5,7 @@
 
 # Demo 📽️
 
-![](./frontend/public/img/readme/Home.png)
+![](./frontend/public/img/readme/2023-06-15%2015-31-03.mp4)
 
 # Características del Proyecto 📋
 
