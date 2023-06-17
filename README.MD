@@ -7,7 +7,7 @@
 
 <div align="center">
   <img src="./frontend/public/img/readme/Home.png" width="400" height="400" alt="Home">
-  <div width="400" height="400">
+  <div>
     <img src="./frontend/public/img/readme/detalle.png">
   </div>
 </div>
