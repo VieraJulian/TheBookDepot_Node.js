@@ -5,27 +5,13 @@
 
 # Imagenes 🖼️
 
-<style>
-  .image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .image-container img {
-    width: 400px;
-    height: 300px;
-    object-fit: cover;
-    margin: 10px;
-  }
-</style>
-
-<div class="image-container">
-  <img src="./frontend/public/img/readme/Home.png" alt="Home">
-  <img src="./frontend/public/img/readme/detalle.png" alt="Detalle">
+<div align="center">
+  <img src="./frontend/public/img/readme/Home.png" alt="Home" style="width: 400px; height: 300px; object-fit: cover; margin: 10px;">
+  <img src="./frontend/public/img/readme/detalle.png" alt="Detalle" style="width: 400px; height: 300px; object-fit: cover; margin: 10px;">
 </div>
-<div class="image-container">
-  <img src="./frontend/public/img/readme/carrito.png" alt="Carrito">
-  <img src="./frontend/public/img/readme/Screenshot_1.png" alt="Screenshot 1">
+<div align="center">
+  <img src="./frontend/public/img/readme/carrito.png" alt="Carrito" style="width: 400px; height: 300px; object-fit: cover; margin: 10px;">
+  <img src="./frontend/public/img/readme/Screenshot_1.png" alt="Screenshot 1" style="width: 400px; height: 300px; object-fit: cover; margin: 10px;">
 </div>
 
 # Características del Proyecto 📋
