@@ -8,7 +8,7 @@
 <div align="center">
   <img src="./frontend/public/img/readme/Home.png" width="400" height="400" alt="Home">
   <div width="400" height="400">
-    <img src="./frontend/public/img/readme/detalle.png" width="170" height="400" alt="Detalle" style="object-fit: cover;">
+    <img src="./frontend/public/img/readme/detalle.png">
   </div>
 </div>
 <div align="center">
