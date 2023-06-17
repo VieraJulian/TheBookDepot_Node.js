@@ -11,7 +11,7 @@
 </div>
 <div align="center">
   <img src="./frontend/public/img/readme/carrito.png" width="400" height="400" alt="Carrito">
-  <img src="./frontend/public/img/readme/Screenshot_1.png" width="400" height="450" alt="Screenshot 1">
+  <img src="./frontend/public/img/readme/Screenshot_1.png" width="450" height="450" alt="Screenshot 1">
 </div>
 
 # Características del Proyecto 📋
