@@ -6,14 +6,12 @@
 # Imagenes 🖼️
 
 <div align="center">
-  <img src="./frontend/public/img/readme/Home.png" width="400" height="400" alt="Home">
-  <div>
-    <img src="./frontend/public/img/readme/detalle.png">
-  </div>
+  <img src="./frontend/public/img/readme/Home.png" width="400" height="400" alt="Home" style="object-fit: cover;">
+  <img src="./frontend/public/img/readme/detalle.png" width="170" height="400" alt="Detalle" style="object-fit: cover;">
 </div>
 <div align="center">
-  <img src="./frontend/public/img/readme/carrito.png" width="400" height="450" alt="Carrito">
-  <img src="./frontend/public/img/readme/Screenshot_1.png" width="400" height="450" alt="Screenshot 1">
+  <img src="./frontend/public/img/readme/carrito.png" width="400" height="450" alt="Carrito" style="object-fit: cover;">
+  <img src="./frontend/public/img/readme/Screenshot_1.png" width="400" height="450" alt="Screenshot 1" style="object-fit: cover;">
 </div>
 
 # Características del Proyecto 📋
