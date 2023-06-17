@@ -5,10 +5,14 @@
 
 # Imagenes 🖼️
 
-![](./frontend/public/img/readme/Home.png)
-![](./frontend/public/img/readme/detalle.png)
-![](./frontend/public/img/readme/carrito.png)
-![](./frontend/public/img/readme/Screenshot_1.png)
+<div align="center">
+  <img src="./frontend/public/img/readme/Home.png" width="400" height="300" alt="Home">
+  <img src="./frontend/public/img/readme/detalle.png" width="400" height="300" alt="Detalle">
+</div>
+<div align="center">
+  <img src="./frontend/public/img/readme/carrito.png" width="400" height="300" alt="Carrito">
+  <img src="./frontend/public/img/readme/Screenshot_1.png" width="400" height="300" alt="Screenshot 1">
+</div>
 
 # Características del Proyecto 📋
 
