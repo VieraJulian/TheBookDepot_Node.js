@@ -3,9 +3,12 @@
 
 ¡Bienvenido/a a TheBookDepot, tu destino en línea para explorar un vasto universo literario de novelas cautivadoras, cómics vibrantes y apasionantes mangas! Nos apasiona el arte de contar historias y nos enorgullece brindar una plataforma que nutre la imaginación y el amor por la lectura.
 
-# Demo 📽️
+# Imagenes 🖼️
 
-![](./frontend/public/img/readme/2023-06-15%2015-31-03.mp4)
+![](./frontend/public/img/readme/Home.png)
+![](./frontend/public/img/readme/detalle.png)
+![](./frontend/public/img/readme/carrito.png)
+![](./frontend/public/img/readme/Screenshot_1.png)
 
 # Características del Proyecto 📋
 
